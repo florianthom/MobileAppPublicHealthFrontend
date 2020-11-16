@@ -23,9 +23,24 @@ class _HomePageBodyState extends State<HomePageBody> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [Text("Welcome"), Icon(Icons.accessibility_new)],
+      child: Padding(
+        padding: const EdgeInsets.all(30.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Welcome",
+              style: TextStyle(
+                fontSize: 50,
+              ),
+            ),
+            Spacer(),
+            Icon(
+              Icons.accessibility_new,
+              size: 100,
+            )
+          ],
+        ),
       ),
     );
   }
