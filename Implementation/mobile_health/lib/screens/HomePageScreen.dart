@@ -7,7 +7,7 @@ class HomePageScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Mobile Health App"),
         elevation: 15,
-        backgroundColor: Colors.green,
+        backgroundColor: Color(0x65DCD5),
       ),
       body: HomePageBody(),
     );
