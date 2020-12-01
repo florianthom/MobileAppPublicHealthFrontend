@@ -2,6 +2,9 @@ import 'dart:convert';
 
 import 'package:collection/collection.dart';
 
+import '../database/database_provider.dart';
+import '../database/database_provider.dart';
+import '../database/database_provider.dart';
 import 'EntryEvent.dart';
 
 class DiaryEntry {
@@ -31,23 +34,30 @@ class DiaryEntry {
   }
 
   Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'dateString': dateString,
-      'comment': comment,
-      'entryEvents': entryEvents?.map((x) => x?.toMap())?.toList(),
+    var map = <String, dynamic>{
+      DatabaseProvider.COLUMN_DATE: dateString,
+      DatabaseProvider.COLUMN_COMMENT: comment,
+      DatabaseProvider.COLUMN_ENTRY_EVENTS:
+          entryEvents?.map((x) => x?.toMap())?.toList(),
     };
+
+    if (id != null) {
+      map[DatabaseProvider.COLUMN_ID] = id;
+    }
+
+    return map;
   }
 
   factory DiaryEntry.fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
 
     return DiaryEntry(
-      id: map['id'],
-      dateString: map['dateString'],
-      comment: map['comment'],
+      id: map[DatabaseProvider.COLUMN_ID],
+      dateString: map[DatabaseProvider.COLUMN_DATE],
+      comment: map[DatabaseProvider.COLUMN_COMMENT],
       entryEvents: List<EntryEvent>.from(
-          map['entryEvents']?.map((x) => EntryEvent.fromMap(x))),
+          map[DatabaseProvider.COLUMN_ENTRY_EVENTS]
+              ?.map((x) => EntryEvent.fromMap(x))),
     );
   }
 

@@ -1,6 +1,7 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite/sqlite_api.dart';
+import '../models/EntryType.dart';
 
 class DatabaseProvider {
   static const String COLUMN_ID = "id";
@@ -119,5 +120,34 @@ class DatabaseProvider {
         );
       },
     );
+  }
+
+  Future<List<EntryType>> getEntryTypes() async {
+    final db = await database;
+
+    var entryTypes = await db.query(TABLE_ENTRYTYPE, columns: [
+      COLUMN_ID,
+      COLUMN_NAME,
+      COLUMN_DESCRIPTION,
+      COLUMN_PARENTTYPEID
+    ]);
+
+    List<EntryType> typeList = List<EntryType>();
+
+    entryTypes.forEach((element) {
+      EntryType entryType = EntryType.fromMap(element);
+
+      typeList.add(entryType);
+    });
+
+    return typeList;
+  }
+
+  Future<EntryType> insert(EntryType entry) async {
+    final db = await database;
+
+    entry.id = await db.insert(TABLE_ENTRYTYPE, entry.toMap());
+
+    return entry;
   }
 }

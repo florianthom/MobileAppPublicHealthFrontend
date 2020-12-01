@@ -1,4 +1,5 @@
 import 'dart:convert';
+import '../database/database_provider.dart';
 import 'EntryType.dart';
 import 'Unit.dart';
 
@@ -29,22 +30,27 @@ class EntryEvent {
   }
 
   Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'quantity': quantity,
-      'unit': unit?.toMap(),
-      'type': entryType?.toMap(),
+    var map = <String, dynamic>{
+      DatabaseProvider.COLUMN_QUANTITY: quantity,
+      DatabaseProvider.COLUMN_UNIT: unit?.toMap(),
+      DatabaseProvider.COLUMN_ENTRYTYPE: entryType?.toMap(),
     };
+
+    if (id != null) {
+      map[DatabaseProvider.COLUMN_ID] = id;
+    }
+
+    return map;
   }
 
   factory EntryEvent.fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
 
     return EntryEvent(
-      id: map['id'],
-      quantity: map['quantity'],
-      unit: Unit.fromMap(map['unit']),
-      entryType: EntryType.fromMap(map['type']),
+      id: map[DatabaseProvider.COLUMN_ID],
+      quantity: map[DatabaseProvider.COLUMN_QUANTITY],
+      unit: Unit.fromMap(map[DatabaseProvider.COLUMN_UNIT]),
+      entryType: EntryType.fromMap(map[DatabaseProvider.COLUMN_ENTRYTYPE]),
     );
   }
 

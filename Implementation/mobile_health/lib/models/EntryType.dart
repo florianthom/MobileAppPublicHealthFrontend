@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import '../database/database_provider.dart';
+
 class EntryType {
   int id;
   String name;
@@ -27,22 +29,27 @@ class EntryType {
   }
 
   Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'name': name,
-      'description': description,
-      'parentTypeId': parentTypeId,
+    var map = <String, dynamic>{
+      DatabaseProvider.COLUMN_NAME: name,
+      DatabaseProvider.COLUMN_DESCRIPTION: description,
+      DatabaseProvider.COLUMN_PARENTTYPEID: parentTypeId,
     };
+
+    if (id != null) {
+      map[DatabaseProvider.COLUMN_ID] = id;
+    }
+
+    return map;
   }
 
   factory EntryType.fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
 
     return EntryType(
-      id: map['id'],
-      name: map['name'],
-      description: map['description'],
-      parentTypeId: map['parentTypeId'],
+      id: map[DatabaseProvider.COLUMN_ID],
+      name: map[DatabaseProvider.COLUMN_NAME],
+      description: map[DatabaseProvider.COLUMN_DESCRIPTION],
+      parentTypeId: map[DatabaseProvider.COLUMN_PARENTTYPEID],
     );
   }
 

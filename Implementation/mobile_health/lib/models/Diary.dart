@@ -2,6 +2,9 @@ import 'dart:convert';
 
 import 'package:collection/collection.dart';
 
+import '../database/database_provider.dart';
+import '../database/database_provider.dart';
+import '../database/database_provider.dart';
 import 'DiaryEntry.dart';
 
 class Diary {
@@ -23,19 +26,29 @@ class Diary {
   }
 
   Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'diaryEntries': diaryEntries?.map((x) => x?.toMap())?.toList(),
+    //erst mal noch mit Vorsicht zu geniessen, könnte sein, dass hier die App abkackt
+    //weil theoretisch die ganze DB geladen werden kann
+    //muss vermutlich in eine Liste von DiaryEntry ids geändert werden
+    var map = <String, dynamic>{
+      DatabaseProvider.COLUMN_DIARY_ENTRIES:
+          diaryEntries?.map((x) => x?.toMap())?.toList(),
     };
+
+    if (id != null) {
+      map[DatabaseProvider.COLUMN_ID] = id;
+    }
+
+    return map;
   }
 
   factory Diary.fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
 
     return Diary(
-      id: map['id'],
+      id: map[DatabaseProvider.COLUMN_ID],
       diaryEntries: List<DiaryEntry>.from(
-          map['diaryEntries']?.map((x) => DiaryEntry.fromMap(x))),
+          map[DatabaseProvider.COLUMN_DIARY_ENTRIES]
+              ?.map((x) => DiaryEntry.fromMap(x))),
     );
   }
 

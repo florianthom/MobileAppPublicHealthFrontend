@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import '../database/database_provider.dart';
+
 class Unit {
   int id;
   String name;
@@ -19,18 +21,23 @@ class Unit {
   }
 
   Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'name': name,
+    var map = <String, dynamic>{
+      DatabaseProvider.COLUMN_NAME: name,
     };
+
+    if (id != null) {
+      map[DatabaseProvider.COLUMN_ID] = id;
+    }
+
+    return map;
   }
 
   factory Unit.fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
 
     return Unit(
-      id: map['id'],
-      name: map['name'],
+      id: map[DatabaseProvider.COLUMN_ID],
+      name: map[DatabaseProvider.COLUMN_NAME],
     );
   }
 
