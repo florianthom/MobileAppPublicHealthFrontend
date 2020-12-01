@@ -70,6 +70,7 @@ class DatabaseProvider {
           "$COLUMN_QUANTITY REAL,"
           "$COLUMN_UNIT INTEGER"
           "$COLUMN_ENTRYTYPE INTEGER,"
+          "FOREIGN KEY($COLUMN_UNIT) REFERENCES $TABLE_UNIT($COLUMN_ID),"
           "FOREIGN KEY($COLUMN_ENTRYTYPE) REFERENCES $TABLE_ENTRYTYPE($COLUMN_ID)"
           ")",
         );
