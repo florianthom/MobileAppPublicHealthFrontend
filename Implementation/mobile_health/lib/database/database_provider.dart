@@ -150,4 +150,37 @@ class DatabaseProvider {
 
     return entry;
   }
+
+  Future<int> delete(String tableName, int id) async {
+    final db = await database;
+
+    return await db.delete(tableName, where: "$COLUMN_ID = ?", whereArgs: [id]);
+  }
+
+  Future<int> update(EntryType entry) async {
+    final db = await database;
+
+    return await db.update(TABLE_ENTRYTYPE, entry.toMap(),
+        where: "$COLUMN_ID = ?", whereArgs: [entry.id]);
+  }
+
+  Future<EntryType> getById(int id) async {
+    final db = await database;
+
+    var queryResult = await db.query(TABLE_ENTRYTYPE,
+        columns: [
+          COLUMN_ID,
+          COLUMN_NAME,
+          COLUMN_DESCRIPTION,
+          COLUMN_PARENTTYPEID
+        ],
+        where: "$COLUMN_ID = ?",
+        whereArgs: [id]);
+
+    if (queryResult.length > 0) {
+      return EntryType.fromMap(queryResult.first);
+    }
+
+    return null;
+  }
 }
