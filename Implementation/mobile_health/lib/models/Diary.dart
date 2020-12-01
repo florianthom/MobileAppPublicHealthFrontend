@@ -3,8 +3,6 @@ import 'dart:convert';
 import 'package:collection/collection.dart';
 
 import '../database/database_provider.dart';
-import '../database/database_provider.dart';
-import '../database/database_provider.dart';
 import 'DiaryEntry.dart';
 
 class Diary {
