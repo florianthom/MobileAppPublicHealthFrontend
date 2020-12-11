@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_health/screens/AddNewEntryCategoryScreen.dart';
+import 'package:mobile_health/screens/CalenderScreen.dart';
 import 'package:mobile_health/screens/HomePageScreen.dart';
+import 'package:mobile_health/screens/MoreScreen.dart';
+import 'package:mobile_health/screens/StatisticsScreen.dart';
 import 'package:mobile_health/screens/loading.dart';
 import "package:mobile_health/screens/InitialAppInstallationScreen.dart";
 
@@ -17,6 +21,11 @@ class MyApp extends StatelessWidget {
           "/": (context) => Loading(),
           "/home": (context) => HomePageScreen(),
           "/initialAppInstallationScreen": (context) => InitialAppInstallationScreen(),
+          "/statistics": (context) => StatisticsScreen(),
+          "/more": (context) => MoreScreen(),
+          "/calender": (context) => CalenderScreen(),
+          "/addNewEventCategory": (context) => AddNewEntryCategoryScreen(),
+
         }
     );
   }

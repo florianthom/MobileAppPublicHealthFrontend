@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_health/components/CostumBottomFloatingButton.dart';
 import 'package:mobile_health/components/CustomBottomNavigationBar.dart';
+import 'package:mobile_health/components/StaticTopAppBar.dart';
 import 'package:mobile_health/components/TitleCardHome.dart';
+import 'package:mobile_health/components/TitleCardStatistics.dart';
 import 'package:mobile_health/components/TopAppBar.dart';
 
-class HomePageScreen extends StatefulWidget {
+class StatisticsScreen extends StatefulWidget {
   @override
-  _HomePageScreenState createState() => _HomePageScreenState();
+  _StatisticsScreenState createState() => _StatisticsScreenState();
 }
 
-class _HomePageScreenState extends State<HomePageScreen> {
+class _StatisticsScreenState extends State<StatisticsScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -19,14 +21,14 @@ class _HomePageScreenState extends State<HomePageScreen> {
       extendBodyBehindAppBar: false,
 
 
-      appBar: TopAppBar(),
+      appBar: StaticTopAppBar(title: "Statistics"),
 
 
       body: Container(
         color: Colors.white,
         child: Column(
           children: [
-            TitleCardHome(),
+            TitleCardStatistics(),
           ],
         ),
       ),

@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_health/components/CostumBottomFloatingButton.dart';
 import 'package:mobile_health/components/CustomBottomNavigationBar.dart';
+import 'package:mobile_health/components/StaticTopAppBar.dart';
 import 'package:mobile_health/components/TitleCardHome.dart';
+import 'package:mobile_health/components/TitleCardMore.dart';
+import 'package:mobile_health/components/TitleCardStatistics.dart';
 import 'package:mobile_health/components/TopAppBar.dart';
 
-class HomePageScreen extends StatefulWidget {
+class CalenderScreen extends StatefulWidget {
   @override
-  _HomePageScreenState createState() => _HomePageScreenState();
+  _CalenderScreenState createState() => _CalenderScreenState();
 }
 
-class _HomePageScreenState extends State<HomePageScreen> {
+class _CalenderScreenState extends State<CalenderScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -19,14 +22,16 @@ class _HomePageScreenState extends State<HomePageScreen> {
       extendBodyBehindAppBar: false,
 
 
-      appBar: TopAppBar(),
+      appBar: StaticTopAppBar(title: "Calender",),
 
 
       body: Container(
         color: Colors.white,
         child: Column(
           children: [
-            TitleCardHome(),
+            Container(
+              color: Colors.white,
+            )
           ],
         ),
       ),

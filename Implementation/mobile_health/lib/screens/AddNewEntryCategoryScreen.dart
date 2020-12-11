@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_health/components/CostumBottomFloatingButton.dart';
 import 'package:mobile_health/components/CustomBottomNavigationBar.dart';
+import 'package:mobile_health/components/StaticTopAppBar.dart';
+import 'package:mobile_health/components/TitleCardAddNewEntryCategory.dart';
 import 'package:mobile_health/components/TitleCardHome.dart';
+import 'package:mobile_health/components/TitleCardStatistics.dart';
 import 'package:mobile_health/components/TopAppBar.dart';
 
-class HomePageScreen extends StatefulWidget {
+class AddNewEntryCategoryScreen extends StatefulWidget {
   @override
-  _HomePageScreenState createState() => _HomePageScreenState();
+  _AddNewEntryCategoryScreenState createState() => _AddNewEntryCategoryScreenState();
 }
 
-class _HomePageScreenState extends State<HomePageScreen> {
+class _AddNewEntryCategoryScreenState extends State<AddNewEntryCategoryScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -26,7 +29,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
         color: Colors.white,
         child: Column(
           children: [
-            TitleCardHome(),
+            TitleCardAddNewEntryCategory(),
           ],
         ),
       ),

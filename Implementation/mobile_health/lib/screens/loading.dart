@@ -8,7 +8,7 @@ class Loading extends StatefulWidget {
 class _LoadingState extends State<Loading> {
   void waitSeconds() async {
     await Future.delayed(Duration(seconds: 0));
-    Navigator.pushReplacementNamed(context, "/home");
+    Navigator.pushReplacementNamed(context, "/addNewEventCategory");
   }
 
   @override
