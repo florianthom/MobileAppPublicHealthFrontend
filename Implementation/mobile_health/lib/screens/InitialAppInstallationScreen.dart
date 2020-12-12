@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lipsum/lipsum.dart' as lipsum;
 import 'package:flutter/services.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Add this line
+
 class InitialAppInstallationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -61,7 +63,7 @@ class InitialAppInstallationScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Make Your Life Better",
+                  "hi",//AppLocalizations.of(context).initialAppInstallationScreen_adcopy,
                   style: TextStyle(
                     fontSize: 24.0,
                     fontWeight: FontWeight.w300,

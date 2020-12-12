@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Add this line
+
 class TitleCardStatistics extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -12,7 +14,7 @@ class TitleCardStatistics extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                "Statistics",
+                AppLocalizations.of(context).staticsScreen_title,
                 style: TextStyle(
                   fontSize: 36.0,
                   fontWeight: FontWeight.w300,

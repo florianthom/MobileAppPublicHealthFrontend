@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TitleCardAddNewEntryCategory extends StatelessWidget {
   @override
@@ -12,7 +13,7 @@ class TitleCardAddNewEntryCategory extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                "What is the category\nof Event to add?",
+                AppLocalizations.of(context).titleCardAddNewTitle_titel,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 36.0,

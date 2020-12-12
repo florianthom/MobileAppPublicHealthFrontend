@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TitleCardHome extends StatelessWidget {
   @override
@@ -14,7 +15,7 @@ class TitleCardHome extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                "Events Today",
+                AppLocalizations.of(context).events_today,
                 style: TextStyle(
                   fontSize: 36.0,
                   fontWeight: FontWeight.w300,

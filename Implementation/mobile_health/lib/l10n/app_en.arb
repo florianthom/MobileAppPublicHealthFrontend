@@ -1,0 +1,22 @@
+{
+    "titleCardAddNewTitle_titel": "What is the category\nof Event to add?",
+    "@titleCardAddNewTitle_titel": {},
+
+    "staticsScreen_title": "Statistics",
+    "@staticsScreen_title": {},
+
+    "moreScreen_title": "More",
+    "@moreScreen_title": {},
+
+    "initialAppInstallationScreen_adcopy": "Make your life better.",
+    "@initialAppInstallationScreen_adcopy": {},
+
+    "helloWorld": "asdfasdf",
+    "@helloWorld": {},
+
+    "events_today": "Events today",
+    "@events_today": {},
+
+    "calender": "Calender",
+    "@calender": {}
+}

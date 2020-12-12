@@ -7,6 +7,8 @@ import 'package:mobile_health/components/TitleCardMore.dart';
 import 'package:mobile_health/components/TitleCardStatistics.dart';
 import 'package:mobile_health/components/TopAppBar.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Add this line
+
 class MoreScreen extends StatefulWidget {
   @override
   _MoreScreenState createState() => _MoreScreenState();
@@ -22,7 +24,7 @@ class _MoreScreenState extends State<MoreScreen> {
       extendBodyBehindAppBar: false,
 
 
-      appBar: StaticTopAppBar(title: "More"),
+      appBar: StaticTopAppBar(title: AppLocalizations.of(context).moreScreen_title),
 
 
       body: Container(

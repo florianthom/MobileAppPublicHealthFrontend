@@ -6,6 +6,7 @@ import 'package:mobile_health/components/TitleCardHome.dart';
 import 'package:mobile_health/components/TitleCardMore.dart';
 import 'package:mobile_health/components/TitleCardStatistics.dart';
 import 'package:mobile_health/components/TopAppBar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CalenderScreen extends StatefulWidget {
   @override
@@ -22,7 +23,7 @@ class _CalenderScreenState extends State<CalenderScreen> {
       extendBodyBehindAppBar: false,
 
 
-      appBar: StaticTopAppBar(title: "Calender",),
+      appBar: StaticTopAppBar(title: AppLocalizations.of(context).calender),
 
 
       body: Container(

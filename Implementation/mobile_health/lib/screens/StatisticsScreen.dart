@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Add this line
 import 'package:mobile_health/components/CostumBottomFloatingButton.dart';
 import 'package:mobile_health/components/CustomBottomNavigationBar.dart';
 import 'package:mobile_health/components/StaticTopAppBar.dart';
@@ -21,7 +22,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
       extendBodyBehindAppBar: false,
 
 
-      appBar: StaticTopAppBar(title: "Statistics"),
+      appBar: StaticTopAppBar(title: AppLocalizations.of(context).staticsScreen_title), //
 
 
       body: Container(

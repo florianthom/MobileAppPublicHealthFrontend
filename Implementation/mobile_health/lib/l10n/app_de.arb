@@ -1,0 +1,25 @@
+{
+  "helloWorld": "asdfasdf",
+  "@helloWorld": {},
+
+  "titleCardAddNewTitle_titel": "Welche Eventkategorie möchtest du hinzufügen?",
+  "@titleCardAddNewTitle_titel": {},
+
+  "staticsScreen_title": "Statistiken",
+  "@staticsScreen_title": {},
+
+  "moreScreen_title": "Mehr",
+  "@initialAppInstallationScreen_adcopy": {},
+
+  "initialAppInstallationScreen_adcopy": "Mach dein Leben besser.",
+  "@initialAppInstallationScreen_adcopy": {},
+
+  "events_today": "Heutige Events",
+  "@events_today": {},
+
+
+  "calender": "Kalender",
+  "@calender": {}
+
+
+}
