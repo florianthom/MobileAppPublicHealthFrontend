@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_health/components/CostumBottomFloatingButton.dart';
 import 'package:mobile_health/components/CustomBottomNavigationBar.dart';
+import 'package:mobile_health/components/HomeCategoryHeader.dart';
+import 'package:mobile_health/components/HomeCategoryList.dart';
 import 'package:mobile_health/components/TitleCardHome.dart';
 import 'package:mobile_health/components/TopAppBar.dart';
 import 'package:mobile_health/database/database_provider.dart';
@@ -39,9 +41,8 @@ class _HomePageScreenState extends State<HomePageScreen> {
         child: Column(
           children: [
             TitleCardHome(),
-            Column(
-              children: data.map((a) => Text(a.name)).toList(),
-            ),
+            HomeCategoryHeader(),
+            HomeCategoryList(entryTypeList: data,)
           ],
         ),
       ),
