@@ -1,8 +1,9 @@
 import 'dart:convert';
 
 import '../database/database_provider.dart';
+import 'DBO.dart';
 
-class EntryType {
+class EntryType implements DBO {
   int id;
   String name;
   String description;

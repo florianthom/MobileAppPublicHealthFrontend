@@ -2,16 +2,19 @@ import 'dart:convert';
 import '../database/database_provider.dart';
 import 'EntryType.dart';
 import 'Unit.dart';
+import 'DBO.dart';
 
-class EntryEvent {
+class EntryEvent implements DBO {
   int id;
   double quantity;
   Unit unit;
+  int diaryEntryId;
   EntryType entryType;
   EntryEvent({
     this.id,
     this.quantity,
     this.unit,
+    this.diaryEntryId,
     this.entryType,
   });
 
@@ -19,12 +22,14 @@ class EntryEvent {
     int id,
     double quantity,
     Unit unit,
+    int diaryEntryId,
     EntryType type,
   }) {
     return EntryEvent(
       id: id ?? this.id,
       quantity: quantity ?? this.quantity,
       unit: unit ?? this.unit,
+      diaryEntryId: diaryEntryId ?? this.diaryEntryId,
       entryType: type ?? this.entryType,
     );
   }
@@ -33,6 +38,7 @@ class EntryEvent {
     var map = <String, dynamic>{
       DatabaseProvider.COLUMN_QUANTITY: quantity,
       DatabaseProvider.COLUMN_UNIT: unit?.toMap(),
+      DatabaseProvider.COLUMN_DIARY_ENTRY_ID: diaryEntryId,
       DatabaseProvider.COLUMN_ENTRYTYPE: entryType?.toMap(),
     };
 
@@ -50,6 +56,7 @@ class EntryEvent {
       id: map[DatabaseProvider.COLUMN_ID],
       quantity: map[DatabaseProvider.COLUMN_QUANTITY],
       unit: Unit.fromMap(map[DatabaseProvider.COLUMN_UNIT]),
+      diaryEntryId: map[DatabaseProvider.COLUMN_DIARY_ENTRY_ID],
       entryType: EntryType.fromMap(map[DatabaseProvider.COLUMN_ENTRYTYPE]),
     );
   }
@@ -61,7 +68,7 @@ class EntryEvent {
 
   @override
   String toString() {
-    return 'EntryEvent(id: $id, quantity: $quantity, unit: $unit, type: $entryType)';
+    return 'EntryEvent(id: $id, quantity: $quantity, unit: $unit, diaryEntryId: $diaryEntryId, type: $entryType)';
   }
 
   @override
@@ -72,11 +79,16 @@ class EntryEvent {
         o.id == id &&
         o.quantity == quantity &&
         o.unit == unit &&
+        o.diaryEntryId == diaryEntryId &&
         o.entryType == entryType;
   }
 
   @override
   int get hashCode {
-    return id.hashCode ^ quantity.hashCode ^ unit.hashCode ^ entryType.hashCode;
+    return id.hashCode ^
+        quantity.hashCode ^
+        unit.hashCode ^
+        diaryEntryId.hashCode ^
+        entryType.hashCode;
   }
 }

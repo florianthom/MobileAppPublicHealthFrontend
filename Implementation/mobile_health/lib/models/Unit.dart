@@ -1,8 +1,9 @@
 import 'dart:convert';
 
 import '../database/database_provider.dart';
+import 'DBO.dart';
 
-class Unit {
+class Unit implements DBO {
   int id;
   String name;
   Unit({

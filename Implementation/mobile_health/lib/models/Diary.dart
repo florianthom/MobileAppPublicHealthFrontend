@@ -4,8 +4,9 @@ import 'package:collection/collection.dart';
 
 import '../database/database_provider.dart';
 import 'DiaryEntry.dart';
+import 'DBO.dart';
 
-class Diary {
+class Diary implements DBO {
   int id;
   List<DiaryEntry> diaryEntries;
   Diary({

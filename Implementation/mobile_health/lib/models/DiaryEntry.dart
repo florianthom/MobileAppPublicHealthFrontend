@@ -4,16 +4,19 @@ import 'package:collection/collection.dart';
 
 import '../database/database_provider.dart';
 import 'EntryEvent.dart';
+import 'DBO.dart';
 
-class DiaryEntry {
+class DiaryEntry implements DBO {
   int id;
   String dateString;
   String comment;
+  int diaryId;
   List<EntryEvent> entryEvents;
   DiaryEntry({
     this.id,
     this.dateString,
     this.comment,
+    this.diaryId,
     this.entryEvents,
   });
 
@@ -21,12 +24,14 @@ class DiaryEntry {
     int id,
     String dateString,
     String comment,
+    int diaryId,
     List<EntryEvent> entryEvents,
   }) {
     return DiaryEntry(
       id: id ?? this.id,
       dateString: dateString ?? this.dateString,
       comment: comment ?? this.comment,
+      diaryId: diaryId ?? this.diaryId,
       entryEvents: entryEvents ?? this.entryEvents,
     );
   }
@@ -35,6 +40,7 @@ class DiaryEntry {
     var map = <String, dynamic>{
       DatabaseProvider.COLUMN_DATE: dateString,
       DatabaseProvider.COLUMN_COMMENT: comment,
+      DatabaseProvider.COLUMN_DIARYID: diaryId,
       DatabaseProvider.COLUMN_ENTRY_EVENTS:
           entryEvents?.map((x) => x?.toMap())?.toList(),
     };
@@ -53,6 +59,7 @@ class DiaryEntry {
       id: map[DatabaseProvider.COLUMN_ID],
       dateString: map[DatabaseProvider.COLUMN_DATE],
       comment: map[DatabaseProvider.COLUMN_COMMENT],
+      diaryId: map[DatabaseProvider.COLUMN_DIARYID],
       entryEvents: List<EntryEvent>.from(
           map[DatabaseProvider.COLUMN_ENTRY_EVENTS]
               ?.map((x) => EntryEvent.fromMap(x))),
@@ -73,7 +80,7 @@ class DiaryEntry {
 
   @override
   String toString() {
-    return 'DiaryEntry(id: $id, dateString: $dateString, comment: $comment, entryEvents: $entryEvents)';
+    return 'DiaryEntry(id: $id, dateString: $dateString, comment: $comment, diaryId: $diaryId, entryEvents: $entryEvents)';
   }
 
   @override
@@ -85,6 +92,7 @@ class DiaryEntry {
         o.id == id &&
         o.dateString == dateString &&
         o.comment == comment &&
+        o.diaryId == diaryId &&
         listEquals(o.entryEvents, entryEvents);
   }
 
@@ -93,6 +101,7 @@ class DiaryEntry {
     return id.hashCode ^
         dateString.hashCode ^
         comment.hashCode ^
+        diaryId.hashCode ^
         entryEvents.hashCode;
   }
 }
