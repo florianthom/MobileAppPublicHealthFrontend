@@ -40,7 +40,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
           children: [
             TitleCardHome(),
             Column(
-              children: data.map((e) => Text("hi")).toList(),
+              children: data.map((a) => Text(a.name)).toList(),
             ),
           ],
         ),
