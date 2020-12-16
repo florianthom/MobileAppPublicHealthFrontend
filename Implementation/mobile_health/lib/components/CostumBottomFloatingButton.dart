@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_health/database/database_provider.dart';
+import 'package:mobile_health/models/EntryType.dart';
 
 class CostumBottomFloatingButton extends StatefulWidget {
   @override
@@ -30,10 +32,15 @@ class _CostumBottomFloatingButtonState extends State<CostumBottomFloatingButton>
             color: Color.fromARGB(255, 101, 220, 213),
           ),
           elevation: 0.0,
-          onPressed: () {
-            setState(() {
-              // _selectedIndex = 2;
-            });
+          onPressed: () async {
+            EntryType tmpType = EntryType(
+              description: "test1",
+              name: "test1",
+            );
+            DatabaseProvider.db.insert(tmpType.runtimeType.toString(), tmpType);
+
+
+            setState(() { /*_selectedIndex = 2; */ });
           },
         ),
       ),

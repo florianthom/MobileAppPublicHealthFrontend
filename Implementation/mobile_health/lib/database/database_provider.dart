@@ -112,7 +112,8 @@ class DatabaseProvider {
   }
 
   ///example: insert("DiaryEntry", entryObject)
-  Future<EntryType> insert(String className, DBO entry) async {
+  ///example: insert(entryObject.runtimeType.toString(), entryObject)
+  Future<DBO> insert(String className, DBO entry) async {
     final db = await database;
 
     entry.id = await db.insert(className, entry.toMap());
