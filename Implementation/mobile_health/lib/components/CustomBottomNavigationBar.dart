@@ -1,12 +1,15 @@
 import "package:flutter/material.dart";
+import 'package:mobile_health/cubit/cubit/general_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobile_health/cubit/state/general_state.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
   @override
-  _CustomBottomNavigationBarState createState() => _CustomBottomNavigationBarState();
+  _CustomBottomNavigationBarState createState() =>
+      _CustomBottomNavigationBarState();
 }
 
 class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
-
   int _selectedIndex = 0;
 
   @override
@@ -14,45 +17,49 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
     Size size = MediaQuery.of(context).size;
 
     return Container(
-      height: size.height/10.0,
+      height: size.height / 10.0,
       child: Stack(
-            children: [
-              Positioned(
-                  bottom: 0,
-                  left: 0,
-                  child: Container(
-                    width: size.width,
-                    height: size.height/10.0,
-                    color: Color.fromARGB(255, 101, 220, 213),
-                    child: Stack(
-                      children: [
-                        Container(
-                          width: size.width,
-                          height: size.height/10.0,
-                          child: Row(
+        children: [
+          Positioned(
+              bottom: 0,
+              left: 0,
+              child: Container(
+                width: size.width,
+                height: size.height / 10.0,
+                color: Color.fromARGB(255, 101, 220, 213),
+                child: Stack(
+                  children: [
+                    Container(
+                        width: size.width,
+                        height: size.height / 10.0,
+                        child: BlocBuilder<GeneralCubit, GeneralState>(
+                            builder: (context, state) {
+                          return Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               IconButton(
-                                  icon: Icon(
-                                    Icons.home,
-                                    color: _selectedIndex == 0 ? Colors.white : Colors.grey.shade600,
-                                  ),
-                                  onPressed: () {
-                                    setState(() {
-                                     _selectedIndex = 0;
-                                    });
-                                  },
+                                icon: Icon(Icons.home,
+                                    color: state.navItemSelected == 0 ? Colors.white : Colors.grey.shade600
+                                ),
+                                onPressed: () {
+                                  context
+                                      .read<GeneralCubit>()
+                                      .selectSelectedNavBarItem(0);
+                                  Navigator.pushReplacementNamed(context, "/home");
+                                },
                                 splashColor: Colors.white,
                               ),
                               IconButton(
                                 icon: Icon(
                                   Icons.bar_chart,
-                                  color: _selectedIndex == 1 ? Colors.white : Colors.grey.shade600,
+                                    color: state.navItemSelected == 1 ? Colors.white : Colors.grey.shade600
+
                                 ),
                                 onPressed: () {
-                                  setState(() {
-                                    _selectedIndex = 1;
-                                  });
+                                  context
+                                      .read<GeneralCubit>()
+                                      .selectSelectedNavBarItem(1);
+                                  Navigator.pushReplacementNamed(context, "/statistics");
                                 },
                                 splashColor: Colors.white,
                               ),
@@ -62,42 +69,41 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                               IconButton(
                                 icon: Icon(
                                   Icons.calendar_today,
-                                  color: _selectedIndex == 3 ? Colors.white : Colors.grey.shade600,
+                                    color: state.navItemSelected == 3 ? Colors.white : Colors.grey.shade600
                                 ),
                                 onPressed: () {
-                                  setState(() {
-                                    _selectedIndex = 3;
-                                  });
+                                  context
+                                      .read<GeneralCubit>()
+                                      .selectSelectedNavBarItem(3);
+                                  Navigator.pushReplacementNamed(context, "/calender");
                                 },
                                 splashColor: Colors.white,
                               ),
                               IconButton(
                                 icon: Icon(
                                   Icons.more_horiz,
-                                  color: _selectedIndex == 4 ? Colors.white : Colors.grey.shade600,
+                                    color: state.navItemSelected == 4 ? Colors.white : Colors.grey.shade600
                                 ),
                                 onPressed: () {
-                                  setState(() {
-                                    _selectedIndex = 4;
-                                  });
+                                  context.read<GeneralCubit>().selectSelectedNavBarItem(4);
+                                  Navigator.pushReplacementNamed(context, "/more");
                                 },
                                 splashColor: Colors.white,
                               ),
                             ],
-                          ),
-                        )
-                      ],
-                    ),
-                  )
-              ),
-            ],
-        ),
+                          );
+                        }))
+                  ],
+                ),
+              )),
+        ],
+      ),
     );
   }
 
-    void _onItemTapped(int index) {
-      setState(() {
-        _selectedIndex = index;
-      });
-    }
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
+}

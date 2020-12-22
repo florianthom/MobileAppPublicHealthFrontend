@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_health/cubit/cubit/general_cubit.dart';
 import 'package:mobile_health/database/database_provider.dart';
 import 'package:mobile_health/models/EntryType.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CostumBottomFloatingButton extends StatefulWidget {
   @override
@@ -33,14 +35,20 @@ class _CostumBottomFloatingButtonState extends State<CostumBottomFloatingButton>
           ),
           elevation: 0.0,
           onPressed: () async {
-            EntryType tmpType = EntryType(
-              description: "test1",
-              name: "test1",
-            );
-            DatabaseProvider.db.insert(tmpType.runtimeType.toString(), tmpType);
+
+            context.read<GeneralCubit>().selectSelectedNavBarItem(2);
+            Navigator.pushReplacementNamed(context, "/addNewEventCategory");
 
 
-            setState(() { /*_selectedIndex = 2; */ });
+            // EntryType tmpType = EntryType(
+            //   description: "test1",
+            //   name: "test1",
+            // );
+            // DatabaseProvider.db.insert(tmpType.runtimeType.toString(), tmpType);
+
+
+
+            // setState(() { /*_selectedIndex = 2; */ });
           },
         ),
       ),

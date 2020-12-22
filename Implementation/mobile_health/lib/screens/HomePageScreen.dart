@@ -3,6 +3,7 @@ import 'package:mobile_health/components/CostumBottomFloatingButton.dart';
 import 'package:mobile_health/components/CustomBottomNavigationBar.dart';
 import 'package:mobile_health/components/HomeCategoryHeader.dart';
 import 'package:mobile_health/components/HomeCategoryList.dart';
+import 'package:mobile_health/components/TestBottomFloatingButton.dart';
 import 'package:mobile_health/components/TitleCardHome.dart';
 import 'package:mobile_health/components/TopAppBar.dart';
 import 'package:mobile_health/database/database_provider.dart';
@@ -47,7 +48,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
         ),
       ),
       bottomNavigationBar: CustomBottomNavigationBar(),
-      floatingActionButton: CostumBottomFloatingButton(),
+      floatingActionButton: CostumBottomFloatingButton(), //CostumBottomFloatingButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
