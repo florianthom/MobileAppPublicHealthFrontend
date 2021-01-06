@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db545341-82e3-47db-9d5a-d81bf603584a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/ios/Flutter/Debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/ios/Flutter/Debug.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/ios/Flutter/Release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/ios/Flutter/Release.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/screens/StatisticsScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/screens/StatisticsScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,5 +86,9 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="141" y="50" key="SettingsEditor/0.23.1280.777@0.23.1280.777" timestamp="1609171009708" />
+    <state x="315" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1609933503876">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="315" y="124" width="670" height="676" key="search.everywhere.popup/0.23.1280.777@0.23.1280.777" timestamp="1609933503876" />
   </component>
 </project>
