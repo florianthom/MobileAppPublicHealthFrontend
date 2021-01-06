@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db545341-82e3-47db-9d5a-d81bf603584a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/screens/StatisticsScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/screens/StatisticsScreen.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,26 +60,26 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="387" y="188" key="#com.intellij.ide.util.TreeFileChooserDialog/0.23.1280.777@0.23.1280.777" timestamp="1609248223610" />
-    <state x="115" y="148" width="1060" height="537" key="AVDManager" timestamp="1609249192716">
+    <state x="115" y="148" width="1060" height="537" key="AVDManager" timestamp="1609934272061">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="115" y="148" width="1060" height="537" key="AVDManager/0.23.1280.777@0.23.1280.777" timestamp="1609249192716" />
-    <state width="1218" height="159" key="GridCell.Tab.0.bottom" timestamp="1609883378018">
+    <state x="115" y="148" width="1060" height="537" key="AVDManager/0.23.1280.777@0.23.1280.777" timestamp="1609934272061" />
+    <state width="1218" height="159" key="GridCell.Tab.0.bottom" timestamp="1609934278471">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1218" height="159" key="GridCell.Tab.0.bottom/0.23.1280.777@0.23.1280.777" timestamp="1609883378018" />
-    <state width="1218" height="159" key="GridCell.Tab.0.center" timestamp="1609883378018">
+    <state width="1218" height="159" key="GridCell.Tab.0.bottom/0.23.1280.777@0.23.1280.777" timestamp="1609934278470" />
+    <state width="1218" height="159" key="GridCell.Tab.0.center" timestamp="1609934278470">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1218" height="159" key="GridCell.Tab.0.center/0.23.1280.777@0.23.1280.777" timestamp="1609883378018" />
-    <state width="1218" height="159" key="GridCell.Tab.0.left" timestamp="1609883378017">
+    <state width="1218" height="159" key="GridCell.Tab.0.center/0.23.1280.777@0.23.1280.777" timestamp="1609934278470" />
+    <state width="1218" height="159" key="GridCell.Tab.0.left" timestamp="1609934278469">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1218" height="159" key="GridCell.Tab.0.left/0.23.1280.777@0.23.1280.777" timestamp="1609883378017" />
-    <state width="1218" height="159" key="GridCell.Tab.0.right" timestamp="1609883378018">
+    <state width="1218" height="159" key="GridCell.Tab.0.left/0.23.1280.777@0.23.1280.777" timestamp="1609934278469" />
+    <state width="1218" height="159" key="GridCell.Tab.0.right" timestamp="1609934278470">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1218" height="159" key="GridCell.Tab.0.right/0.23.1280.777@0.23.1280.777" timestamp="1609883378018" />
+    <state width="1218" height="159" key="GridCell.Tab.0.right/0.23.1280.777@0.23.1280.777" timestamp="1609934278470" />
     <state x="141" y="50" key="SettingsEditor" timestamp="1609171009708">
       <screen x="0" y="23" width="1280" height="777" />
     </state>

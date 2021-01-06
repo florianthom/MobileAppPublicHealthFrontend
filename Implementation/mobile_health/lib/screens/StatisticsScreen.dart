@@ -34,7 +34,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
             TitleCardStatistics(),
             Container(
               height: 200,
-              color: Colors.green, //just an example
+              //color: Colors.green, //just an example
               child: NumericComboLinePointChart(NumericComboLinePointChart._createSampleData()),
             ),
           ],
