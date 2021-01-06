@@ -34,8 +34,8 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
             TitleCardStatistics(),
             Container(
               height: 200,
-              //color: Colors.green, //just an example
               child: NumericComboLinePointChart(NumericComboLinePointChart._createSampleData()),
+              padding: const EdgeInsets.all(12.0),
             ),
           ],
         ),
