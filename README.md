@@ -32,8 +32,8 @@ Collaborators:
 
 ## What is this App for
 When should you use this App and what is it for?
-- when you have a Thyroid disease 
-- when you feel:
+- if you have a Thyroid disease AND
+- if you feel:
    - restless
    - restive
    - sleep badly
@@ -42,7 +42,7 @@ When should you use this App and what is it for?
    - limp
    - irritated
    
-if you:
+or if you have a Thyroid disease and you:
    - have a weight problem
    - just not gaining weight
    
