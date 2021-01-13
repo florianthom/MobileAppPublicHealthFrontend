@@ -87,10 +87,11 @@ First you have to scoose a category:
 ...
 
 ## Calender screen
---
+The calender icon on the buttom bar - right next to the Add (+) button - guides you to a calender view where you can directly choose and click an specific day you want to get displayed. You also have the option to see your moods for a whole month in this calender. 
 
 ## More (...) screen
---
+When you click on the three dots on the buttom bar you will be guided to the 'More' screen. 
+
 
 
 
