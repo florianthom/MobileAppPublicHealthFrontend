@@ -25,9 +25,9 @@ The purpose of this manual is to answer any questions you may have and to introd
 
 
 Collaborators:
- - [rico-stucke](https://github.com/rico-stucke)
- - [FlorianTh2](https://github.com/FlorianTh2)
- - [FrauMauz](https://github.com/fraumauz)
+ - Rico Stucke [rico-stucke](https://github.com/rico-stucke)
+ - Florian Thom [FlorianTh2](https://github.com/FlorianTh2)
+ - Jennifer Vormann [FrauMauz](https://github.com/fraumauz)
 
 
 ## What is this App for
@@ -54,7 +54,7 @@ Your ThyroidHelpiii helps you to track your daily
    - food 
  
 and to visualize you possible coherences between those events. 
-You get an overview over your consumptions and you are able to review them even months ago.
+You get an overview over your events/entries and you are able to review them even months ago.
 
 ATTENTION: Please be sure that you go to a doctor. This app does not replace a doctor's visit. 
 In the case of thyroid diseases, always talk to your doctor and keep the preventive appointments.
@@ -76,7 +76,7 @@ To change the day you want to have a look at you can click on the arrows on the 
 --
 
 ## Add (+) screen
-On this screen you can add new Events/Entries to your Dairy.
+On this screen you can add new events/entries to your dairy.
 First you have to scoose a category:
    - Sport
    - Food (and Drinks)
