@@ -64,12 +64,12 @@ Download the App via your App/Play store. Ehen you first start the app you will 
 
 ## Home screen
 Now you landed on the home screen. Welcome to your new App.
-On this screnn you can see all your today´s events. In the top bar you see the current date like this:
+On this screnn you can see all your today´s events. In the top bar you see the current date like this:<br>
     < 12.01.2021 >
 
-To change the day you want to have a look at you can click on the arrows on the right and left side of that date.
-    < backward
-    > forward
+To change the day you want to have a look at you can click on the arrows on the right and left side of that date.<br>
+    < backward<br>
+    > forward<br>
 
 
 ## Statistics screen
