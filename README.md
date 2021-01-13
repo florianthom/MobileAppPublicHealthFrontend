@@ -31,7 +31,6 @@ Collaborators:
 
 
 ## What is this App for
---
 When should you use this App and what is it for?
 - when you have a Thyroid disease 
 - when you feel:
@@ -61,11 +60,9 @@ ATTENTION: Please be sure that you go to a doctor. This app does not replace a d
 In the case of thyroid diseases, always talk to your doctor and keep the preventive appointments.
 
 ## Getting Started
---
 Download the App via your App/Play store. Ehen you first start the app you will see a start screen. This disappears after a few seconds and you are automatically directed to the home screen. The start screen only appears the very first time you start the app. At future starts you will see the home screen directly.
 
 ## Home screen
---
 Now you landed on the home screen. Welcome to your new App.
 On this screnn you can see all your today´s events. In the top bar you see the current date like this:
     < 12.01.2021 >
@@ -79,7 +76,6 @@ To change the day you want to have a look at you can click on the arrows on the 
 --
 
 ## Add (+) screen
---
 On this screen you can add new Events/Entries to your Dairy.
 First you have to scoose a category:
    - Sport
