@@ -17,7 +17,9 @@ Collaborators:
 --
 
 ## Build with
---
+Flutter
+Dart
+Android Studio
 
 ## Acknowledgements
 --
@@ -39,6 +41,11 @@ To make you familiar with this App, a short explanation your main and localizati
 
 --------------------------------------------------
 ## Screens
+All Screen have kind of the same structure. Each of them shows a screen that is visible for the users. After importing the important files and packages (internal and extermal), a class is created, which extends the StatefulWidget. Afterwards a underline-class is created that extends the State<> of the former class.  
+
+### InitialAppInstallationScreen.dart
+
+### Loading.dart
 
 ### AddNewEntryCategoryScreen.dart
 
@@ -46,14 +53,27 @@ To make you familiar with this App, a short explanation your main and localizati
 
 ### HomePageScreen.dart
 
-### InitialAppInstallationScreen.dart
-
-### Loading.dart
-
 ### MoreScreen.dart
 
 ### StatisticsScreen.dart
+The statistics screen is built in this file. The page itself is built in the class _StatisticsScreenState extends State <StatisticsScreen>. This procedure is identical to that of the other screens. In the container the child: NumericComboLinePointChart is added in which an object of the class NumericComboLinePointChart extends StatelessWidget is created.
 
+Changes to the statistics can be made in this file. These changes are made in the NumericComboLinePointChart checkout.
+
+__Animate the axis__
+This could be done by changing the variable animate. This boolean is currently set to false.
+
+__Changes to the axes of the graph__
+These are carried out in the LinearSales class.
+... is the x-axis
+... is the y-axis 
+
+__Change Data__
+to change the data shown in the Statistic you have to make changes in the createSampleData() function 
+
+
+__Change Color of graphs__
+in the Return statement of the new charts.Series you can define the colors and change the addition of the axis. 
 
 --------------------------------------------------
 ## Models
