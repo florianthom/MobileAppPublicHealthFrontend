@@ -1,7 +1,8 @@
 import "package:flutter/material.dart";
-import 'package:mobile_health/cubit/cubit/general_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mobile_health/cubit/state/general_state.dart';
+import 'package:mobile_health/cubit/navbar/navbar_cubit.dart';
+import 'package:mobile_health/cubit/navbar/navbar_state.dart';
+import 'package:mobile_health/models/navbar/navbarRoute.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
   @override
@@ -32,7 +33,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                     Container(
                         width: size.width,
                         height: size.height / 10.0,
-                        child: BlocBuilder<GeneralCubit, GeneralState>(
+                        child: BlocBuilder<NavbarCubit, NavbarState>(
                             builder: (context, state) {
                           return Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -43,8 +44,8 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                                 ),
                                 onPressed: () {
                                   context
-                                      .read<GeneralCubit>()
-                                      .selectSelectedNavBarItem(0);
+                                      .read<NavbarCubit>()
+                                      .setNewNavBarItem(NavbarRoute.Home.index);
                                   Navigator.pushReplacementNamed(context, "/home");
                                 },
                                 splashColor: Colors.white,
@@ -57,8 +58,8 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                                 ),
                                 onPressed: () {
                                   context
-                                      .read<GeneralCubit>()
-                                      .selectSelectedNavBarItem(1);
+                                      .read<NavbarCubit>()
+                                      .setNewNavBarItem(NavbarRoute.Statistics.index);
                                   Navigator.pushReplacementNamed(context, "/statistics");
                                 },
                                 splashColor: Colors.white,
@@ -73,8 +74,8 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                                 ),
                                 onPressed: () {
                                   context
-                                      .read<GeneralCubit>()
-                                      .selectSelectedNavBarItem(3);
+                                      .read<NavbarCubit>()
+                                      .setNewNavBarItem(NavbarRoute.Calender.index);
                                   Navigator.pushReplacementNamed(context, "/calender");
                                 },
                                 splashColor: Colors.white,
@@ -85,7 +86,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                                     color: state.navItemSelected == 4 ? Colors.white : Colors.grey.shade600
                                 ),
                                 onPressed: () {
-                                  context.read<GeneralCubit>().selectSelectedNavBarItem(4);
+                                  context.read<NavbarCubit>().setNewNavBarItem(NavbarRoute.Options.index);
                                   Navigator.pushReplacementNamed(context, "/more");
                                 },
                                 splashColor: Colors.white,

@@ -27,10 +27,11 @@ class _CalenderScreenState extends State<CalenderScreen> {
 
 
       body: Container(
-        color: Colors.white,
+        color: Colors.black,
         child: Column(
           children: [
             Container(
+              height: 100,
               color: Colors.white,
             )
           ],

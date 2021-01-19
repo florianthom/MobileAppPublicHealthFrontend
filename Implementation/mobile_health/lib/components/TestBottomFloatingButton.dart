@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_health/cubit/cubit/counter_cubit.dart';
-import 'package:mobile_health/cubit/cubit/general_cubit.dart';
-import 'package:mobile_health/cubit/state/general_state.dart';
+import 'package:mobile_health/cubit/navbar/navbar_cubit.dart';
+import 'package:mobile_health/cubit/navbar/navbar_state.dart';
 import 'package:mobile_health/database/database_provider.dart';
 import 'package:mobile_health/models/EntryType.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobile_health/models/navbar/navbarRoute.dart';
 
 class TestBottomFloatingButton extends StatefulWidget {
   @override
@@ -30,7 +30,7 @@ class _TestBottomFloatingButtonState extends State<TestBottomFloatingButton> {
             color: Color.fromARGB(255, 101, 220, 213),
             width: 5,
           )),
-          child: BlocBuilder<GeneralCubit, GeneralState>(
+          child: BlocBuilder<NavbarCubit, NavbarState>(
             builder: (context, state) {
               return Text(
                 state.navItemSelected.toString(),
@@ -41,7 +41,7 @@ class _TestBottomFloatingButtonState extends State<TestBottomFloatingButton> {
             },
           ),
           elevation: 0.0,
-          onPressed: () => context.read<GeneralCubit>().selectSelectedNavBarItem(2), //context.read<GeneralCubit>().increment(),
+          onPressed: () => context.read<NavbarCubit>().setNewNavBarItem(NavbarRoute.AddItem.index), //context.read<NavbarCubit>().increment(),
         ),
       ),
     );

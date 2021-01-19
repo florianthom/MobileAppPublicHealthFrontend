@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_health/cubit/cubit/general_cubit.dart';
+import 'package:mobile_health/cubit/navbar/navbar_cubit.dart';
 import 'package:mobile_health/cubit/observer/counter_observer.dart';
 import 'package:mobile_health/screens/AddNewEntryCategoryScreen.dart';
 import 'package:mobile_health/screens/CalenderScreen.dart';
@@ -14,7 +14,6 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'app_localizations.dart';
-import 'cubit/cubit/counter_cubit.dart';
 
 void main() {
   Bloc.observer = CounterObserver();
@@ -31,8 +30,12 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<GeneralCubit>(
-      create: (context) => GeneralCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<NavbarCubit>(
+        create: (context) => NavbarCubit(),
+        ),
+      ],
       child: MaterialApp(
         supportedLocales: [
           Locale('en', 'US'),
