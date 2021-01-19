@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_health/cubit/navbar/navbar_cubit.dart';
+import 'package:mobile_health/bloc/navbar/navbar_bloc.dart';
+import 'package:mobile_health/cubit/navbar/navbar_bloc.dart';
 import 'package:mobile_health/cubit/observer/counter_observer.dart';
 import 'package:mobile_health/screens/AddNewEntryCategoryScreen.dart';
 import 'package:mobile_health/screens/CalenderScreen.dart';
@@ -32,8 +33,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<NavbarCubit>(
-        create: (context) => NavbarCubit(),
+        BlocProvider<NavbarBloc>(
+        create: (context) => NavbarBloc(), //NavbarCubit(),
         ),
       ],
       child: MaterialApp(

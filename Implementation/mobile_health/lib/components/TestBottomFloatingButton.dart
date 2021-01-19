@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_health/cubit/navbar/navbar_cubit.dart';
+import 'package:mobile_health/cubit/navbar/navbar_bloc.dart';
 import 'package:mobile_health/cubit/navbar/navbar_state.dart';
 import 'package:mobile_health/database/database_provider.dart';
 import 'package:mobile_health/models/EntryType.dart';
