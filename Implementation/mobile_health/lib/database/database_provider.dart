@@ -229,20 +229,29 @@ class DatabaseProvider {
         where: "$COLUMN_ID = ?",
         whereArgs: [id]);
 
-    var entryEventsQuery = await db.query(TABLE_ENTRY_EVENT,
-        columns: [
-          COLUMN_ID,
-          COLUMN_QUANTITY,
-          COLUMN_UNIT,
-          COLUMN_DIARY_ENTRY_ID,
-          COLUMN_ENTRYTYPE
-        ],
-        where: "$COLUMN_DIARY_ENTRY_ID = ?",
-        whereArgs: [id]);
-
     if (queryResult.length > 0) {
-      queryResult.first[COLUMN_ENTRY_EVENTS] = entryEventsQuery;
-      return DiaryEntry.fromMap(queryResult.first);
+      var entryEventsQuery = await db.query(TABLE_ENTRY_EVENT,
+          columns: [COLUMN_ID],
+          where: "$COLUMN_DIARY_ENTRY_ID = ?",
+          whereArgs: [id]);
+
+      var entryEventList = new List<EntryEvent>();
+
+      entryEventsQuery.forEach((element) async {
+        var entry = await getEntryEventById(element[COLUMN_ID]);
+
+        if (entry != null) {
+          entryEventList.add(entry);
+        }
+      });
+
+      var resultMap = queryResult.first;
+      resultMap[COLUMN_ENTRY_EVENTS] = null;
+
+      var result = DiaryEntry.fromMap(resultMap);
+      result.entryEvents = entryEventList;
+
+      return result;
     }
 
     return null;
@@ -257,7 +266,15 @@ class DatabaseProvider {
         whereArgs: [id]);
 
     if (queryResult.length > 0) {
-      return EntryEvent.fromMap(queryResult.first);
+      var unitQuery = await getUnitById(queryResult.first[COLUMN_UNIT]);
+      var entryTypeQuery =
+          await getEntryTypeById(queryResult.first[COLUMN_ENTRYTYPE]);
+
+      var resultMap = queryResult.first;
+      resultMap[COLUMN_UNIT] = unitQuery.toMap();
+      resultMap[COLUMN_ENTRYTYPE] = entryTypeQuery.toMap();
+      var result = EntryEvent.fromMap(resultMap);
+      return result;
     }
 
     return null;
@@ -325,34 +342,44 @@ class DatabaseProvider {
   Future<List<Diary>> getDiaries() async {
     final db = await database;
 
-    var entries =
-        await db.query(TABLE_DIARY, columns: [COLUMN_ID, COLUMN_DIARY_ENTRIES]);
+    var entries = await db.query(TABLE_DIARY, columns: [COLUMN_ID]);
 
-    List<Diary> diaryList = List<Diary>();
+    if (entries.length > 0) {
+      List<Diary> diaryList = List<Diary>();
 
-    entries.forEach((element) {
-      Diary diary = Diary.fromMap(element);
+      entries.forEach((element) async {
+        Diary diary = await getDiaryById(element[COLUMN_ID]);
 
-      diaryList.add(diary);
-    });
+        if (diary != null) {
+          diaryList.add(diary);
+        }
+      });
 
-    return diaryList;
+      return diaryList;
+    }
+
+    return null;
   }
 
   Future<List<DiaryEntry>> getDiaryEntries() async {
     final db = await database;
 
-    var entries = await db.query(TABLE_DIARY_ENTRY,
-        columns: [COLUMN_ID, COLUMN_DATE, COLUMN_COMMENT, COLUMN_ENTRY_EVENTS]);
+    var entries = await db.query(TABLE_DIARY_ENTRY, columns: [COLUMN_ID]);
 
-    List<DiaryEntry> entryList = List<DiaryEntry>();
+    if (entries.length > 0) {
+      List<DiaryEntry> entryList = List<DiaryEntry>();
 
-    entries.forEach((element) {
-      DiaryEntry entry = DiaryEntry.fromMap(element);
+      entries.forEach((element) async {
+        DiaryEntry entry = await getDiaryEntryById(element[COLUMN_ID]);
 
-      entryList.add(entry);
-    });
+        if (entry != null) {
+          entryList.add(entry);
+        }
+      });
 
-    return entryList;
+      return entryList;
+    }
+
+    return null;
   }
 }

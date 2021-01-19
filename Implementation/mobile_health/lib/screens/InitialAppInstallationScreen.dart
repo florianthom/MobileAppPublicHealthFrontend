@@ -34,7 +34,7 @@ class InitialAppInstallationScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Thyro\nHelph",
+                  "Thyro\nHelpiii",
                   style: TextStyle(
                     fontSize: 64.0,
                     fontWeight: FontWeight.w300,
