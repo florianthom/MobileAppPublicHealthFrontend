@@ -25,10 +25,10 @@ class _LoadingState extends State<Loading> {
               gradient: RadialGradient (
                   center: const Alignment(0.0, -0.0), // near the top right
                   radius: 1.2,
-                  colors: [
-                    Color.fromARGB(255, 101, 220, 213),
-                    Colors.white
-                  ],
+                colors: [
+                  Color.fromARGB(255, 101, 220, 213),
+                  Colors.white
+                ],
                 stops: [0.4, 1.0],
               )),
           child: Padding(
