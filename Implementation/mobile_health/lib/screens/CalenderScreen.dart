@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_health/bloc/table_calender/table_calender_bloc.dart';
+import 'package:mobile_health/bloc/table_calender/table_calender_event.dart';
 import 'package:mobile_health/bloc/table_calender/table_calender_state.dart';
 import 'package:mobile_health/components/CostumBottomFloatingButton.dart';
 import 'package:mobile_health/components/CustomBottomNavigationBar.dart';
@@ -34,14 +35,6 @@ class _CalenderScreenState extends State<CalenderScreen> {
   void dispose() {
     _calendarController.dispose();
     super.dispose();
-  }
-
-  void _onDaySelected(DateTime day, List events, List holidays) {
-    print('CALLBACK: _onDaySelected');
-    print("hi");
-    setState(() {
-      // _selectedEvents = events;
-    });
   }
 
   void _onVisibleDaysChanged(
@@ -96,11 +89,14 @@ class _CalenderScreenState extends State<CalenderScreen> {
               borderRadius: BorderRadius.circular(16.0),
             ),
           ),
-          onDaySelected: _onDaySelected,
+          onDaySelected: (DateTime day, List events, List holidays) {
+            context
+                .read<TableCalenderBloc>()
+                .add(SetSelectedDayEvent(day));
+          },
           onVisibleDaysChanged: _onVisibleDaysChanged,
           onCalendarCreated:
               (DateTime first, DateTime last, CalendarFormat format) {
-            print('CALLBACK: _onCalendarCreated');
             this._calendarController.setSelectedDay(state.daySelected);
           },
         );

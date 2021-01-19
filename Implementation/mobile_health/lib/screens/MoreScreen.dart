@@ -32,6 +32,11 @@ class _MoreScreenState extends State<MoreScreen> {
         child: Column(
           children: [
             TitleCardMore(),
+            Container(
+              width: 100,
+              height: 100,
+              color: Colors.black,
+            )
           ],
         ),
       ),
