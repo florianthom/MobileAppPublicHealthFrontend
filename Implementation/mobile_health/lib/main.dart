@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_health/bloc/navbar/navbar_bloc.dart';
+import 'package:mobile_health/bloc/table_calender/table_calender_bloc.dart';
 import 'package:mobile_health/cubit/navbar/navbar_bloc.dart';
 import 'package:mobile_health/cubit/observer/counter_observer.dart';
 import 'package:mobile_health/screens/AddNewEntryCategoryScreen.dart';
@@ -35,6 +36,9 @@ class _MyAppState extends State<MyApp> {
       providers: [
         BlocProvider<NavbarBloc>(
         create: (context) => NavbarBloc(), //NavbarCubit(),
+        ),
+        BlocProvider<TableCalenderBloc>(
+          create: (context) => TableCalenderBloc(),
         ),
       ],
       child: MaterialApp(
