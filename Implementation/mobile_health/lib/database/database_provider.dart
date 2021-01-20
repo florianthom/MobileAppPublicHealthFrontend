@@ -52,7 +52,7 @@ class DatabaseProvider {
     String dbPath = await getDatabasesPath();
 
     return await openDatabase(
-      join(dbPath, 'ThyroHelph.db'),
+      join(dbPath, 'ThyroHelph1.db'),
       version: 1, //change this number on changes to DB model
       onCreate: (Database database, int version) async {
         print("creating Diary table");
