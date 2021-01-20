@@ -41,6 +41,7 @@ To make you familiar with this App, a short explanation your main and localizati
 
 --------------------------------------------------
 ## Screens
+The Screens are the pages the user can see of the App itself.
 All Screen have kind of the same structure. Each of them shows a screen that is visible for the users. After importing the important files and packages (internal and extermal), a class is created, which extends the StatefulWidget. Afterwards a underline-class is created that extends the State<> of the former class.  
 
 ### InitialAppInstallationScreen.dart
@@ -77,6 +78,8 @@ in the Return statement of the new charts.Series you can define the colors and c
 
 --------------------------------------------------
 ## Models
+The Models are the database objects aka the entities of the database structure. 
+
 ### DBO.dart
 ### Dairy.dart
 ### DairyEntry.dart
@@ -87,6 +90,8 @@ in the Return statement of the new charts.Series you can define the colors and c
 
 --------------------------------------------------
 ## Components
+The Components are the elements in the screens f.e. a text field, the buttom bar, the top bar etc. They are available in all screens.
+
 ### CostumBottomFloatingButton.dart
 ### CustomBottomNavigationBar.dart
 ### HomeCategoryHeader.dart
@@ -108,14 +113,25 @@ in the Return statement of the new charts.Series you can define the colors and c
 
 --------------------------------------------------
 ## l10n
+Here you can find the localisation. 
+
 ### app_de.arb
 ### app_en.arb
 
 
 --------------------------------------------------
-## Cubit
-??? ist das nötig, was passiert hier? 
+## Cubit / Bloc
+State Management f.e. for data. This is overarching available in Screens and Components.
+
+### navbar
+
+### observer
 
 
 --------------------------------------------------
-## Test
+## Tests
+
+- Tests beschreiben
+- beschreiben welche noch fehlen
+- Teststrategie
+
