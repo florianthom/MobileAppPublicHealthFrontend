@@ -6,6 +6,13 @@ Collaborators:
  - Rico Stucke [rico-stucke](https://github.com/rico-stucke)
  - Florian Thom [FlorianTh2](https://github.com/FlorianTh2)
  - Jennifer Vormann [FrauMauz](https://github.com/fraumauz)
+ 
+ 
+Technologies:
+- Flutter 
+- Dart
+- SQLite
+- Android Studio as IDE
 
 ## Getting Started
 --
