@@ -18,5 +18,17 @@
     "@events_today": {},
 
     "calender": "Calender",
-    "@calender": {}
+    "@calender": {},
+
+    "addEventCategory":  "Add Event-Category",
+    "@addEventCategory": {},
+
+    "addMarker": "Add Marker",
+    "@addMarker": {},
+
+    "about": "About",
+    "@about": {},
+
+    "legalInformation": "Legal Information",
+    "@legalInformation": {}
 }

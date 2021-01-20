@@ -18,8 +18,16 @@
   "@events_today": {},
 
 
-  "calender": "Kalender",
-  "@calender": {}
+  "addEventCategory":  "Event-Category hinzufügen",
+  "@addEventCategory": {},
 
+  "addMarker": "Marker hinzufügen",
+  "@addMarker": {},
+
+  "about": "Über uns",
+  "@about": {},
+
+  "legalInformation": "Impressum",
+  "@legalInformation": {}
 
 }

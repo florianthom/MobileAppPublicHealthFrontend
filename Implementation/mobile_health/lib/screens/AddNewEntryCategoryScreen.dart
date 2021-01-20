@@ -30,6 +30,14 @@ class _AddNewEntryCategoryScreenState extends State<AddNewEntryCategoryScreen> {
         child: Column(
           children: [
             TitleCardAddNewEntryCategory(),
+            Padding(
+                padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+              child: Column(
+                children: [
+
+                ],
+              ),
+            )
           ],
         ),
       ),

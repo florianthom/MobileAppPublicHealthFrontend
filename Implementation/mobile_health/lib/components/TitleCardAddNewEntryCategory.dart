@@ -25,7 +25,10 @@ class TitleCardAddNewEntryCategory extends StatelessWidget {
               SizedBox(
                 height: 10.0,
               ),
-              Image.asset("assets/images/kind-of-event.png"),
+              Image.asset(
+                  "assets/images/kind-of-event.png",
+                width: 100,
+              ),
             ],
           ),
         ),

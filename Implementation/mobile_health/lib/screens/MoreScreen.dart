@@ -37,10 +37,10 @@ class _MoreScreenState extends State<MoreScreen> {
               padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
               child: Column(
                 children: [
-                  MoreOptionBox(title: "Add Event-Category", routeString: "test/route", iconColor: Color.fromARGB(255, 101, 220, 213)),
-                  MoreOptionBox(title: "Add Marker", routeString: "test/route", iconColor: Colors.orange,),
-                  MoreOptionBox(title: "About", routeString: "test/route", iconColor: Colors.green,),
-                  MoreOptionBox(title: "Legal Information", routeString: "test/route", iconColor: Colors.red,),
+                  MoreOptionBox(title: AppLocalizations.of(context).addEventCategory, routeString: "test/route", iconColor: Color.fromARGB(255, 101, 220, 213)),
+                  MoreOptionBox(title: AppLocalizations.of(context).addMarker, routeString: "test/route", iconColor: Colors.orange,),
+                  MoreOptionBox(title: AppLocalizations.of(context).about, routeString: "test/route", iconColor: Colors.green,),
+                  MoreOptionBox(title: AppLocalizations.of(context).legalInformation, routeString: "test/route", iconColor: Colors.red,),
                 ],
               ),
             )
