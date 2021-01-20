@@ -8,12 +8,12 @@ import 'package:mobile_health/components/TitleCardHome.dart';
 import 'package:mobile_health/components/TitleCardStatistics.dart';
 import 'package:mobile_health/components/TopAppBar.dart';
 
-class AddNewEntryCategoryScreen extends StatefulWidget {
+class AddNewEntrySubCategoryScreen extends StatefulWidget {
   @override
-  _AddNewEntryCategoryScreenState createState() => _AddNewEntryCategoryScreenState();
+  _AddNewEntrySubCategoryScreenState createState() => _AddNewEntrySubCategoryScreenState();
 }
 
-class _AddNewEntryCategoryScreenState extends State<AddNewEntryCategoryScreen> {
+class _AddNewEntrySubCategoryScreenState extends State<AddNewEntrySubCategoryScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

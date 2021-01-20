@@ -15,8 +15,6 @@ class HomePageScreen extends StatefulWidget {
 }
 
 class _HomePageScreenState extends State<HomePageScreen> {
-
-
   Future<List<EntryType>> getDataAsync() async {
     return DatabaseProvider.db.getEntryTypes();
   }
@@ -26,10 +24,8 @@ class _HomePageScreenState extends State<HomePageScreen> {
     return FutureBuilder(
         future: getDataAsync(),
         builder: (context, snapshot) =>
-            snapshot.hasData ? _buildWidget(snapshot.data) : const SizedBox()
-    );
+            snapshot.hasData ? _buildWidget(snapshot.data) : const SizedBox());
   }
-
 
   Widget _buildWidget(List<EntryType> data) {
     Size size = MediaQuery.of(context).size;
@@ -43,12 +39,22 @@ class _HomePageScreenState extends State<HomePageScreen> {
           children: [
             TitleCardHome(),
             HomeCategoryHeader(),
-            HomeCategoryList(entryTypeList: data,)
+            Padding(
+              padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+              child: Column(
+                children: [
+                  HomeCategoryList(
+                    entryTypeList: data,
+                  )
+                ],
+              ),
+            ),
           ],
         ),
       ),
       bottomNavigationBar: CustomBottomNavigationBar(),
-      floatingActionButton: CostumBottomFloatingButton(), //CostumBottomFloatingButton(),
+      floatingActionButton:
+          CostumBottomFloatingButton(), //CostumBottomFloatingButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }

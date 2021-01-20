@@ -18,6 +18,14 @@ class _AddNewCategoryOptionState extends State<AddNewCategoryOption> {
   final String title;
 
 
+  // Navigator.push(
+  // context,
+  // MaterialPageRoute(
+  // builder: (context)=>NewsDetail(s_new: news[index],),
+  // )
+  // );
+
+
   @override
   Widget build(BuildContext context) {
     return Padding(
