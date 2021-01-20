@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_health/components/CostumBottomFloatingButton.dart';
 import 'package:mobile_health/components/CustomBottomNavigationBar.dart';
+import 'package:mobile_health/components/MoreOptionBox.dart';
 import 'package:mobile_health/components/StaticTopAppBar.dart';
 import 'package:mobile_health/components/TitleCardHome.dart';
 import 'package:mobile_health/components/TitleCardMore.dart';
@@ -36,16 +37,10 @@ class _MoreScreenState extends State<MoreScreen> {
               padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
               child: Column(
                 children: [
-                  Container(
-                    width: 100,
-                    height: 100,
-                    color: Colors.green,
-                  ),
-                  Container(
-                    width: 100,
-                    height: 100,
-                    color: Colors.black,
-                  )
+                  MoreOptionBox(title: "Add Event-Category", routeString: "test/route", iconColor: Color.fromARGB(255, 101, 220, 213)),
+                  MoreOptionBox(title: "Add Marker", routeString: "test/route", iconColor: Colors.orange,),
+                  MoreOptionBox(title: "About", routeString: "test/route", iconColor: Colors.green,),
+                  MoreOptionBox(title: "Legal Information", routeString: "test/route", iconColor: Colors.red,),
                 ],
               ),
             )
