@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_health/components/AddNewCategoryOption.dart';
+import 'package:mobile_health/components/AddNewSubCategoryOption.dart';
 import 'package:mobile_health/components/CostumBottomFloatingButton.dart';
 import 'package:mobile_health/components/CustomBottomNavigationBar.dart';
 import 'package:mobile_health/components/StaticTopAppBar.dart';
@@ -45,7 +46,7 @@ class _AddNewEntrySubCategoryScreenState extends State<AddNewEntrySubCategoryScr
                 padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
               child: Column(
                 children: [
-                  AddNewCategoryOption(title: this.categoryFromRoute),
+                  AddNewSubCategoryOption(title: this.categoryFromRoute),
 
 
                 ],
