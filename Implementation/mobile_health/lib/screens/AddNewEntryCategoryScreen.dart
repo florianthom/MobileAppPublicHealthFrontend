@@ -26,22 +26,28 @@ class _AddNewEntryCategoryScreenState extends State<AddNewEntryCategoryScreen> {
       appBar: TopAppBar(),
 
 
-      body: Container(
-        color: Colors.white,
-        child: Column(
-          children: [
-            TitleCardAddNewEntryCategory(),
-            Padding(
-                padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-              child: Column(
-                children: [
-                  AddNewCategoryOption(title: "placeholder for category"),
+      body: InkWell(
+        onTap: (){
+          print("here");
+          Navigator.pushNamed(context, "/addNewEventSubCategory", arguments: "test-Data from category-selection");
+        },
+        child: Container(
+          color: Colors.white,
+          child: Column(
+            children: [
+              TitleCardAddNewEntryCategory(),
+              Padding(
+                  padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                child: Column(
+                  children: [
+                    AddNewCategoryOption(title: "placeholder for category"),
 
 
-                ],
-              ),
-            )
-          ],
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: CustomBottomNavigationBar(),

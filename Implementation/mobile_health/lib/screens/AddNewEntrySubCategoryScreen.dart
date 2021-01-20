@@ -4,16 +4,26 @@ import 'package:mobile_health/components/CostumBottomFloatingButton.dart';
 import 'package:mobile_health/components/CustomBottomNavigationBar.dart';
 import 'package:mobile_health/components/StaticTopAppBar.dart';
 import 'package:mobile_health/components/TitleCardAddNewEntryCategory.dart';
+import 'package:mobile_health/components/TitleCardAddNewEntrySubCategory.dart';
 import 'package:mobile_health/components/TitleCardHome.dart';
 import 'package:mobile_health/components/TitleCardStatistics.dart';
 import 'package:mobile_health/components/TopAppBar.dart';
 
 class AddNewEntrySubCategoryScreen extends StatefulWidget {
+  final String categoryFromRoute;
+
+  const AddNewEntrySubCategoryScreen(this.categoryFromRoute);
+
   @override
-  _AddNewEntrySubCategoryScreenState createState() => _AddNewEntrySubCategoryScreenState();
+  _AddNewEntrySubCategoryScreenState createState() => _AddNewEntrySubCategoryScreenState(categoryFromRoute);
 }
 
 class _AddNewEntrySubCategoryScreenState extends State<AddNewEntrySubCategoryScreen> {
+
+  final String categoryFromRoute;
+
+  _AddNewEntrySubCategoryScreenState(this.categoryFromRoute);
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -30,12 +40,12 @@ class _AddNewEntrySubCategoryScreenState extends State<AddNewEntrySubCategoryScr
         color: Colors.white,
         child: Column(
           children: [
-            TitleCardAddNewEntryCategory(),
+            TitleCardAddNewEntrySubCategory(),
             Padding(
                 padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
               child: Column(
                 children: [
-                  AddNewCategoryOption(title: "placeholder for category"),
+                  AddNewCategoryOption(title: this.categoryFromRoute),
 
 
                 ],

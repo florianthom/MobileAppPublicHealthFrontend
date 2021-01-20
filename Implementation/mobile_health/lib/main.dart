@@ -4,6 +4,7 @@ import 'package:mobile_health/bloc/table_calender/table_calender_bloc.dart';
 import 'package:mobile_health/cubit/navbar/navbar_bloc.dart';
 import 'package:mobile_health/cubit/observer/counter_observer.dart';
 import 'package:mobile_health/screens/AddNewEntryCategoryScreen.dart';
+import 'package:mobile_health/screens/AddNewEntrySubCategoryScreen.dart';
 import 'package:mobile_health/screens/CalenderScreen.dart';
 import 'package:mobile_health/screens/HomePageScreen.dart';
 import 'package:mobile_health/screens/MoreScreen.dart';
@@ -14,6 +15,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobile_health/routing/router.dart';
 
 import 'app_localizations.dart';
 
@@ -74,8 +76,8 @@ class _MyAppState extends State<MyApp> {
           "/statistics": (context) => StatisticsScreen(),
           "/more": (context) => MoreScreen(),
           "/calender": (context) => CalenderScreen(),
-          "/addNewEventCategory": (context) => AddNewEntryCategoryScreen(),
         },
+        onGenerateRoute: CustomRouter.generateRoute,
       ),
     );
   }

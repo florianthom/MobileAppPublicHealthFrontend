@@ -28,6 +28,8 @@
   "@about": {},
 
   "legalInformation": "Impressum",
-  "@legalInformation": {}
+  "@legalInformation": {},
 
+  "titleCardAddNewSubTitle_titel": "Welche Eventsubkategorie möchtest du hinzufügen?",
+  "@titleCardAddNewSubTitle_titel": {}
 }

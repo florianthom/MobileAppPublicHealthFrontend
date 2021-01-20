@@ -30,5 +30,8 @@
     "@about": {},
 
     "legalInformation": "Legal Information",
-    "@legalInformation": {}
+    "@legalInformation": {},
+
+    "titleCardAddNewSubTitle_titel": "What is the sub-category\nof Event to add?",
+    "@titleCardAddNewSubTitle_titel": {}
 }
