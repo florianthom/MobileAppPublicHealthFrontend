@@ -17,56 +17,54 @@ class _AddNewCategoryOptionState extends State<AddNewCategoryOption> {
   _AddNewCategoryOptionState(this.title);
   final String title;
 
-
-  // Navigator.push(
-  // context,
-  // MaterialPageRoute(
-  // builder: (context)=>NewsDetail(s_new: news[index],),
-  // )
-  // );
-
-
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-      child: Container(
+      child: InkWell(
+        onTap: (){
+          var routerMap = Map<String, dynamic>();
+          routerMap["categoryFromRoute"] = "test-Data2 from category-selection";
+          Navigator.pushNamed(context, "/addNewEventCategory/addNewEventSubCategory", arguments: routerMap);
+        },
+        child: Container(
 
-        child: Column(
+          child: Column(
 
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey.shade600),
-                color: Colors.grey.shade50,
-              ),
-              height: 60,
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: 25,
-                  ),
-                  Expanded(
-                    child: Text(
-                      this.title,
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black45,
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey.shade600),
+                  color: Colors.grey.shade50,
+                ),
+                height: 60,
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: 25,
+                    ),
+                    Expanded(
+                      child: Text(
+                        this.title,
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black45,
+                        ),
                       ),
                     ),
-                  ),
-                  Icon(
-                      Icons.keyboard_arrow_right_outlined,
-                    size: 25,
-                  ),
-                  SizedBox(
-                    width: 25,
-                  )
-                ],
-              ),
-            )
-          ],
+                    Icon(
+                        Icons.keyboard_arrow_right_outlined,
+                      size: 25,
+                    ),
+                    SizedBox(
+                      width: 25,
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

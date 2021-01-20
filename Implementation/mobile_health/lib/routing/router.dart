@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_health/screens/AddNewEntryCategoryScreen.dart';
+import 'package:mobile_health/screens/AddNewEntryScreen.dart';
 import 'package:mobile_health/screens/AddNewEntrySubCategoryScreen.dart';
 
 class CustomRouter {
@@ -7,9 +8,15 @@ class CustomRouter {
     switch (settings.name) {
       case '/addNewEventCategory':
         return MaterialPageRoute(builder: (_) => AddNewEntryCategoryScreen());
-      case '/addNewEventSubCategory':
-        var data = settings.arguments as String;
-        return MaterialPageRoute(builder: (_) => AddNewEntrySubCategoryScreen(data));
+      case '/addNewEventCategory/addNewEventSubCategory':
+        var data = settings.arguments as Map<String, dynamic>;
+        var categoryFromRoute = data["categoryFromRoute"];
+        return MaterialPageRoute(builder: (_) => AddNewEntrySubCategoryScreen(categoryFromRoute));
+      case '/addNewEventCategory/addNewEventSubCategory/addNewEntry':
+        var data = settings.arguments as Map<String, dynamic>;
+        var categoryFromRoute = data["categoryFromRoute"];
+        var subCategoryFromRoute = data["subCategoryFromRoute"];
+        return MaterialPageRoute(builder: (_) => AddNewEntryScreen(categoryFromRoute, subCategoryFromRoute));
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(
