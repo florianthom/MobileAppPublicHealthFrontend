@@ -11,6 +11,7 @@ class CostumBottomFloatingButton extends StatefulWidget {
   _CostumBottomFloatingButtonState createState() => _CostumBottomFloatingButtonState();
 }
 
+///*
 class _CostumBottomFloatingButtonState extends State<CostumBottomFloatingButton> {
 
   @override
@@ -42,15 +43,11 @@ class _CostumBottomFloatingButtonState extends State<CostumBottomFloatingButton>
             .add(SetNewNavBarRoute(NavbarRoute.AddItem.index));
             Navigator.pushReplacementNamed(context, "/addNewEventCategory");
 
-
             // EntryType tmpType = EntryType(
             //   description: "test1",
             //   name: "test1",
             // );
             // DatabaseProvider.db.insert(tmpType.runtimeType.toString(), tmpType);
-
-
-
             // setState(() { /*_selectedIndex = 2; */ });
           },
         ),

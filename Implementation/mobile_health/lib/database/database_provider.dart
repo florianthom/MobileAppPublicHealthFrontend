@@ -38,6 +38,7 @@ class DatabaseProvider {
 
   Database _database;
 
+  ///*
   Future<Database> get database async {
     if (_database != null) {
       return _database;
@@ -48,6 +49,7 @@ class DatabaseProvider {
     return _database;
   }
 
+  ///*
   Future<Database> createDatabase() async {
     String dbPath = await getDatabasesPath();
 
@@ -175,6 +177,7 @@ class DatabaseProvider {
     return null;
   }
 
+  ///*
   Future<Diary> getDiaryById(int id) async {
     final db = await database;
 
@@ -248,6 +251,7 @@ class DatabaseProvider {
     return null;
   }
 
+  ///*
   Future<DiaryEntry> getDiaryEntryById(int id) async {
     final db = await database;
 
@@ -284,6 +288,7 @@ class DatabaseProvider {
     return null;
   }
 
+  ///*
   Future<EntryEvent> getEntryEventById(int id) async {
     final db = await database;
 
@@ -307,6 +312,7 @@ class DatabaseProvider {
     return null;
   }
 
+  ///*
   Future<Unit> getUnitById(int id) async {
     final db = await database;
 
@@ -322,6 +328,7 @@ class DatabaseProvider {
     return null;
   }
 
+  ///*
   Future<int> update(String tableName, DBO entry) async {
     final db = await database;
 
@@ -329,6 +336,7 @@ class DatabaseProvider {
         where: "$COLUMN_ID = ?", whereArgs: [entry.id]);
   }
 
+  ///*
   Future<List<EntryType>> getEntryTypes() async {
     final db = await database;
 
@@ -350,6 +358,7 @@ class DatabaseProvider {
     return typeList;
   }
 
+  ///*
   Future<List<Unit>> getUnits() async {
     final db = await database;
 
@@ -366,6 +375,7 @@ class DatabaseProvider {
     return unitList;
   }
 
+  ///*
   Future<List<Diary>> getDiaries() async {
     final db = await database;
 
@@ -388,6 +398,7 @@ class DatabaseProvider {
     return null;
   }
 
+  ///*
   Future<List<DiaryEntry>> getDiaryEntries() async {
     final db = await database;
 
@@ -408,7 +419,6 @@ class DatabaseProvider {
       });
       return entryList;
     }
-
     return null;
   }
 }

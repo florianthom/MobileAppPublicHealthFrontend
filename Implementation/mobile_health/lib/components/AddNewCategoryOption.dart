@@ -13,6 +13,7 @@ class AddNewCategoryOption extends StatefulWidget {
   _AddNewCategoryOptionState createState() => _AddNewCategoryOptionState(title);
 }
 
+///*
 class _AddNewCategoryOptionState extends State<AddNewCategoryOption> {
   _AddNewCategoryOptionState(this.title);
   final String title;

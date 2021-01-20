@@ -16,10 +16,12 @@ class HomePageScreen extends StatefulWidget {
 }
 
 class _HomePageScreenState extends State<HomePageScreen> {
+  ///*
   Future<List<DiaryEntry>> getDataAsync() async {
     return []; //DatabaseProvider.db.getDiaryEntries();
   }
 
+  ///*
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -28,6 +30,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
             snapshot.hasData ?_buildWidget(snapshot.data) : const SizedBox());
   }
 
+  ///*
   Widget _buildWidget(List<DiaryEntry> data) {
     Size size = MediaQuery.of(context).size;
     print("here");

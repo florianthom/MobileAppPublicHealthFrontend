@@ -19,13 +19,15 @@ class AddNewEntryScreen extends StatefulWidget {
   _AddNewEntryScreenState createState() => _AddNewEntryScreenState(categoryFromRoute, subCategoryFromRoute);
 }
 
+///*
 class _AddNewEntryScreenState extends State<AddNewEntryScreen> {
 
-  final String categoryFromRoute;
+  final String categoryFromRoute;   ///* wieso wird das oben in AddNewEntryScreen und hier nochmal gemacht?
   final String subCategoryFromRoute;
 
   _AddNewEntryScreenState(this.categoryFromRoute, this.subCategoryFromRoute);
 
+  ///*
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -34,9 +36,7 @@ class _AddNewEntryScreenState extends State<AddNewEntryScreen> {
       backgroundColor: Colors.black45,
       extendBodyBehindAppBar: false,
 
-
       appBar: TopAppBar(),
-
 
       body: Container(
         color: Colors.white,
@@ -44,13 +44,12 @@ class _AddNewEntryScreenState extends State<AddNewEntryScreen> {
           children: [
             TitleCardAddNewEntrySubCategory(),
             Padding(
-                padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+              padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
               child: Column(
                 children: [
                   Container(
                     child: Text(
                       this.categoryFromRoute + " " + this.subCategoryFromRoute,
-
 
                       // diary = getDiaryById(1)
                       // create diaryEntry
@@ -59,15 +58,8 @@ class _AddNewEntryScreenState extends State<AddNewEntryScreen> {
 
                       // databaseprovider.db.insert(diary.diaryEntries)
 
-                        // insert(entryObject.runtimeType.toString(), entryObject)
+                      // insert(entryObject.runtimeType.toString(), entryObject)
                       // insert (diaryEntry.runtimeType.toString(), diaryEntry)
-
-
-
-
-
-
-
                     ),
                   )
                 ],

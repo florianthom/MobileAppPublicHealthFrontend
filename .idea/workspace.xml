@@ -3,7 +3,46 @@
   <component name="ChangeListManager">
     <list default="true" id="db545341-82e3-47db-9d5a-d81bf603584a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/bloc/navbar/navbar_bloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/bloc/navbar/navbar_bloc.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/bloc/navbar/navbar_event.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/bloc/navbar/navbar_event.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/bloc/navbar/navbar_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/bloc/navbar/navbar_state.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/bloc/observer/counter_observer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/bloc/observer/counter_observer.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/bloc/table_calender/table_calender_bloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/bloc/table_calender/table_calender_bloc.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/bloc/table_calender/table_calender_event.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/bloc/table_calender/table_calender_event.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/bloc/table_calender/table_calender_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/bloc/table_calender/table_calender_state.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/components/AddNewCategoryOption.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/components/AddNewCategoryOption.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/components/AddNewSubCategoryOption.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/components/AddNewSubCategoryOption.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/components/CostumBottomFloatingButton.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/components/CostumBottomFloatingButton.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/components/CustomBottomNavigationBar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/components/CustomBottomNavigationBar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/components/HomeCategoryHeader.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/components/HomeCategoryHeader.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/components/HomeCategoryItem.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/components/HomeCategoryItem.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/components/HomeCategoryList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/components/HomeCategoryList.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/components/MoreOptionBox.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/components/MoreOptionBox.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/components/StaticTopAppBar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/components/StaticTopAppBar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/components/TestBottomFloatingButton.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/components/TestBottomFloatingButton.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/components/TitleCardAddNewEntryCategory.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/components/TitleCardAddNewEntryCategory.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/components/TitleCardAddNewEntrySubCategory.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/components/TitleCardAddNewEntrySubCategory.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/components/TitleCardHome.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/components/TitleCardHome.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/components/TitleCardMore.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/components/TitleCardMore.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/components/TitleCardStatistics.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/components/TitleCardStatistics.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/components/TopAppBar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/components/TopAppBar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/database/database_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/database/database_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/models/Diary.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/models/Diary.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/models/DiaryEntry.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/models/DiaryEntry.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/models/EntryEvent.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/models/EntryEvent.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/models/EntryType.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/models/EntryType.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/models/Unit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/models/Unit.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/models/navbar/navbarRoute.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/models/navbar/navbarRoute.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/routing/router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/routing/router.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/screens/AddNewEntryCategoryScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/screens/AddNewEntryCategoryScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/screens/AddNewEntryScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/screens/AddNewEntryScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/screens/AddNewEntrySubCategoryScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/screens/AddNewEntrySubCategoryScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/screens/CalenderScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/screens/CalenderScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/screens/HomePageScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/screens/HomePageScreen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/screens/InitialAppInstallationScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/screens/InitialAppInstallationScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/screens/MoreScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/screens/MoreScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/screens/StatisticsScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/screens/StatisticsScreen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/screens/loading.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/screens/loading.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,10 +100,11 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="387" y="188" key="#com.intellij.ide.util.TreeFileChooserDialog/0.23.1280.777@0.23.1280.777" timestamp="1609248223610" />
-    <state x="115" y="148" width="1060" height="537" key="AVDManager" timestamp="1609934272061">
-      <screen x="0" y="23" width="1280" height="777" />
+    <state x="-1747" y="193" width="1590" height="731" key="AVDManager" timestamp="1610973167588">
+      <screen x="-1920" y="23" width="1920" height="1057" />
     </state>
-    <state x="115" y="148" width="1060" height="537" key="AVDManager/0.23.1280.777@0.23.1280.777" timestamp="1609934272061" />
+    <state x="-1747" y="193" width="1590" height="731" key="AVDManager/0.23.1280.777/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1610973167588" />
+    <state x="115" y="148" width="1060" height="537" key="AVDManager/0.23.1280.777@0.23.1280.777" timestamp="1610814093297" />
     <state width="1218" height="2" key="GridCell.Tab.0.bottom" timestamp="1610548987433">
       <screen x="0" y="23" width="1280" height="777" />
     </state>

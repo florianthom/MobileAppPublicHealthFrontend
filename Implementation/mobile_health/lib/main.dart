@@ -16,9 +16,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_health/routing/router.dart';
-
 import 'app_localizations.dart';
 
+///*
 void main() {
   Bloc.observer = CounterObserver();
   runApp(MyApp());
@@ -29,6 +29,7 @@ class MyApp extends StatefulWidget {
   _MyAppState createState() => _MyAppState();
 }
 
+///*
 class _MyAppState extends State<MyApp> {
   // final CounterCubit _counterBloc = CounterCubit();
 

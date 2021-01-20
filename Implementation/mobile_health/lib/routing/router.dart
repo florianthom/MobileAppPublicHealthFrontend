@@ -3,6 +3,7 @@ import 'package:mobile_health/screens/AddNewEntryCategoryScreen.dart';
 import 'package:mobile_health/screens/AddNewEntryScreen.dart';
 import 'package:mobile_health/screens/AddNewEntrySubCategoryScreen.dart';
 
+///*
 class CustomRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {

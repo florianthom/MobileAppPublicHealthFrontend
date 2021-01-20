@@ -15,6 +15,7 @@ class MoreScreen extends StatefulWidget {
   _MoreScreenState createState() => _MoreScreenState();
 }
 
+///*
 class _MoreScreenState extends State<MoreScreen> {
   @override
   Widget build(BuildContext context) {
@@ -24,9 +25,7 @@ class _MoreScreenState extends State<MoreScreen> {
       backgroundColor: Colors.black45,
       extendBodyBehindAppBar: false,
 
-
       appBar: StaticTopAppBar(title: AppLocalizations.of(context).moreScreen_title),
-
 
       body: Container(
         color: Colors.white,
@@ -36,6 +35,7 @@ class _MoreScreenState extends State<MoreScreen> {
             Padding(
               padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
               child: Column(
+                ///*
                 children: [
                   MoreOptionBox(title: AppLocalizations.of(context).addEventCategory, routeString: "test/route", iconColor: Color.fromARGB(255, 101, 220, 213)),
                   MoreOptionBox(title: AppLocalizations.of(context).addMarker, routeString: "test/route", iconColor: Colors.orange,),

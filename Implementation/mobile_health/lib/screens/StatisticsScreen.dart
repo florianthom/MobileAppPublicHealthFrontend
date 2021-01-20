@@ -34,6 +34,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
             TitleCardStatistics(),
             Container(
               height: 200,
+              ///Chart added to visible statistics screen with data
               child: NumericComboLinePointChart(NumericComboLinePointChart._createSampleData()),
               padding: const EdgeInsets.all(12.0),
             ),
@@ -61,6 +62,7 @@ class NumericComboLinePointChart extends StatelessWidget {
     );
   }
 
+  ///creates a List of data and returns new charts.Series<LinearSales with specific color, axis and data
   static List<charts.Series<LinearSales, int>> _createSampleData() {
 
     //blue line data
@@ -98,7 +100,7 @@ class NumericComboLinePointChart extends StatelessWidget {
   }
 }
 
-/// Sample linear data type.
+/// Sample linear data type - axis
 class LinearSales {
   final int year;
   final int sales;

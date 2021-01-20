@@ -12,6 +12,7 @@ class InitialAppInstallationScreen extends StatelessWidget {
     ));
     return Scaffold(
       body: Stack(children: [
+        ///*
         Transform.translate(
           offset: Offset(0,-75),
           child: Container(
@@ -30,6 +31,7 @@ class InitialAppInstallationScreen extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
           child: Column(children: <Widget>[
+            ///Initial start text with style arguments added
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -47,6 +49,7 @@ class InitialAppInstallationScreen extends StatelessWidget {
             SizedBox(
               height: 25.0,
             ),
+            ///*
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -59,6 +62,7 @@ class InitialAppInstallationScreen extends StatelessWidget {
             SizedBox(
               height: 50.0,
             ),
+            ///*
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -73,6 +77,7 @@ class InitialAppInstallationScreen extends StatelessWidget {
                 ),
               ],
             ),
+            ///*
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -98,6 +103,7 @@ class InitialAppInstallationScreen extends StatelessWidget {
             SizedBox(
               height: 50.0,
             ),
+            ///*
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

@@ -14,12 +14,11 @@ class HomeCategoryItem extends StatefulWidget {
   _HomeCategoryItemState createState() => _HomeCategoryItemState(diaryEntry);
 }
 
+///*
 class _HomeCategoryItemState extends State<HomeCategoryItem> {
 
   _HomeCategoryItemState(this.diaryEntry);
   final DiaryEntry diaryEntry;
-
-
 
   @override
   Widget build(BuildContext context) {

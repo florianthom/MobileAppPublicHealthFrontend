@@ -1,8 +1,8 @@
 import 'dart:convert';
-
 import '../database/database_provider.dart';
 import 'DBO.dart';
 
+///*
 class Unit implements DBO {
   int id;
   String name;
@@ -11,6 +11,7 @@ class Unit implements DBO {
     this.name,
   });
 
+  ///*
   Unit copyWith({
     int id,
     String name,
@@ -21,6 +22,7 @@ class Unit implements DBO {
     );
   }
 
+  ///*
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{
       DatabaseProvider.COLUMN_NAME: name,
@@ -33,6 +35,7 @@ class Unit implements DBO {
     return map;
   }
 
+  ///*
   factory Unit.fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
 

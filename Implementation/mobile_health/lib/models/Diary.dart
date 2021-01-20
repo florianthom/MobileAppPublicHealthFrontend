@@ -1,11 +1,10 @@
 import 'dart:convert';
-
 import 'package:collection/collection.dart';
-
 import '../database/database_provider.dart';
 import 'DiaryEntry.dart';
 import 'DBO.dart';
 
+///*
 class Diary implements DBO {
   int id;
   List<DiaryEntry> diaryEntries;
@@ -14,6 +13,7 @@ class Diary implements DBO {
     this.diaryEntries,
   });
 
+  ///*
   Diary copyWith({
     int id,
     List<DiaryEntry> diaryEntries,
@@ -24,6 +24,7 @@ class Diary implements DBO {
     );
   }
 
+  ///*
   Map<String, dynamic> toMap() {
     //erst mal noch mit Vorsicht zu geniessen, könnte sein, dass hier die App abkackt
     //weil theoretisch die ganze DB geladen werden kann
@@ -40,6 +41,7 @@ class Diary implements DBO {
     return map;
   }
 
+  ///*
   factory Diary.fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
 
@@ -51,6 +53,7 @@ class Diary implements DBO {
     );
   }
 
+  ///*
   String toJson() => json.encode(toMap());
 
   factory Diary.fromJson(String source) => Diary.fromMap(json.decode(source));
@@ -58,6 +61,7 @@ class Diary implements DBO {
   @override
   String toString() => 'Diary(id: $id, diaryEntries: $diaryEntries)';
 
+  ///*
   @override
   bool operator ==(Object o) {
     if (identical(this, o)) return true;

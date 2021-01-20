@@ -4,6 +4,7 @@ import 'EntryType.dart';
 import 'Unit.dart';
 import 'DBO.dart';
 
+///*
 class EntryEvent implements DBO {
   int id;
   double quantity;
@@ -18,6 +19,7 @@ class EntryEvent implements DBO {
     this.entryType,
   });
 
+  ///*
   EntryEvent copyWith({
     int id,
     double quantity,
@@ -34,6 +36,7 @@ class EntryEvent implements DBO {
     );
   }
 
+  ///*
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{
       DatabaseProvider.COLUMN_QUANTITY: quantity,
@@ -49,6 +52,7 @@ class EntryEvent implements DBO {
     return map;
   }
 
+  ///*
   factory EntryEvent.fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
 

@@ -16,6 +16,7 @@ class TopAppBar extends StatefulWidget implements PreferredSizeWidget {
   final Size preferredSize; // default is 56.0
 }
 
+///*
 class _TopAppBarState extends State<TopAppBar> {
   @override
   Widget build(BuildContext context) {

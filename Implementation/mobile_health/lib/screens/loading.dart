@@ -5,18 +5,21 @@ class Loading extends StatefulWidget {
   _LoadingState createState() => _LoadingState();
 }
 
+///*
 class _LoadingState extends State<Loading> {
   void waitSeconds() async {
     await Future.delayed(Duration(seconds: 0));
     Navigator.pushReplacementNamed(context, "/home");
   }
 
+  ///*
   @override
   void initState() {
     super.initState();
     waitSeconds();
   }
 
+  ///*
   @override
   Widget build(BuildContext context) {
     return Scaffold(
