@@ -50,6 +50,24 @@ class _AddNewEntryScreenState extends State<AddNewEntryScreen> {
                   Container(
                     child: Text(
                       this.categoryFromRoute + " " + this.subCategoryFromRoute,
+
+
+                      // diary = getDiaryById(1)
+                      // create diaryEntry
+                      // add event to diaryEntry
+                      // diary.diaryEntries -> zu dieser Liste hinzufügen .AddDiaryEntryToList()
+
+                      // databaseprovider.db.insert(diary.diaryEntries)
+
+                        // insert(entryObject.runtimeType.toString(), entryObject)
+                      // insert (diaryEntry.runtimeType.toString(), diaryEntry)
+
+
+
+
+
+
+
                     ),
                   )
                 ],

@@ -7,6 +7,7 @@ import 'package:mobile_health/components/TestBottomFloatingButton.dart';
 import 'package:mobile_health/components/TitleCardHome.dart';
 import 'package:mobile_health/components/TopAppBar.dart';
 import 'package:mobile_health/database/database_provider.dart';
+import 'package:mobile_health/models/DiaryEntry.dart';
 import 'package:mobile_health/models/EntryType.dart';
 
 class HomePageScreen extends StatefulWidget {
@@ -15,8 +16,8 @@ class HomePageScreen extends StatefulWidget {
 }
 
 class _HomePageScreenState extends State<HomePageScreen> {
-  Future<List<EntryType>> getDataAsync() async {
-    return DatabaseProvider.db.getEntryTypes();
+  Future<List<DiaryEntry>> getDataAsync() async {
+    return []; //DatabaseProvider.db.getDiaryEntries();
   }
 
   @override
@@ -24,11 +25,13 @@ class _HomePageScreenState extends State<HomePageScreen> {
     return FutureBuilder(
         future: getDataAsync(),
         builder: (context, snapshot) =>
-            snapshot.hasData ? _buildWidget(snapshot.data) : const SizedBox());
+            snapshot.hasData ?_buildWidget(snapshot.data) : const SizedBox());
   }
 
-  Widget _buildWidget(List<EntryType> data) {
+  Widget _buildWidget(List<DiaryEntry> data) {
     Size size = MediaQuery.of(context).size;
+    print("here");
+    print(data);
     return Scaffold(
       backgroundColor: Colors.black45,
       extendBodyBehindAppBar: false,
@@ -44,7 +47,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
               child: Column(
                 children: [
                   HomeCategoryList(
-                    entryTypeList: data,
+                    diaryEntries: data,
                   )
                 ],
               ),

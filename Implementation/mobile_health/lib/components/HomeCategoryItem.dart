@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_health/models/DiaryEntry.dart';
 import 'package:mobile_health/models/EntryType.dart';
 
 class HomeCategoryItem extends StatefulWidget {
 
-  final EntryType entryType;
+  final DiaryEntry diaryEntry;
   HomeCategoryItem({
-    EntryType entryType
-  }): this.entryType = entryType;
+    DiaryEntry diaryEntry
+  }): this.diaryEntry = diaryEntry;
 
 
   @override
-  _HomeCategoryItemState createState() => _HomeCategoryItemState(entryType);
+  _HomeCategoryItemState createState() => _HomeCategoryItemState(diaryEntry);
 }
 
 class _HomeCategoryItemState extends State<HomeCategoryItem> {
 
-  _HomeCategoryItemState(this.entryType);
-  final EntryType entryType;
+  _HomeCategoryItemState(this.diaryEntry);
+  final DiaryEntry diaryEntry;
 
 
 
@@ -42,7 +43,8 @@ class _HomeCategoryItemState extends State<HomeCategoryItem> {
                   ),
                   Expanded(
                     child: Text(
-                        entryType.name,
+                      // x diaryEntry == 1 Tag
+                      "hi", //diaryEntry.comment,
                       style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.w500,

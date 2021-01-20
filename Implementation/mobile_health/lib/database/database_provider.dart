@@ -392,18 +392,20 @@ class DatabaseProvider {
     final db = await database;
 
     var entries = await db.query(TABLE_DIARY_ENTRY, columns: [COLUMN_ID]);
-
     if (entries.length > 0) {
       List<DiaryEntry> entryList = List<DiaryEntry>();
 
       entries.forEach((element) async {
+
+        // error
         DiaryEntry entry = await getDiaryEntryById(element[COLUMN_ID]);
 
+        print("here2");
+        print(entry);
         if (entry != null) {
           entryList.add(entry);
         }
       });
-
       return entryList;
     }
 
