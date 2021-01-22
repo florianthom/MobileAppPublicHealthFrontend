@@ -18,7 +18,7 @@ class HomePageScreen extends StatefulWidget {
 class _HomePageScreenState extends State<HomePageScreen> {
   ///*
   Future<List<DiaryEntry>> getDataAsync() async {
-    return []; //DatabaseProvider.db.getDiaryEntries();
+    return DatabaseProvider.db.getDiaryEntries();
   }
 
   ///*
@@ -27,7 +27,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
     return FutureBuilder(
         future: getDataAsync(),
         builder: (context, snapshot) =>
-            snapshot.hasData ?_buildWidget(snapshot.data) : const SizedBox());
+            snapshot.hasData ? _buildWidget(snapshot.data) : const SizedBox());
   }
 
   ///*
