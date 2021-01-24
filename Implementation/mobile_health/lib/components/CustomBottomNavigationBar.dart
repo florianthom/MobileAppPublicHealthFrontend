@@ -11,6 +11,7 @@ class CustomBottomNavigationBar extends StatefulWidget {
       _CustomBottomNavigationBarState();
 }
 
+///*
 class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   int _selectedIndex = 0;
 
@@ -104,6 +105,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
     );
   }
 
+  ///*
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;

@@ -1,11 +1,10 @@
 import 'dart:convert';
-
 import 'package:collection/collection.dart';
-
 import '../database/database_provider.dart';
 import 'EntryEvent.dart';
 import 'DBO.dart';
 
+///*
 class DiaryEntry implements DBO {
   int id;
   String dateString;
@@ -20,6 +19,7 @@ class DiaryEntry implements DBO {
     this.entryEvents,
   });
 
+  ///*
   DiaryEntry copyWith({
     int id,
     String dateString,
@@ -36,6 +36,7 @@ class DiaryEntry implements DBO {
     );
   }
 
+  ///*
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{
       DatabaseProvider.COLUMN_DATE: dateString,
@@ -52,6 +53,7 @@ class DiaryEntry implements DBO {
     return map;
   }
 
+  ///*
   factory DiaryEntry.fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
 

@@ -19,12 +19,12 @@ class AddNewEntrySubCategoryScreen extends StatefulWidget {
   _AddNewEntrySubCategoryScreenState createState() => _AddNewEntrySubCategoryScreenState(categoryFromRoute);
 }
 
+///*
 class _AddNewEntrySubCategoryScreenState extends State<AddNewEntrySubCategoryScreen> {
-
   final String categoryFromRoute;
-
   _AddNewEntrySubCategoryScreenState(this.categoryFromRoute);
 
+  ///*
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -33,9 +33,7 @@ class _AddNewEntrySubCategoryScreenState extends State<AddNewEntrySubCategoryScr
       backgroundColor: Colors.black45,
       extendBodyBehindAppBar: false,
 
-
       appBar: TopAppBar(),
-
 
       body: Container(
         color: Colors.white,
@@ -47,8 +45,6 @@ class _AddNewEntrySubCategoryScreenState extends State<AddNewEntrySubCategoryScr
               child: Column(
                 children: [
                   AddNewSubCategoryOption(title: this.categoryFromRoute),
-
-
                 ],
               ),
             )

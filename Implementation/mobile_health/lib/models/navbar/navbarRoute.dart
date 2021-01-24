@@ -1,3 +1,4 @@
+///*
 enum NavbarRoute {
   Home,
   Statistics,

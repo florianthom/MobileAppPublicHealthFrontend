@@ -5,6 +5,7 @@ class HomeCategoryHeader extends StatefulWidget {
   _HomeCategoryHeaderState createState() => _HomeCategoryHeaderState();
 }
 
+///*
 class _HomeCategoryHeaderState extends State<HomeCategoryHeader> {
   @override
   Widget build(BuildContext context) {

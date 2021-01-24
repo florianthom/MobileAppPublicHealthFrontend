@@ -38,6 +38,7 @@ class DatabaseProvider {
 
   Database _database;
 
+  ///*
   Future<Database> get database async {
     if (_database != null) {
       return _database;
@@ -48,6 +49,7 @@ class DatabaseProvider {
     return _database;
   }
 
+  ///*
   Future<Database> createDatabase() async {
     String dbPath = await getDatabasesPath();
 
@@ -112,12 +114,12 @@ class DatabaseProvider {
 
         await database.transaction((txn) async {
           await txn.rawInsert(
-              'INSERT INTO $TABLE_UNIT ($COLUMN_NAME) VALUES ("m"), ("g"), ("km"), ("kg"), ("min"), ("sec"), ("h")');
+              'INSERT INTO $TABLE_UNIT ($COLUMN_NAME) VALUES ("m"), ("g"), ("km"), ("kg"), ("min"), ("sec"), ("h"), ("mood")');
         });
 
         await database.transaction((txn) async {
           await txn.rawInsert(
-              'INSERT INTO $TABLE_ENTRYTYPE ($COLUMN_NAME, $COLUMN_DESCRIPTION) VALUES ("Sport", "sportliche Aktivitäten"), ("Ernährung", "Obergruppe für Nahrungsmittel"), ("Stimmung", "Obergruppe für Stimmungsänderungen")');
+              'INSERT INTO $TABLE_ENTRYTYPE ($COLUMN_NAME, $COLUMN_DESCRIPTION) VALUES ("Sport", "sportliche Aktivitäten"), ("Ernährung", "Obergruppe für Nahrungsmittel"), ("Stimmung", "Obergruppe für Stimmungsänderungen"), ("Schlaf", "Quantität des Schlafs")');
         });
 
         await database.transaction((txn) async {
@@ -127,12 +129,12 @@ class DatabaseProvider {
 
         await database.transaction((txn) async {
           await txn.rawInsert(
-              'INSERT INTO $TABLE_DIARY_ENTRY ($COLUMN_DATE, $COLUMN_COMMENT, $COLUMN_DIARYID) VALUES ("2021-01-20", "Dies ist ein Beispieleintrag", 1)');
+              'INSERT INTO $TABLE_DIARY_ENTRY ($COLUMN_DATE, $COLUMN_COMMENT, $COLUMN_DIARYID) VALUES ("2021-01-20", "Dies ist ein Beispieleintrag für Sport", 1), ("2021-01-20", "Dies ist ein Beispieleintrag für Mood", 2)');
         });
 
         await database.transaction((txn) async {
           await txn.rawInsert(
-              'INSERT INTO $TABLE_ENTRY_EVENT ($COLUMN_QUANTITY, $COLUMN_UNIT, $COLUMN_DIARY_ENTRY_ID, $COLUMN_ENTRYTYPE) VALUES (50, 1, 1, 1)');
+              'INSERT INTO $TABLE_ENTRY_EVENT ($COLUMN_QUANTITY, $COLUMN_UNIT, $COLUMN_DIARY_ENTRY_ID, $COLUMN_ENTRYTYPE) VALUES (50, 1, 1, 1), (40, 1, 1, 1), (70, 1, 2, 1), (7, 8, 2, 3)');
         });
       },
     );
@@ -175,6 +177,7 @@ class DatabaseProvider {
     return null;
   }
 
+  ///*
   Future<Diary> getDiaryById(int id) async {
     final db = await database;
 
@@ -184,10 +187,6 @@ class DatabaseProvider {
 
     if (queryResult.length > 0) {
       //sqflite query results are read only, so we need new maps to change them
-      List<Map<String, dynamic>> diaryEntryMapList =
-          new List<Map<String, dynamic>>();
-
-      List<Map<String, dynamic>> entryEventMapList;
       //a lot of magic follows to allow clean execution of Diary.fromMap()
       //get all diaryEntries belonging to this diary as a map
       var diaryEntriesQuery = await db.query(TABLE_DIARY_ENTRY,
@@ -195,11 +194,11 @@ class DatabaseProvider {
           where: "$COLUMN_DIARYID = ?",
           whereArgs: [id]);
 
+      var dEntriesReadable = _makeModifiableResults(diaryEntriesQuery);
+
       if (diaryEntriesQuery.length > 0) {
         //get all entryEvents belonging to each diaryEntry as a map
-        diaryEntriesQuery.forEach((diaryEntry) async {
-          entryEventMapList = new List<Map<String, dynamic>>();
-          var inMemoryMap = diaryEntry;
+        await Future.forEach(dEntriesReadable, (diaryEntry) async {
           var entryEventQuery = await db.query(TABLE_ENTRY_EVENT,
               columns: [
                 COLUMN_ID,
@@ -211,8 +210,10 @@ class DatabaseProvider {
               where: "$COLUMN_DIARY_ENTRY_ID = ?",
               whereArgs: [diaryEntry[COLUMN_ID]]);
 
+          var entriesReadable = _makeModifiableResults(entryEventQuery);
+
           //get all Units and EntryTypes for each entryEvent as a map
-          entryEventQuery.forEach((entryEvent) async {
+          await Future.forEach(entriesReadable, (entryEvent) async {
             var unitQuery = await db.query(TABLE_UNIT,
                 columns: [COLUMN_ID, COLUMN_NAME],
                 where: "$COLUMN_ID = ?",
@@ -227,27 +228,23 @@ class DatabaseProvider {
                 where: "$COLUMN_ID = ?",
                 whereArgs: [entryEvent[COLUMN_ENTRYTYPE]]);
 
-            var memoryEntryEvent = entryEvent;
-
-            memoryEntryEvent[COLUMN_UNIT] = unitQuery.first;
-            memoryEntryEvent[COLUMN_ENTRYTYPE] = entryTypeQuery.first;
-
-            entryEventMapList.add(memoryEntryEvent);
+            entryEvent[COLUMN_UNIT] = unitQuery.first;
+            entryEvent[COLUMN_ENTRYTYPE] = entryTypeQuery.first;
           });
 
-          inMemoryMap[COLUMN_ENTRY_EVENTS] = entryEventMapList;
-          diaryEntryMapList.add(inMemoryMap);
+          diaryEntry[COLUMN_ENTRY_EVENTS] = entriesReadable;
         });
       }
 
-      var map = queryResult.first;
-      map[COLUMN_DIARY_ENTRIES] = diaryEntryMapList;
-      return Diary.fromMap(map);
+      var resultMap = Map<String, dynamic>.from(queryResult.first);
+      resultMap[COLUMN_DIARY_ENTRIES] = dEntriesReadable;
+      return Diary.fromMap(resultMap);
     }
 
     return null;
   }
 
+  ///*
   Future<DiaryEntry> getDiaryEntryById(int id) async {
     final db = await database;
 
@@ -263,8 +260,9 @@ class DatabaseProvider {
           whereArgs: [id]);
 
       var entryEventList = new List<EntryEvent>();
+      var entryEventsQueryRead = _makeModifiableResults(entryEventsQuery);
 
-      entryEventsQuery.forEach((element) async {
+      await Future.forEach(entryEventsQueryRead, (element) async {
         var entry = await getEntryEventById(element[COLUMN_ID]);
 
         if (entry != null) {
@@ -272,11 +270,12 @@ class DatabaseProvider {
         }
       });
 
-      var resultMap = queryResult.first;
-      resultMap[COLUMN_ENTRY_EVENTS] = null;
+      Map<String, dynamic> resultMap =
+          Map<String, dynamic>.from(queryResult.first);
+      resultMap[COLUMN_ENTRY_EVENTS] =
+          entryEventList.map((element) => element.toMap()).toList();
 
       var result = DiaryEntry.fromMap(resultMap);
-      result.entryEvents = entryEventList;
 
       return result;
     }
@@ -284,11 +283,18 @@ class DatabaseProvider {
     return null;
   }
 
+  ///*
   Future<EntryEvent> getEntryEventById(int id) async {
     final db = await database;
 
     var queryResult = await db.query(TABLE_ENTRY_EVENT,
-        columns: [COLUMN_ID, COLUMN_QUANTITY, COLUMN_UNIT, COLUMN_ENTRYTYPE],
+        columns: [
+          COLUMN_ID,
+          COLUMN_QUANTITY,
+          COLUMN_UNIT,
+          COLUMN_ENTRYTYPE,
+          COLUMN_DIARY_ENTRY_ID
+        ],
         where: "$COLUMN_ID = ?",
         whereArgs: [id]);
 
@@ -297,7 +303,8 @@ class DatabaseProvider {
       var entryTypeQuery =
           await getEntryTypeById(queryResult.first[COLUMN_ENTRYTYPE]);
 
-      var resultMap = queryResult.first;
+      Map<String, dynamic> resultMap =
+          Map<String, dynamic>.from(queryResult.first);
       resultMap[COLUMN_UNIT] = unitQuery.toMap();
       resultMap[COLUMN_ENTRYTYPE] = entryTypeQuery.toMap();
       var result = EntryEvent.fromMap(resultMap);
@@ -307,6 +314,7 @@ class DatabaseProvider {
     return null;
   }
 
+  ///*
   Future<Unit> getUnitById(int id) async {
     final db = await database;
 
@@ -322,6 +330,7 @@ class DatabaseProvider {
     return null;
   }
 
+  ///*
   Future<int> update(String tableName, DBO entry) async {
     final db = await database;
 
@@ -329,6 +338,7 @@ class DatabaseProvider {
         where: "$COLUMN_ID = ?", whereArgs: [entry.id]);
   }
 
+  ///*
   Future<List<EntryType>> getEntryTypes() async {
     final db = await database;
 
@@ -350,6 +360,7 @@ class DatabaseProvider {
     return typeList;
   }
 
+  ///*
   Future<List<Unit>> getUnits() async {
     final db = await database;
 
@@ -366,6 +377,7 @@ class DatabaseProvider {
     return unitList;
   }
 
+  ///*
   Future<List<Diary>> getDiaries() async {
     final db = await database;
 
@@ -374,7 +386,8 @@ class DatabaseProvider {
     if (entries.length > 0) {
       List<Diary> diaryList = List<Diary>();
 
-      entries.forEach((element) async {
+      var editableResults = _makeModifiableResults(entries);
+      await Future.forEach(editableResults, (element) async {
         Diary diary = await getDiaryById(element[COLUMN_ID]);
 
         if (diary != null) {
@@ -388,6 +401,7 @@ class DatabaseProvider {
     return null;
   }
 
+  ///*
   Future<List<DiaryEntry>> getDiaryEntries() async {
     final db = await database;
 
@@ -395,20 +409,25 @@ class DatabaseProvider {
     if (entries.length > 0) {
       List<DiaryEntry> entryList = List<DiaryEntry>();
 
-      entries.forEach((element) async {
-
-        // error
+      var editableResult = _makeModifiableResults(entries);
+      await Future.forEach(editableResult, (element) async {
         DiaryEntry entry = await getDiaryEntryById(element[COLUMN_ID]);
 
-        print("here2");
-        print(entry);
         if (entry != null) {
           entryList.add(entry);
         }
       });
       return entryList;
     }
-
     return null;
+  }
+
+  /// Generate a modifiable result set
+  List<Map<String, dynamic>> _makeModifiableResults(
+      List<Map<String, dynamic>> results) {
+    // Generate modifiable
+    return List<Map<String, dynamic>>.generate(
+        results.length, (index) => Map<String, dynamic>.from(results[index]),
+        growable: true);
   }
 }

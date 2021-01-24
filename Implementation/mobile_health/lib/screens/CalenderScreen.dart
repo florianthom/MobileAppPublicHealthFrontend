@@ -18,9 +18,11 @@ class CalenderScreen extends StatefulWidget {
   _CalenderScreenState createState() => _CalenderScreenState();
 }
 
+///*
 class _CalenderScreenState extends State<CalenderScreen> {
   CalendarController _calendarController;
 
+  ///*
   @override
   void initState() {
     super.initState();
@@ -31,12 +33,14 @@ class _CalenderScreenState extends State<CalenderScreen> {
     // this._calendarController.setSelectedDay(DateTime.now());
   }
 
+  ///*
   @override
   void dispose() {
     _calendarController.dispose();
     super.dispose();
   }
 
+  ///*
   void _onVisibleDaysChanged(
       DateTime first, DateTime last, CalendarFormat format) {
     print('CALLBACK: _onVisibleDaysChanged');
@@ -67,6 +71,7 @@ class _CalenderScreenState extends State<CalenderScreen> {
     );
   }
 
+  ///*
   Widget _buildTableCalendar() {
     return BlocBuilder<TableCalenderBloc, TableCalenderState>(
       builder: (context, state) {

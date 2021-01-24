@@ -13,6 +13,7 @@ class AddNewEntryCategoryScreen extends StatefulWidget {
   _AddNewEntryCategoryScreenState createState() => _AddNewEntryCategoryScreenState();
 }
 
+///*
 class _AddNewEntryCategoryScreenState extends State<AddNewEntryCategoryScreen> {
   @override
   Widget build(BuildContext context) {
@@ -22,22 +23,20 @@ class _AddNewEntryCategoryScreenState extends State<AddNewEntryCategoryScreen> {
       backgroundColor: Colors.black45,
       extendBodyBehindAppBar: false,
 
-
+      ///Adding of TopAppBar
       appBar: TopAppBar(),
-
 
       body: Container(
         color: Colors.white,
         child: Column(
           children: [
+            ///*
             TitleCardAddNewEntryCategory(),
             Padding(
                 padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
               child: Column(
                 children: [
                   AddNewCategoryOption(title: "placeholder for category"),
-
-
                 ],
               ),
             )

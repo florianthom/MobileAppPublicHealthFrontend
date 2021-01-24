@@ -7,21 +7,19 @@ class StaticTopAppBar extends StatefulWidget implements PreferredSizeWidget {
 
   final String title;
 
-
   StaticTopAppBar({Key key, String title})
       : preferredSize = Size.fromHeight(kToolbarHeight),
         this.title = title,
         super(key: key);
 
   _StaticTopAppBarState createState() => new _StaticTopAppBarState(title);
-
 }
 
+///*
+class _StaticTopAppBarState extends State<StaticTopAppBar> {
 
-  class _StaticTopAppBarState extends State<StaticTopAppBar>{
-
-    _StaticTopAppBarState(this.title);
-    final String title;
+  _StaticTopAppBarState(this.title);
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +35,4 @@ class StaticTopAppBar extends StatefulWidget implements PreferredSizeWidget {
       backgroundColor: Color.fromARGB(255, 101, 220, 213),
     );
   }
-
-
 }

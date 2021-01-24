@@ -7,6 +7,7 @@ import 'package:mobile_health/components/TitleCardHome.dart';
 import 'package:mobile_health/components/TitleCardStatistics.dart';
 import 'package:mobile_health/components/TopAppBar.dart';
 import 'package:mobile_health/database/database_provider.dart';
+import 'package:mobile_health/models/Diary.dart';
 
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
@@ -17,9 +18,24 @@ class StatisticsScreen extends StatefulWidget {
 }
 
 class _StatisticsScreenState extends State<StatisticsScreen> {
+
+  Future<Diary> getDataAsync() async {
+    return DatabaseProvider.db.getDiaryById(1);
+  }
+
+  //* Funtionen daten holen für statistik
+
   @override
   Widget build(BuildContext context) {
+    return FutureBuilder(
+        future: getDataAsync(),
+        builder: (context, snapshot) =>
+        snapshot.hasData ? _buildWidget(snapshot.data) : const SizedBox());
+  }
+
+  Widget _buildWidget(Diary data) {
     Size size = MediaQuery.of(context).size;
+    print(data);
 
     return Scaffold(
       backgroundColor: Colors.black45,
@@ -34,8 +50,12 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
             TitleCardStatistics(),
             Container(
               height: 200,
+              ///Chart added to visible statistics screen with data
               child: NumericComboLinePointChart(NumericComboLinePointChart._createSampleData()),
               padding: const EdgeInsets.all(12.0),
+
+              //print(getDiaryById(1).toString());
+
             ),
           ],
         ),
@@ -61,6 +81,7 @@ class NumericComboLinePointChart extends StatelessWidget {
     );
   }
 
+  ///creates a List of data and returns new charts.Series<LinearSales with specific color, axis and data
   static List<charts.Series<LinearSales, int>> _createSampleData() {
 
     //blue line data
@@ -98,13 +119,17 @@ class NumericComboLinePointChart extends StatelessWidget {
   }
 }
 
-/// Sample linear data type.
+/// Sample linear data type - axis
 class LinearSales {
-  final int year;
-  final int sales;
+  final int year; //DateTime.now().toString()
+  final int sales; //quantity
+
 
   LinearSales(this.year, this.sales);
 }
+
+//alle diary by id = 1 holen & nach datum filtern   getDiaryById(1)
+//checkboxen - je ENTRYTYPE, neuer Type adde new checkbox
 
 /*///create the chart
 class NumericComboLinePointChart extends StatelessWidget {
@@ -113,7 +138,7 @@ class NumericComboLinePointChart extends StatelessWidget {
 
   NumericComboLinePointChart(this.seriesList, {this.animate});
 
-  var db = database_provider.db;
+  var db = database_provider.db.;
   //print(db);
 
   /// Creates a [LineChart] with sample data and no transition.

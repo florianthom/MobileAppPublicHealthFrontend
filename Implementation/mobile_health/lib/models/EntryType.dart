@@ -1,8 +1,8 @@
 import 'dart:convert';
-
 import '../database/database_provider.dart';
 import 'DBO.dart';
 
+///*
 class EntryType implements DBO {
   int id;
   String name;
@@ -15,6 +15,7 @@ class EntryType implements DBO {
     this.parentTypeId,
   });
 
+  ///*
   EntryType copyWith({
     int id,
     String name,
@@ -29,6 +30,7 @@ class EntryType implements DBO {
     );
   }
 
+  ///*
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{
       DatabaseProvider.COLUMN_NAME: name,
@@ -43,6 +45,7 @@ class EntryType implements DBO {
     return map;
   }
 
+  ///*
   factory EntryType.fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
 

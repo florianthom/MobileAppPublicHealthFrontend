@@ -12,6 +12,7 @@ class TestBottomFloatingButton extends StatefulWidget {
       _TestBottomFloatingButtonState();
 }
 
+///*
 class _TestBottomFloatingButtonState extends State<TestBottomFloatingButton> {
   @override
   Widget build(BuildContext context) {

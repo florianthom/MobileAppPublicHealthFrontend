@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="db545341-82e3-47db-9d5a-d81bf603584a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/screens/InitialAppInstallationScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/screens/InitialAppInstallationScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/screens/loading.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/screens/loading.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/database/database_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/database/database_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/screens/StatisticsScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/screens/StatisticsScreen.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,10 +61,15 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="387" y="188" key="#com.intellij.ide.util.TreeFileChooserDialog/0.23.1280.777@0.23.1280.777" timestamp="1609248223610" />
-    <state x="115" y="148" width="1060" height="537" key="AVDManager" timestamp="1609934272061">
-      <screen x="0" y="23" width="1280" height="777" />
+    <state x="-1766" y="371" width="1590" height="731" key="AVDManager" timestamp="1611423943948">
+      <screen x="-1920" y="23" width="1920" height="1057" />
     </state>
-    <state x="115" y="148" width="1060" height="537" key="AVDManager/0.23.1280.777@0.23.1280.777" timestamp="1609934272061" />
+    <state x="-1766" y="371" width="1590" height="731" key="AVDManager/0.23.1280.777/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1611423943948" />
+    <state x="115" y="148" width="1060" height="537" key="AVDManager/0.23.1280.777@0.23.1280.777" timestamp="1610814093297" />
+    <state x="-993" y="273" key="AndroidProcessChooserDialog" timestamp="1611424836802">
+      <screen x="-1920" y="23" width="1920" height="1057" />
+    </state>
+    <state x="-993" y="273" key="AndroidProcessChooserDialog/0.23.1280.777/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1611424836802" />
     <state width="1218" height="2" key="GridCell.Tab.0.bottom" timestamp="1610548987433">
       <screen x="0" y="23" width="1280" height="777" />
     </state>

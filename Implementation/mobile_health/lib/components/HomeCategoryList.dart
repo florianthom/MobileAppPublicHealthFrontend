@@ -11,16 +11,15 @@ class HomeCategoryList extends StatefulWidget {
     List<DiaryEntry> diaryEntries
   }): this.diaryEntries = diaryEntries;
 
-
   @override
   _HomeCategoryListState createState() => _HomeCategoryListState(diaryEntries);
 }
 
+///*
 class _HomeCategoryListState extends State<HomeCategoryList> {
 
   _HomeCategoryListState(this.diaryEntries);
   final List<DiaryEntry> diaryEntries;
-
 
   @override
   Widget build(BuildContext context) {
