@@ -15,6 +15,9 @@ class HomePageScreen extends StatefulWidget {
   _HomePageScreenState createState() => _HomePageScreenState();
 }
 
+
+
+
 class _HomePageScreenState extends State<HomePageScreen> {
   ///*
   Future<List<DiaryEntry>> getDataAsync() async {
@@ -33,8 +36,6 @@ class _HomePageScreenState extends State<HomePageScreen> {
   ///*
   Widget _buildWidget(List<DiaryEntry> data) {
     Size size = MediaQuery.of(context).size;
-    print("here");
-    print(data);
     return Scaffold(
       backgroundColor: Colors.black45,
       extendBodyBehindAppBar: false,
@@ -50,7 +51,8 @@ class _HomePageScreenState extends State<HomePageScreen> {
               child: Column(
                 children: [
                   HomeCategoryList(
-                    diaryEntries: data,
+                    // dateString = dateString: 2021-01-20
+                    diaryEntries: data.where((element) => DateTime.parse(element.dateString).isBefore(DateTime(DateTime.now().year, DateTime.now().month,DateTime.now().day))).toList(),
                   )
                 ],
               ),
