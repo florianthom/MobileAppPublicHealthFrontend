@@ -21,7 +21,14 @@ class HomePageScreen extends StatefulWidget {
 class _HomePageScreenState extends State<HomePageScreen> {
   ///*
   Future<List<DiaryEntry>> getDataAsync() async {
-    return DatabaseProvider.db.getDiaryEntries();
+
+    // return DatabaseProvider.db.getEntryTypes().then((value) => value.where((element) => element.parentTypeId == null).toList());
+
+    // data.where((element) => DateTime.parse(element.dateString).isBefore(DateTime(DateTime.now().year, DateTime.now().month,DateTime.now().day))).toList()
+
+    // var returnValue = Future<List<DiaryEntry>>.value([]);
+    var returnValue = DatabaseProvider.db.getDiaryEntries().then((value) => value.where((element) => DateTime.parse(element.dateString).isBefore(DateTime(DateTime.now().year, DateTime.now().month,DateTime.now().day))).toList());
+    return returnValue;
   }
 
   ///*
@@ -52,7 +59,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                 children: [
                   HomeCategoryList(
                     // dateString = dateString: 2021-01-20
-                    diaryEntries: data.where((element) => DateTime.parse(element.dateString).isBefore(DateTime(DateTime.now().year, DateTime.now().month,DateTime.now().day))).toList(),
+                    diaryEntries: data,
                   )
                 ],
               ),
