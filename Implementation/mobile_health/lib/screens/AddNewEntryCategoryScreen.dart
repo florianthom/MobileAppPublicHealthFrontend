@@ -53,7 +53,7 @@ class _AddNewEntryCategoryScreenState extends State<AddNewEntryCategoryScreen> {
             Padding(
                 padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
               child: Column(
-                children: data.map((e) => AddNewCategoryOption(title: e.name)).toList(),
+                children: data.map((e) => AddNewCategoryOption(entryType: e)).take(3).toList(),
                 // [
                 //   AddNewCategoryOption(title: "hi"),
                 // ],

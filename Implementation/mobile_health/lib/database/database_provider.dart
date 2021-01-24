@@ -54,7 +54,7 @@ class DatabaseProvider {
     String dbPath = await getDatabasesPath();
 
     return await openDatabase(
-      join(dbPath, 'ThyroHelph1.db'),
+      join(dbPath, 'ThyroHelph2.db'),
       version: 1, //change this number on changes to DB model
       onCreate: (Database database, int version) async {
         print("creating Diary table");
@@ -121,6 +121,12 @@ class DatabaseProvider {
           await txn.rawInsert(
               'INSERT INTO $TABLE_ENTRYTYPE ($COLUMN_NAME, $COLUMN_DESCRIPTION) VALUES ("Sport", "sportliche Aktivitäten"), ("Ernährung", "Obergruppe für Nahrungsmittel"), ("Stimmung", "Obergruppe für Stimmungsänderungen"), ("Schlaf", "Quantität des Schlafs")');
         });
+
+        await database.transaction((txn) async {
+          await txn.rawInsert(
+              'INSERT INTO $TABLE_ENTRYTYPE ($COLUMN_NAME, $COLUMN_DESCRIPTION, $COLUMN_PARENTTYPEID) VALUES ("Joggen", "Joggen mit kurzem Sprint", "1")');
+        });
+
 
         await database.transaction((txn) async {
           await txn

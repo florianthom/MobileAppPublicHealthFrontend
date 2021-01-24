@@ -9,24 +9,44 @@ import 'package:mobile_health/components/TitleCardAddNewEntrySubCategory.dart';
 import 'package:mobile_health/components/TitleCardHome.dart';
 import 'package:mobile_health/components/TitleCardStatistics.dart';
 import 'package:mobile_health/components/TopAppBar.dart';
+import 'package:mobile_health/database/database_provider.dart';
+import 'package:mobile_health/models/EntryType.dart';
 
 class AddNewEntrySubCategoryScreen extends StatefulWidget {
-  final String categoryFromRoute;
+  final EntryType entryTypeFromRoute;
 
-  const AddNewEntrySubCategoryScreen(this.categoryFromRoute);
+  const AddNewEntrySubCategoryScreen(this.entryTypeFromRoute);
 
   @override
-  _AddNewEntrySubCategoryScreenState createState() => _AddNewEntrySubCategoryScreenState(categoryFromRoute);
+  _AddNewEntrySubCategoryScreenState createState() => _AddNewEntrySubCategoryScreenState(entryTypeFromRoute);
 }
+
+
+
 
 ///*
 class _AddNewEntrySubCategoryScreenState extends State<AddNewEntrySubCategoryScreen> {
-  final String categoryFromRoute;
-  _AddNewEntrySubCategoryScreenState(this.categoryFromRoute);
+
+  final EntryType entryTypeFromRoute;
+
+  _AddNewEntrySubCategoryScreenState(this.entryTypeFromRoute);
+
+  ///*
+  Future<List<EntryType>> getDataAsync() async {
+    return DatabaseProvider.db.getEntryTypes().then((value) => value.where((element) => element.parentTypeId == entryTypeFromRoute.id).toList());
+  }
 
   ///*
   @override
   Widget build(BuildContext context) {
+    return FutureBuilder(
+        future: getDataAsync(),
+        builder: (context, snapshot) =>
+        snapshot.hasData ? _buildWidget(snapshot.data) : const SizedBox());
+  }
+
+  ///*
+  Widget _buildWidget(List<EntryType> data) {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -43,9 +63,11 @@ class _AddNewEntrySubCategoryScreenState extends State<AddNewEntrySubCategoryScr
             Padding(
                 padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
               child: Column(
-                children: [
-                  AddNewSubCategoryOption(title: this.categoryFromRoute),
-                ],
+                children: data.map((e) => AddNewSubCategoryOption(parentEntryType: this.entryTypeFromRoute, subEntryType: e)).take(3).toList(),
+
+                // [
+                //   AddNewSubCategoryOption(title: this.entryTypeFromRoute.name),
+                // ],
               ),
             )
           ],
