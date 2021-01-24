@@ -140,14 +140,72 @@ class DatabaseProvider {
     );
   }
 
-  ///example: insert("DiaryEntry", entryObject)
-  ///example: insert(entryObject.runtimeType.toString(), entryObject)
-  Future<DBO> insert(String className, DBO entry) async {
+  ///function for inserting a DiaryEntry
+  Future<DiaryEntry> insertDiaryEntry(DiaryEntry diaryEntry) async {
     final db = await database;
 
-    entry.id = await db.insert(className, entry.toMap());
+    diaryEntry.id = await db.transaction((txn) async {
+      return await txn.rawInsert(
+          'INSERT INTO $TABLE_DIARY_ENTRY ($COLUMN_DATE, $COLUMN_COMMENT, $COLUMN_DIARYID) VALUES (?, ?, ?)',
+          [diaryEntry.dateString, diaryEntry.comment, diaryEntry.diaryId]);
+    });
 
-    return entry;
+    return diaryEntry;
+  }
+
+  ///function for inserting a Diary
+  Future<Diary> insertDiary(Diary diary) async {
+    final db = await database;
+
+    diary.id = await db.transaction((txn) async {
+      return await txn.rawInsert(
+          'INSERT INTO $TABLE_DIARY ($COLUMN_ID) VALUES (?)', [null]);
+    });
+
+    return diary;
+  }
+
+  ///function for inserting an EntryEvent
+  Future<EntryEvent> insertEntryEvent(EntryEvent entryEvent) async {
+    final db = await database;
+
+    entryEvent.id = await db.transaction((txn) async {
+      return await txn.rawInsert(
+          'INSERT INTO $TABLE_ENTRY_EVENT ($COLUMN_QUANTITY, $COLUMN_UNIT, $COLUMN_DIARY_ENTRY_ID, $COLUMN_ENTRYTYPE) VALUES (?, ?, ?, ?)',
+          [
+            entryEvent.quantity,
+            entryEvent.unit.id,
+            entryEvent.diaryEntryId,
+            entryEvent.entryType.id
+          ]);
+    });
+
+    return entryEvent;
+  }
+
+  ///function for inserting an EntryType
+  Future<EntryType> insertEntryType(EntryType entryType) async {
+    final db = await database;
+
+    entryType.id = await db.transaction((txn) async {
+      return await txn.rawInsert(
+          'INSERT INTO $TABLE_ENTRYTYPE ($COLUMN_NAME, $COLUMN_DESCRIPTION, $COLUMN_PARENTTYPEID) VALUES (?, ?, ?)',
+          [entryType.name, entryType.description, entryType.parentTypeId]);
+    });
+
+    return entryType;
+  }
+
+  ///function for inserting a Unit
+  Future<Unit> insertUnit(Unit unit) async {
+    final db = await database;
+
+    unit.id = await db.transaction((txn) async {
+      return await txn.rawInsert(
+          'INSERT INTO $TABLE_UNIT ($COLUMN_NAME) VALUES (?)', [unit.name]);
+    });
+
+    return unit;
   }
 
   ///example: delete("Unit", unit.id)

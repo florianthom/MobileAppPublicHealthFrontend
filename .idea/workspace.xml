@@ -2,18 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db545341-82e3-47db-9d5a-d81bf603584a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/MobileAppPublicHealthFrontend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MobileAppPublicHealthFrontend.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implementation/mobile_health/lib/database/database_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Implementation/mobile_health/lib/database/database_provider.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[Pixel_3a_API_30_x86]" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -68,14 +64,14 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="387" y="188" key="#com.intellij.ide.util.TreeFileChooserDialog/0.23.1280.777@0.23.1280.777" timestamp="1609248223610" />
-    <state x="972" y="456" key="#main.dart" timestamp="1611346544883">
+    <state x="972" y="456" key="#main.dart" timestamp="1611419230884">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="972" y="456" key="#main.dart/-1920.260.1920.1080/0.0.2560.1440@0.0.2560.1440" timestamp="1611346544883" />
-    <state x="230" y="232" width="1351" height="669" key="AVDManager" timestamp="1611346935383">
+    <state x="972" y="456" key="#main.dart/-1920.260.1920.1080/0.0.2560.1440@0.0.2560.1440" timestamp="1611419230884" />
+    <state x="230" y="232" width="1351" height="669" key="AVDManager" timestamp="1611419242607">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="230" y="232" width="1351" height="669" key="AVDManager/-1920.260.1920.1080/0.0.2560.1440@0.0.2560.1440" timestamp="1611346935383" />
+    <state x="230" y="232" width="1351" height="669" key="AVDManager/-1920.260.1920.1080/0.0.2560.1440@0.0.2560.1440" timestamp="1611419242607" />
     <state x="115" y="148" width="1060" height="537" key="AVDManager/0.23.1280.777@0.23.1280.777" timestamp="1609934272061" />
     <state x="561" y="160" key="FileChooserDialogImpl" timestamp="1611346453366">
       <screen x="0" y="0" width="2560" height="1440" />
