@@ -5,18 +5,18 @@ import 'package:mobile_health/models/EntryType.dart';
 
 class AddNewCategoryOption extends StatefulWidget {
 
-  final String title;
+  final EntryType entryType;
 
-  AddNewCategoryOption({String title}) : this.title = title;
+  AddNewCategoryOption({EntryType entryType}) : this.entryType = entryType;
 
   @override
-  _AddNewCategoryOptionState createState() => _AddNewCategoryOptionState(title);
+  _AddNewCategoryOptionState createState() => _AddNewCategoryOptionState(entryType);
 }
 
 ///*
 class _AddNewCategoryOptionState extends State<AddNewCategoryOption> {
-  _AddNewCategoryOptionState(this.title);
-  final String title;
+  _AddNewCategoryOptionState(this.entryType);
+  final EntryType entryType;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class _AddNewCategoryOptionState extends State<AddNewCategoryOption> {
       child: InkWell(
         onTap: (){
           var routerMap = Map<String, dynamic>();
-          routerMap["categoryFromRoute"] = "test-Data2 from category-selection";
+          routerMap["entryTypeFromRoute"] = this.entryType;
           Navigator.pushNamed(context, "/addNewEventCategory/addNewEventSubCategory", arguments: routerMap);
         },
         child: Container(
@@ -46,7 +46,7 @@ class _AddNewCategoryOptionState extends State<AddNewCategoryOption> {
                     ),
                     Expanded(
                       child: Text(
-                        this.title,
+                        this.entryType.name,
                         style: TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.w500,

@@ -7,17 +7,21 @@ import 'package:mobile_health/screens/AddNewEntrySubCategoryScreen.dart';
 class CustomRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+
       case '/addNewEventCategory':
         return MaterialPageRoute(builder: (_) => AddNewEntryCategoryScreen());
+
       case '/addNewEventCategory/addNewEventSubCategory':
         var data = settings.arguments as Map<String, dynamic>;
-        var categoryFromRoute = data["categoryFromRoute"];
-        return MaterialPageRoute(builder: (_) => AddNewEntrySubCategoryScreen(categoryFromRoute));
+        var entryTypeFromRoute = data["entryTypeFromRoute"];
+        return MaterialPageRoute(builder: (_) => AddNewEntrySubCategoryScreen(entryTypeFromRoute));
+
       case '/addNewEventCategory/addNewEventSubCategory/addNewEntry':
         var data = settings.arguments as Map<String, dynamic>;
-        var categoryFromRoute = data["categoryFromRoute"];
-        var subCategoryFromRoute = data["subCategoryFromRoute"];
-        return MaterialPageRoute(builder: (_) => AddNewEntryScreen(categoryFromRoute, subCategoryFromRoute));
+        var parentEntryType = data["parentEntryType"];
+        var subEntryType = data["subEntryType"];
+        return MaterialPageRoute(builder: (_) => AddNewEntryScreen(parentEntryType, subEntryType));
+
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(

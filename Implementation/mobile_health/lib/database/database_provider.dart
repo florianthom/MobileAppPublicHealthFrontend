@@ -54,7 +54,7 @@ class DatabaseProvider {
     String dbPath = await getDatabasesPath();
 
     return await openDatabase(
-      join(dbPath, 'ThyroHelph1.db'),
+      join(dbPath, 'ThyroHelph2.db'),
       version: 1, //change this number on changes to DB model
       onCreate: (Database database, int version) async {
         print("creating Diary table");
@@ -114,13 +114,19 @@ class DatabaseProvider {
 
         await database.transaction((txn) async {
           await txn.rawInsert(
-              'INSERT INTO $TABLE_UNIT ($COLUMN_NAME) VALUES ("m"), ("g"), ("km"), ("kg"), ("min"), ("sec"), ("h")');
+              'INSERT INTO $TABLE_UNIT ($COLUMN_NAME) VALUES ("m"), ("g"), ("km"), ("kg"), ("min"), ("sec"), ("h"), ("mood")');
         });
 
         await database.transaction((txn) async {
           await txn.rawInsert(
-              'INSERT INTO $TABLE_ENTRYTYPE ($COLUMN_NAME, $COLUMN_DESCRIPTION) VALUES ("Sport", "sportliche Aktivitäten"), ("Ernährung", "Obergruppe für Nahrungsmittel"), ("Stimmung", "Obergruppe für Stimmungsänderungen")');
+              'INSERT INTO $TABLE_ENTRYTYPE ($COLUMN_NAME, $COLUMN_DESCRIPTION) VALUES ("Sport", "sportliche Aktivitäten"), ("Ernährung", "Obergruppe für Nahrungsmittel"), ("Stimmung", "Obergruppe für Stimmungsänderungen"), ("Schlaf", "Quantität des Schlafs")');
         });
+
+        await database.transaction((txn) async {
+          await txn.rawInsert(
+              'INSERT INTO $TABLE_ENTRYTYPE ($COLUMN_NAME, $COLUMN_DESCRIPTION, $COLUMN_PARENTTYPEID) VALUES ("Joggen", "Joggen mit kurzem Sprint", "1")');
+        });
+
 
         await database.transaction((txn) async {
           await txn
@@ -129,12 +135,12 @@ class DatabaseProvider {
 
         await database.transaction((txn) async {
           await txn.rawInsert(
-              'INSERT INTO $TABLE_DIARY_ENTRY ($COLUMN_DATE, $COLUMN_COMMENT, $COLUMN_DIARYID) VALUES ("2021-01-20", "Dies ist ein Beispieleintrag", 1)');
+              'INSERT INTO $TABLE_DIARY_ENTRY ($COLUMN_DATE, $COLUMN_COMMENT, $COLUMN_DIARYID) VALUES ("2021-01-20", "Dies ist ein Beispieleintrag für Sport", 1), ("2021-01-20", "Dies ist ein Beispieleintrag für Mood", 2)');
         });
 
         await database.transaction((txn) async {
           await txn.rawInsert(
-              'INSERT INTO $TABLE_ENTRY_EVENT ($COLUMN_QUANTITY, $COLUMN_UNIT, $COLUMN_DIARY_ENTRY_ID, $COLUMN_ENTRYTYPE) VALUES (50, 1, 1, 1)');
+              'INSERT INTO $TABLE_ENTRY_EVENT ($COLUMN_QUANTITY, $COLUMN_UNIT, $COLUMN_DIARY_ENTRY_ID, $COLUMN_ENTRYTYPE) VALUES (50, 1, 1, 1), (40, 1, 1, 1), (70, 1, 2, 1), (7, 8, 2, 3)');
         });
       },
     );

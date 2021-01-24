@@ -5,18 +5,21 @@ import 'package:mobile_health/models/EntryType.dart';
 
 class AddNewSubCategoryOption extends StatefulWidget {
 
-  final String title;
+  final EntryType parentEntryType;
+  final EntryType subEntryType;
 
-  AddNewSubCategoryOption({String title}) : this.title = title;
+  AddNewSubCategoryOption({EntryType parentEntryType, EntryType subEntryType}) : this.parentEntryType= parentEntryType, this.subEntryType = subEntryType;
 
   @override
-  _AddNewSubCategoryOptionState createState() => _AddNewSubCategoryOptionState(title);
+  _AddNewSubCategoryOptionState createState() => _AddNewSubCategoryOptionState(parentEntryType, subEntryType);
 }
 
 ///*
 class _AddNewSubCategoryOptionState extends State<AddNewSubCategoryOption> {
-  _AddNewSubCategoryOptionState(this.title);
-  final String title;
+  _AddNewSubCategoryOptionState(this.parentEntryType, this.subEntryType);
+  final EntryType parentEntryType;
+
+  final EntryType subEntryType;
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +28,8 @@ class _AddNewSubCategoryOptionState extends State<AddNewSubCategoryOption> {
       child: InkWell(
         onTap: (){
           var routerMap = Map<String, dynamic>();
-          routerMap["categoryFromRoute"] = "test-Data2 from category-selection";
-          routerMap["subCategoryFromRoute"] = "test-Data3 from category-selection";
+          routerMap["parentEntryType"] = this.parentEntryType;
+          routerMap["subEntryType"] = this.subEntryType;
           Navigator.pushNamed(context, "/addNewEventCategory/addNewEventSubCategory/addNewEntry", arguments: routerMap);
         },
         child: Container(
@@ -47,7 +50,7 @@ class _AddNewSubCategoryOptionState extends State<AddNewSubCategoryOption> {
                     ),
                     Expanded(
                       child: Text(
-                        this.title,
+                        this.subEntryType.name,
                         style: TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.w500,

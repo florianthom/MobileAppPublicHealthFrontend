@@ -7,6 +7,9 @@ import 'package:mobile_health/components/TitleCardAddNewEntryCategory.dart';
 import 'package:mobile_health/components/TitleCardHome.dart';
 import 'package:mobile_health/components/TitleCardStatistics.dart';
 import 'package:mobile_health/components/TopAppBar.dart';
+import 'package:mobile_health/database/database_provider.dart';
+import 'package:mobile_health/models/DiaryEntry.dart';
+import 'package:mobile_health/models/EntryType.dart';
 
 class AddNewEntryCategoryScreen extends StatefulWidget {
   @override
@@ -15,8 +18,23 @@ class AddNewEntryCategoryScreen extends StatefulWidget {
 
 ///*
 class _AddNewEntryCategoryScreenState extends State<AddNewEntryCategoryScreen> {
+
+  ///*
+  Future<List<EntryType>> getDataAsync() async {
+    return DatabaseProvider.db.getEntryTypes().then((value) => value.where((element) => element.parentTypeId == null).toList());
+  }
+
+  ///*
   @override
   Widget build(BuildContext context) {
+    return FutureBuilder(
+        future: getDataAsync(),
+        builder: (context, snapshot) =>
+        snapshot.hasData ? _buildWidget(snapshot.data) : const SizedBox());
+  }
+
+  ///*
+  Widget _buildWidget(List<EntryType> data) {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -35,9 +53,10 @@ class _AddNewEntryCategoryScreenState extends State<AddNewEntryCategoryScreen> {
             Padding(
                 padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
               child: Column(
-                children: [
-                  AddNewCategoryOption(title: "placeholder for category"),
-                ],
+                children: data.map((e) => AddNewCategoryOption(entryType: e)).take(3).toList(),
+                // [
+                //   AddNewCategoryOption(title: "hi"),
+                // ],
               ),
             )
           ],
