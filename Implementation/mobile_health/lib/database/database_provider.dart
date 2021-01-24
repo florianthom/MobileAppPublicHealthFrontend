@@ -127,7 +127,6 @@ class DatabaseProvider {
               'INSERT INTO $TABLE_ENTRYTYPE ($COLUMN_NAME, $COLUMN_DESCRIPTION, $COLUMN_PARENTTYPEID) VALUES ("Joggen", "Joggen mit kurzem Sprint", "1")');
         });
 
-
         await database.transaction((txn) async {
           await txn
               .rawInsert('INSERT INTO $TABLE_DIARY ($COLUMN_ID) VALUES (1)');
@@ -400,6 +399,26 @@ class DatabaseProvider {
 
     return await db.update(tableName, entry.toMap(),
         where: "$COLUMN_ID = ?", whereArgs: [entry.id]);
+  }
+
+  Future<List<EntryEvent>> getEntryEvents() async {
+    final db = await database;
+
+    var entries = await db.query(TABLE_ENTRY_EVENT, columns: [COLUMN_ID]);
+
+    if (entries.length > 0) {
+      List<EntryEvent> eventList = List<EntryEvent>();
+
+      await Future.forEach(entries, (element) async {
+        EntryEvent entry = await getEntryEventById(element[COLUMN_ID]);
+
+        eventList.add(entry);
+      });
+
+      return eventList;
+    }
+
+    return null;
   }
 
   ///*
