@@ -10,6 +10,8 @@ import 'package:mobile_health/components/TitleCardMore.dart';
 import 'package:mobile_health/components/TitleCardStatistics.dart';
 import 'package:mobile_health/components/TopAppBar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:mobile_health/database/database_provider.dart';
+import 'package:mobile_health/models/DiaryEntry.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -46,8 +48,23 @@ class _CalenderScreenState extends State<CalenderScreen> {
     print('CALLBACK: _onVisibleDaysChanged');
   }
 
+  Future<List<DiaryEntry>> getDataAsync() async {
+
+    var returnValue = DatabaseProvider.db.getDiaryEntries();
+    return returnValue;
+  }
+
+  ///*
   @override
   Widget build(BuildContext context) {
+    return FutureBuilder(
+        future: getDataAsync(),
+        builder: (context, snapshot) =>
+        snapshot.hasData ? _buildWidget(snapshot.data) : Container(color: Colors.white, child: Container(height: 100, width: 100, child: Center(child: CircularProgressIndicator())),));
+  }
+
+  ///*
+  Widget _buildWidget(List<DiaryEntry> data) {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -61,7 +78,8 @@ class _CalenderScreenState extends State<CalenderScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildTableCalendar(),
+            _buildTableCalendar(data),
+            const SizedBox(height: 8.0)
           ],
         ),
       ),
@@ -72,13 +90,14 @@ class _CalenderScreenState extends State<CalenderScreen> {
   }
 
   ///*
-  Widget _buildTableCalendar() {
+  Widget _buildTableCalendar(List<DiaryEntry> data) {
+    data = data;
     return BlocBuilder<TableCalenderBloc, TableCalenderState>(
       builder: (context, state) {
         return TableCalendar(
           calendarController: _calendarController,
-          events: null,
-          holidays: null,
+          events: Map.fromEntries(data.map((e) => MapEntry(e.toDataTimeConvert(), e.entryEvents))),
+          holidays: {},
           startingDayOfWeek: StartingDayOfWeek.monday,
           calendarStyle: CalendarStyle(
             selectedColor: Colors.deepOrange[400],
@@ -102,8 +121,8 @@ class _CalenderScreenState extends State<CalenderScreen> {
           onVisibleDaysChanged: _onVisibleDaysChanged,
           onCalendarCreated:
               (DateTime first, DateTime last, CalendarFormat format) {
-            this._calendarController.setSelectedDay(state.daySelected);
-          },
+                this._calendarController.setSelectedDay(state.daySelected);
+            },
         );
       },
     );
