@@ -42,5 +42,8 @@
     "@homeHeaderSnipped": {},
 
     "showDiaryEntry": "Details of the diary entry",
-    "@showDiaryEntry": {}
+    "@showDiaryEntry": {},
+
+    "titleCardAddNewEvent_titel": "Add Event",
+    "@titleCardAddNewEvent_titel": {}
 }

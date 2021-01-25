@@ -3,6 +3,7 @@ import 'package:mobile_health/components/AddNewCategoryOption.dart';
 import 'package:mobile_health/components/CostumBottomFloatingButton.dart';
 import 'package:mobile_health/components/CustomBottomNavigationBar.dart';
 import 'package:mobile_health/components/StaticTopAppBar.dart';
+import 'package:mobile_health/components/TitleCardAddNewEntry.dart';
 import 'package:mobile_health/components/TitleCardAddNewEntryCategory.dart';
 import 'package:mobile_health/components/TitleCardAddNewEntrySubCategory.dart';
 import 'package:mobile_health/components/TitleCardHome.dart';
@@ -75,7 +76,7 @@ class _AddNewEntryScreenState extends State<AddNewEntryScreen> {
           color: Colors.white,
           child: Column(
             children: [
-              TitleCardAddNewEntrySubCategory(),
+              TitleCardAddNewEntry(),
               Padding(
                 padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
                 child: Column(
