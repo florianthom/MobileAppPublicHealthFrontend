@@ -171,9 +171,10 @@ class NumericComboLinePointChart extends StatelessWidget {
   ///find out values of intensity
   static Future<LinkedHashMap<DateTime, double>> intensityOfSport(List<DateTime> week) async {
 
+    print(10);
     List<DiaryEntry> entries = await DatabaseProvider.db.getDiaryEntries();
     LinkedHashMap<DateTime, double> sportWeek = new LinkedHashMap<DateTime, double>();
-
+    print(11);
     week.forEach((date) {
       entries.forEach((entry) {
         if (entry.dateString == date.toIso8601String()) {
@@ -184,6 +185,7 @@ class NumericComboLinePointChart extends StatelessWidget {
         }
       });
     });
+    print(12);
 
     //print(sportWeek);
     //List<EntryEvent> events = await DatabaseProvider.db.getEntryEvents();
@@ -200,6 +202,7 @@ class NumericComboLinePointChart extends StatelessWidget {
     //    intensity.add();
     //});
 
+    print(13);
     return sportWeek;
   }
 
@@ -225,6 +228,7 @@ class NumericComboLinePointChart extends StatelessWidget {
     //var weeklyFood = intensityOfFood(week);
 
     print(1.5);
+    print(weeklySports);
     ///Graph for weekly sports
     final sportsSalesData = [
       new LinearSales(week[0], weeklySports[0]),
