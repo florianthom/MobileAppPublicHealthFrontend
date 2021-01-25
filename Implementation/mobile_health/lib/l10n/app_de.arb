@@ -1,35 +1,32 @@
 {
   "helloWorld": "asdfasdf",
   "@helloWorld": {},
-
   "titleCardAddNewTitle_titel": "Welche Eventkategorie möchtest du hinzufügen?",
   "@titleCardAddNewTitle_titel": {},
-
   "staticsScreen_title": "Statistiken",
   "@staticsScreen_title": {},
-
   "moreScreen_title": "Mehr",
   "@initialAppInstallationScreen_adcopy": {},
-
   "initialAppInstallationScreen_adcopy": "Mach dein Leben besser.",
   "@initialAppInstallationScreen_adcopy": {},
-
   "events_today": "Heutige Events",
   "@events_today": {},
-
-
-  "addEventCategory":  "Event-Category hinzufügen",
+  "addEventCategory": "Event-Category hinzufügen",
   "@addEventCategory": {},
-
   "addMarker": "Marker hinzufügen",
   "@addMarker": {},
-
   "about": "Über uns",
   "@about": {},
-
   "legalInformation": "Impressum",
   "@legalInformation": {},
-
   "titleCardAddNewSubTitle_titel": "Welche Eventsubkategorie möchtest du hinzufügen?",
-  "@titleCardAddNewSubTitle_titel": {}
+  "@titleCardAddNewSubTitle_titel": {},
+  "homeHeaderNumber": "Nr.",
+  "@homeHeaderNumber": {},
+  "homeHeaderSnipped": "Kommentarauszug",
+  "@homeHeaderSnipped": {},
+
+
+  "showDiaryEntry": "Details zum Tagebucheintrag",
+  "@showDiaryEntry": {}
 }

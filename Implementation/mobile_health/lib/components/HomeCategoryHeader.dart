@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Add this line
 
 class HomeCategoryHeader extends StatefulWidget {
   @override
@@ -18,7 +19,7 @@ class _HomeCategoryHeaderState extends State<HomeCategoryHeader> {
             Row(
             children: [
               Text(
-                "Nr.",
+                AppLocalizations.of(context).homeHeaderNumber,
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w500,
@@ -29,7 +30,7 @@ class _HomeCategoryHeaderState extends State<HomeCategoryHeader> {
                 width: 25,
               ),
               Text(
-                  "Commentar Snippet",
+                AppLocalizations.of(context).homeHeaderSnipped,
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w500,

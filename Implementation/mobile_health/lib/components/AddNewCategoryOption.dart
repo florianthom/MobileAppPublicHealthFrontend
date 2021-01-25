@@ -25,8 +25,8 @@ class _AddNewCategoryOptionState extends State<AddNewCategoryOption> {
       child: InkWell(
         onTap: (){
           var routerMap = Map<String, dynamic>();
-          routerMap["entryTypeFromRoute"] = this.entryType;
-          Navigator.pushNamed(context, "/addNewEventCategory/addNewEventSubCategory", arguments: routerMap);
+          routerMap["diaryEntry"] = this.entryType;
+          Navigator.pushNamed(context, "/diaryEntry", arguments: routerMap);
         },
         child: Container(
 
