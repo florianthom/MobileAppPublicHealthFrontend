@@ -3,6 +3,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 ///*
 class TitleCardHome extends StatelessWidget {
+
+  const TitleCardHome();
+
   @override
   Widget build(BuildContext context) {
     return Column(

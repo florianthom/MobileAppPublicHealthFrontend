@@ -5,6 +5,7 @@ import 'package:mobile_health/database/database_provider.dart';
 import 'package:mobile_health/models/EntryType.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_health/models/navbar/navbarRoute.dart';
+import 'package:mobile_health/screens/AddNewEntryCategoryScreen.dart';
 
 class CostumBottomFloatingButton extends StatefulWidget {
   @override
@@ -41,7 +42,12 @@ class _CostumBottomFloatingButtonState extends State<CostumBottomFloatingButton>
 
             context.read<NavbarBloc>()
             .add(SetNewNavBarRoute(NavbarRoute.AddItem.index));
-            Navigator.pushReplacementNamed(context, "/addNewEventCategory");
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => AddNewEntryCategoryScreen()),
+                  (Route<dynamic> route) => false,
+            );
 
             // EntryType tmpType = EntryType(
             //   description: "test1",
