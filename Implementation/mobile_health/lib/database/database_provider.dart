@@ -139,7 +139,7 @@ class DatabaseProvider {
 
         await database.transaction((txn) async {
           await txn.rawInsert(
-              'INSERT INTO $TABLE_ENTRY_EVENT ($COLUMN_QUANTITY, $COLUMN_UNIT, $COLUMN_DIARY_ENTRY_ID, $COLUMN_ENTRYTYPE) VALUES (50, 1, 1, 1), (40, 1, 1, 1), (70, 1, 2, 1), (7, 8, 2, 3)');
+              'INSERT INTO $TABLE_ENTRY_EVENT ($COLUMN_QUANTITY, $COLUMN_UNIT, $COLUMN_DIARY_ENTRY_ID, $COLUMN_ENTRYTYPE) VALUES (50, 1, 1, 1), (40, 1, 1, 1), (70, 1, 2, 1), (7, 8, 3, 3), (8, 8, 2, 3), (10, 8, 4, 3)');
         });
       },
     );
