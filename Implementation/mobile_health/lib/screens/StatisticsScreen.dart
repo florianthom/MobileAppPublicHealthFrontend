@@ -149,17 +149,20 @@ class NumericComboLinePointChart extends StatelessWidget {
 
     List<DateTime> weekNew;
 
+    //Ändern zu Form YYYY-MM-DD !!!
+
     DateTime today = new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
-    //String dayToday ="${today.day.toString().padLeft(2,'0')}-${today.month.toString().padLeft(2,'0')}";
+    //String dayToday ="${today.year.toString().padLeft(4,'0')}-${today.month.toString().padLeft(2,'0')}-${today.day.toString().padLeft(2,'0')}";
     weekNew = [today];
 
     for (int i = 0; i < 6; i++) {
-      DateTime tomorrow = DateTime(today.year, today.month, today.day + 1;
-      //String dayTomorrow ="${tomorrow.day.toString().padLeft(2,'0')}-${tomorrow.month.toString().padLeft(2,'0')}";
+      DateTime tomorrow = DateTime(today.year, today.month, today.day - 1);
+      //String dayTomorrow ="${tomorrow.year.toString().padLeft(4,'0')}-${tomorrow.month.toString().padLeft(2,'0')}-${today.day.toString().padLeft(2,'0')}";
       weekNew.add(tomorrow);
       today = tomorrow;
     }
 
+    //print(weekNew);
     return weekNew; //YYYY-MM-DD
   }
 
@@ -180,7 +183,7 @@ class NumericComboLinePointChart extends StatelessWidget {
 
   }
 
-  ///find out values of intensity
+  ///find out values of sport intensity 0 - 120 min
   static Future<List<double>> intensityOfSport(List<DateTime> week) async {
 
     List<DiaryEntry> entries = await DatabaseProvider.db.getDiaryEntries();
@@ -189,14 +192,15 @@ class NumericComboLinePointChart extends StatelessWidget {
     week.forEach((date) {
       entries.forEach((entry) {
 
-        print(date.toIso8601String());
-        print(entry.dateString);
-        print(entry.toString());
-
         if (entry.dateString == date.toString()) {
+          //Fehler beim Vergleich
+          //I/flutter ( 7734): 2021-01-20
+          //I/flutter ( 7734): 2021-01-20T00:00:00.000
+          //date von week ändern
+
           List<EntryEvent> sportEvents = entry.entryEvents.where((oneEvent) => oneEvent.entryType.id == 1 && oneEvent.unit.name == 'min');
 
-          print(sportEvents);
+          //print(sportEvents);
 
           sportEvents.forEach((sportEvent) {
             sportWeek[date] += sportEvent.quantity;
@@ -208,12 +212,47 @@ class NumericComboLinePointChart extends StatelessWidget {
     //List<EntryEvent> events = await DatabaseProvider.db.getEntryEvents();
 
     ///List of week events sorted from today til today in 7 days
-    List<double> intensity;
-    sportWeek.forEach((k, v) => intensity.add(v));
+    List<double> sportIntensity;
+    sportWeek.forEach((k, v) => sportIntensity.add(v));
 
     print(13);
-    //print(intensity);
-    return intensity;
+    //print(sportIntensity);
+    return sportIntensity;
+  }
+
+  ///find out values of mood intensity -> 1-10 mood scale
+  static Future<List<double>> intensityOfMood(List<DateTime> week) async {
+
+    List<DiaryEntry> entries = await DatabaseProvider.db.getDiaryEntries();
+
+    LinkedHashMap<DateTime, double> moodWeek = new LinkedHashMap<DateTime, double>();
+    week.forEach((date) {
+      entries.forEach((entry) {
+
+        if (entry.dateString == date.toString()) {
+          //Fehler beim Vergleich
+          //I/flutter ( 7734): 2021-01-20
+          //I/flutter ( 7734): 2021-01-20T00:00:00.000
+          //date von week ändern
+
+          List<EntryEvent> moodEvents = entry.entryEvents.where((oneEvent) => oneEvent.entryType.id == 4 && oneEvent.unit.name == 'mood');
+
+          moodEvents.forEach((moodEvent) {
+            moodWeek[date] = moodEvent.quantity;
+          });
+        }
+      });
+    });
+
+    //List<EntryEvent> events = await DatabaseProvider.db.getEntryEvents();
+
+    ///List of week events sorted from today til today in 7 days
+    List<double> moodIntensity;
+    moodWeek.forEach((k, v) => moodIntensity.add(v));
+
+    print(13);
+    //print(moodIntensity);
+    return moodIntensity;
   }
 
   @override
@@ -229,11 +268,8 @@ class NumericComboLinePointChart extends StatelessWidget {
 
     var week = formatWeek();
     var daysOfWeek = formatDay(week);
-
-    //print(daysOfWeek);
-
     var weeklySports = await intensityOfSport(week);
-    //var weeklyMood = intensityOfMood(week);
+    var weeklyMood = await intensityOfMood(week);
     //var weeklySleep = intensityOfSleep(week);
     //var weeklyFood = intensityOfFood(week);
 
@@ -241,24 +277,24 @@ class NumericComboLinePointChart extends StatelessWidget {
     print(weeklySports);
     ///Graph for weekly sports
     final sportsSalesData = [
-      new LinearSales(daysOfWeek[0], weeklySports[0]),
-      new LinearSales(daysOfWeek[1], weeklySports[1]),
-      new LinearSales(daysOfWeek[2], weeklySports[2]),
-      new LinearSales(daysOfWeek[3], weeklySports[3]),
-      new LinearSales(daysOfWeek[4], weeklySports[4]),
-      new LinearSales(daysOfWeek[5], weeklySports[5]),
       new LinearSales(daysOfWeek[6], weeklySports[6]),
+      new LinearSales(daysOfWeek[5], weeklySports[5]),
+      new LinearSales(daysOfWeek[4], weeklySports[4]),
+      new LinearSales(daysOfWeek[3], weeklySports[3]),
+      new LinearSales(daysOfWeek[2], weeklySports[2]),
+      new LinearSales(daysOfWeek[1], weeklySports[1]),
+      new LinearSales(daysOfWeek[0], weeklySports[0]),
     ];
 
     ///Data graph for sleep in hours
      final moodSalesData = [
-       new LinearSales(daysOfWeek[0], 5),
-       new LinearSales(daysOfWeek[1], 25),
-       new LinearSales(daysOfWeek[2], 10),
-       new LinearSales(daysOfWeek[3], 75),
-       new LinearSales(daysOfWeek[4], 5),
-       new LinearSales(daysOfWeek[5], 80),
-       new LinearSales(daysOfWeek[6], 75),
+       new LinearSales(daysOfWeek[6], weeklyMood[6]),
+       new LinearSales(daysOfWeek[5], weeklyMood[5]),
+       new LinearSales(daysOfWeek[4], weeklyMood[4]),
+       new LinearSales(daysOfWeek[3], weeklyMood[3]),
+       new LinearSales(daysOfWeek[2], weeklyMood[2]),
+       new LinearSales(daysOfWeek[1], weeklyMood[1]),
+       new LinearSales(daysOfWeek[0], weeklyMood[0]),
      ];
 
     print(3);
@@ -311,7 +347,7 @@ class NumericComboLinePointChart extends StatelessWidget {
 
 /// Sample linear data type - axis
 class LinearSales {
-  final int day; //day
+  final num day; //day
   final double intensity; //intensity of event
 
   LinearSales(this.day, this.intensity);
