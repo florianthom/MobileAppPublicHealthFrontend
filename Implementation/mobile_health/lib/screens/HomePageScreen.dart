@@ -60,7 +60,9 @@ class _HomePageScreenState extends State<HomePageScreen> {
                   children: [
                   BlocBuilder<TableCalenderBloc, TableCalenderState>(
                     builder: (context, state) {
-                      return HomeCategoryList( diaryEntries: data.where((element) => DateTime.parse(element.dateString) == (DateTime(state.daySelected.year, state.daySelected.month, state.daySelected.day))).toList());
+                      var diaryEntries = data.where((element) => DateTime.parse(element.dateString) == (DateTime(state.daySelected.year, state.daySelected.month, state.daySelected.day))).toList();
+                      print(diaryEntries);
+                      return HomeCategoryList( key: UniqueKey(),diaryEntries: diaryEntries);
                     },
                   ),
                     SizedBox(

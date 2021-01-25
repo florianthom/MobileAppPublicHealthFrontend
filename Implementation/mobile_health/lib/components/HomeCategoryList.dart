@@ -7,21 +7,25 @@ import 'package:mobile_health/models/EntryType.dart';
 
 class HomeCategoryList extends StatefulWidget {
 
+  final Key key;
   final List<DiaryEntry> diaryEntries;
+
   HomeCategoryList({
-    List<DiaryEntry> diaryEntries
+    List<DiaryEntry> diaryEntries, @required this.key
   }): this.diaryEntries = diaryEntries;
 
+
   @override
-  _HomeCategoryListState createState() => _HomeCategoryListState(diaryEntries);
+  _HomeCategoryListState createState() => _HomeCategoryListState(diaryEntries, key);
 }
 
 ///*
 class _HomeCategoryListState extends State<HomeCategoryList> {
 
+  final Key key;
   final List<DiaryEntry> diaryEntries;
 
-  _HomeCategoryListState(this.diaryEntries);
+  _HomeCategoryListState(this.diaryEntries, this.key);
 
   @override
   Widget build(BuildContext context) {

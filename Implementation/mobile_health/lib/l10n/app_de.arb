@@ -28,6 +28,9 @@
   "showDiaryEntry": "Details zum Tagebucheintrag",
   "@showDiaryEntry": {},
   "titleCardAddNewEvent_titel": "Event hinzufügen",
-  "@titleCardAddNewEvent_titel": {}
+  "@titleCardAddNewEvent_titel": {},
+  "showEventDetails": "Eventdetails",
+  "@showEventDetails": {}
+
 
 }

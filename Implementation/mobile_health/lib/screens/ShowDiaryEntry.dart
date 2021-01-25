@@ -14,7 +14,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mobile_health/models/DiaryEntry.dart'; // Add this line
 
 class ShowDiaryEntry extends StatefulWidget {
-
   final DiaryEntry diaryEntry;
 
   const ShowDiaryEntry({this.diaryEntry});
@@ -25,11 +24,9 @@ class ShowDiaryEntry extends StatefulWidget {
 
 ///*
 class _ShowDiaryEntryState extends State<ShowDiaryEntry> {
-
   final DiaryEntry diaryEntry;
 
   _ShowDiaryEntryState(this.diaryEntry);
-
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +35,8 @@ class _ShowDiaryEntryState extends State<ShowDiaryEntry> {
     return Scaffold(
       backgroundColor: Colors.black45,
       extendBodyBehindAppBar: false,
-
-      appBar: StaticTopAppBar(title: AppLocalizations.of(context).moreScreen_title),
-
+      appBar:
+          StaticTopAppBar(title: AppLocalizations.of(context).showEventDetails),
       body: Container(
         color: Colors.white,
         child: Column(
@@ -48,46 +44,102 @@ class _ShowDiaryEntryState extends State<ShowDiaryEntry> {
             TitleCardShowDiaryEntry(),
             Padding(
               padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-              child: Column(
-                ///*
-                children: [
-                  Row(
-                    children: [
-                      Text("DiaryEntry-ID\n"),
-                      Text(this.diaryEntry.id.toString()),
-                    ],
-            ),
-                    Row(
-                      children: [
-                        Text("DiaryEntry-Date\n"),
-                        Text(
-                            new DateFormat('yyyy-MM-dd').format(DateTime.parse(this.diaryEntry.dateString))
-                        ),
-                      ],
+              child: Container(
+                decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Color.fromARGB(255, 101, 220, 213),
                     ),
-                  Row(
+                    borderRadius: BorderRadius.all(Radius.circular(10))),
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                  child: Column(
+                    ///*
                     children: [
-                      Text("DiaryEntry-Events\n"),
-                      Column(
-                        children: this.diaryEntry.entryEvents.map((e) => Container(
-                          child: Row(
-                            children: [
-                              Text(e.entryType.name + "\t"),
-                              Text(e.quantity.toString()),
-                              Text(e.unit.name)
-                            ],
-                          ),
-                        )).toList(),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                "DiaryEntry-ID:",
+                                style: TextStyle(
+                                    color: Color.fromARGB(255, 86, 86, 86),
+                                    fontSize: 20),
+                              ),
+                            ),
+                            Text(
+                              this.diaryEntry.id.toString(),
+                              style: TextStyle(
+                                  color: Color.fromARGB(255, 86, 86, 86),
+                                  fontSize: 20),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                        child: Row(
+                          children: [
+                            Expanded(child: Text("DiaryEntry-Date", style: TextStyle(
+                                color: Color.fromARGB(255, 86, 86, 86),
+                                fontSize: 20),)),
+                            Text(new DateFormat('yyyy-MM-dd').format(
+                                DateTime.parse(this.diaryEntry.dateString)), style: TextStyle(
+                                color: Color.fromARGB(255, 86, 86, 86),
+                                fontSize: 20),),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Text("DiaryEntry-Events",
+                          style: TextStyle(
+                                color: Color.fromARGB(255, 86, 86, 86),
+                                fontSize: 20),),
+                            ),
+                            Column(
+                              children: this
+                                  .diaryEntry
+                                  .entryEvents
+                                  .map((e) => Container(
+                                        child: Row(
+                                          children: [
+                                            Text(e.entryType.name + " ", style: TextStyle(
+                                                color: Color.fromARGB(255, 86, 86, 86),
+                                                fontSize: 20),),
+                                            Text(e.quantity.toString(), style: TextStyle(
+                                                color: Color.fromARGB(255, 86, 86, 86),
+                                                fontSize: 20),),
+                                            Text(e.unit.name, style: TextStyle(
+                                                color: Color.fromARGB(255, 86, 86, 86),
+                                                fontSize: 20),)
+                                          ],
+                                        ),
+                                      ))
+                                  .toList(),
+                            )
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                        child: Row(
+                          children: [
+                            Expanded(child: Text("DiaryEntry-Comment", style: TextStyle(
+                                color: Color.fromARGB(255, 86, 86, 86),
+                                fontSize: 20),)),
+                            Text(this.diaryEntry.comment, style: TextStyle(
+                                color: Color.fromARGB(255, 86, 86, 86),
+                                fontSize: 20),)
+                          ],
+                        ),
                       )
                     ],
                   ),
-                  Row(
-                    children: [
-                      Text("DiaryEntry-Comment\n"),
-                      Text(this.diaryEntry.comment)
-                    ],
-                  )
-                ],
+                ),
               ),
             )
           ],

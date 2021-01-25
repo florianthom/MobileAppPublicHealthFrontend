@@ -45,5 +45,8 @@
     "@showDiaryEntry": {},
 
     "titleCardAddNewEvent_titel": "Add Event",
-    "@titleCardAddNewEvent_titel": {}
+    "@titleCardAddNewEvent_titel": {},
+
+    "showEventDetails": "Details of event",
+    "@showEventDetails": {}
 }
