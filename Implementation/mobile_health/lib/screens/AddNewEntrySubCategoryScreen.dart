@@ -55,22 +55,24 @@ class _AddNewEntrySubCategoryScreenState extends State<AddNewEntrySubCategoryScr
 
       appBar: TopAppBar(),
 
-      body: Container(
-        color: Colors.white,
-        child: Column(
-          children: [
-            TitleCardAddNewEntrySubCategory(),
-            Padding(
-                padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-              child: Column(
-                children: data.map((e) => AddNewSubCategoryOption(parentEntryType: this.entryTypeFromRoute, subEntryType: e)).take(3).toList(),
+      body: SingleChildScrollView(
+        child: Container(
+          color: Colors.white,
+          child: Column(
+            children: [
+              TitleCardAddNewEntrySubCategory(),
+              Padding(
+                  padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                child: Column(
+                  children: data.map((e) => AddNewSubCategoryOption(parentEntryType: this.entryTypeFromRoute, subEntryType: e)).take(3).toList(),
 
-                // [
-                //   AddNewSubCategoryOption(title: this.entryTypeFromRoute.name),
-                // ],
-              ),
-            )
-          ],
+                  // [
+                  //   AddNewSubCategoryOption(title: this.entryTypeFromRoute.name),
+                  // ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: CustomBottomNavigationBar(),
