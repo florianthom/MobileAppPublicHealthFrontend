@@ -230,27 +230,51 @@ class NumericComboLinePointChart extends StatelessWidget {
     print(1.5);
     print(weeklySports);
     ///Graph for weekly sports
+    // final sportsSalesData = [
+    //   new LinearSales(week[0], weeklySports[0]),
+    //   new LinearSales(week[1], weeklySports[1]),
+    //   new LinearSales(week[2], weeklySports[2]),
+    //   new LinearSales(week[3], weeklySports[3]),
+    //   new LinearSales(week[4], weeklySports[4]),
+    //   new LinearSales(week[5], weeklySports[5]),
+    //   new LinearSales(week[6], weeklySports[6]),
+    // ];
+
     final sportsSalesData = [
-      new LinearSales(week[0], weeklySports[0]),
-      new LinearSales(week[1], weeklySports[1]),
-      new LinearSales(week[2], weeklySports[2]),
-      new LinearSales(week[3], weeklySports[3]),
-      new LinearSales(week[4], weeklySports[4]),
-      new LinearSales(week[5], weeklySports[5]),
-      new LinearSales(week[6], weeklySports[6]),
+      new LinearSales(new DateTime.now().subtract(Duration(days: 6)), 1.0),
+      new LinearSales(new DateTime.now().subtract(Duration(days: 5)), 1.0),
+      new LinearSales(new DateTime.now().subtract(Duration(days: 4)), 1.0),
+      new LinearSales(new DateTime.now().subtract(Duration(days: 3)), 1.0),
+      new LinearSales(new DateTime.now().subtract(Duration(days: 2)), 1.0),
+      new LinearSales(new DateTime.now().subtract(Duration(days: 1)), 1.0),
+      new LinearSales(new DateTime.now().subtract(Duration(days: 0)), 1.0),
     ];
     print(2);
 
     //red line data - for building of weekly Mood
+    // final moodSalesData = [
+    //   new LinearSales(week[0], 5),
+    //   new LinearSales(week[1], 25),
+    //   new LinearSales(week[2], 10),
+    //   new LinearSales(week[3], 75),
+    //   new LinearSales(week[4], 5),
+    //   new LinearSales(week[5], 80),
+    //   new LinearSales(week[6], 75),
+    // ];
+
     final moodSalesData = [
-      new LinearSales(week[0], 5),
-      new LinearSales(week[1], 25),
-      new LinearSales(week[2], 10),
-      new LinearSales(week[3], 75),
-      new LinearSales(week[4], 5),
-      new LinearSales(week[5], 80),
-      new LinearSales(week[6], 75),
+      new LinearSales(new DateTime.now().subtract(Duration(days: 6)), 5),
+      new LinearSales(new DateTime.now().subtract(Duration(days: 5)), 25),
+      new LinearSales(new DateTime.now().subtract(Duration(days: 4)), 10),
+      new LinearSales(new DateTime.now().subtract(Duration(days: 3)), 75),
+      new LinearSales(new DateTime.now().subtract(Duration(days: 2)), 5),
+      new LinearSales(new DateTime.now().subtract(Duration(days: 1)), 80),
+      new LinearSales(new DateTime.now().subtract(Duration(days: 0)), 75),
     ];
+
+
+
+    print(3);
 
     /*final sleepSalesData = [
       new LinearSales(week[0], 5),
