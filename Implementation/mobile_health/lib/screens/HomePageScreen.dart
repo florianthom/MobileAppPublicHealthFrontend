@@ -27,7 +27,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
     // data.where((element) => DateTime.parse(element.dateString).isBefore(DateTime(DateTime.now().year, DateTime.now().month,DateTime.now().day))).toList()
 
     // var returnValue = Future<List<DiaryEntry>>.value([]);
-    var returnValue = DatabaseProvider.db.getDiaryEntries().then((value) => value.where((element) => DateTime.parse(element.dateString).isBefore(DateTime(DateTime.now().year, DateTime.now().month,DateTime.now().day))).toList());
+    var returnValue = DatabaseProvider.db.getDiaryEntries().then((value) => value.where((element) => DateTime.parse(element.dateString) == (DateTime(DateTime.now().year, DateTime.now().month,DateTime.now().day))).toList());
     return returnValue;
   }
 
@@ -47,24 +47,29 @@ class _HomePageScreenState extends State<HomePageScreen> {
       backgroundColor: Colors.black45,
       extendBodyBehindAppBar: false,
       appBar: TopAppBar(),
-      body: Container(
-        color: Colors.white,
-        child: Column(
-          children: [
-            TitleCardHome(),
-            HomeCategoryHeader(),
-            Padding(
-              padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-              child: Column(
-                children: [
-                  HomeCategoryList(
-                    // dateString = dateString: 2021-01-20
-                    diaryEntries: data,
-                  )
-                ],
+      body: SingleChildScrollView(
+        child: Container(
+          color: Colors.white,
+          child: Column(
+            children: [
+              TitleCardHome(),
+              HomeCategoryHeader(),
+              Padding(
+                padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
+                child: Column(
+                  children: [
+                    HomeCategoryList(
+                      // dateString = dateString: 2021-01-20
+                      diaryEntries: data,
+                    ),
+                    SizedBox(
+                      height: 500,
+                    )
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: CustomBottomNavigationBar(),
