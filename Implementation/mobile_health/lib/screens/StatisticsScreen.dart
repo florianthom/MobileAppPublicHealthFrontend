@@ -25,27 +25,27 @@ class StatisticsScreen extends StatefulWidget {
 
 class _StatisticsScreenState extends State<StatisticsScreen> {
 
-  Future<Diary> getDataAsync() async {
-    return DatabaseProvider.db.getDiaryById(1);
-  }
+  // Future<Diary> getDataAsync() async {
+  //   return DatabaseProvider.db.getDiaryById(1);
+  // }
 
+  bool _valueSport = false;
+  bool _valueFood = false;
+  bool _valueMood = false;
+  bool _valueSleep = false;
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: getDataAsync(),
+        future: NumericComboLinePointChart._createSampleData(_valueSport, _valueMood),
         builder: (context, snapshot) =>
-        snapshot.hasData ? _buildWidget(snapshot.data) : const SizedBox());
+        snapshot.hasData ? _buildWidget(snapshot.data) : Container(color: Colors.white, child: Container(height: 100, width: 100, child: Center(child: CircularProgressIndicator())),));
   }
 
   //print(data);
 
-  Widget _buildWidget(Diary data) {
+  Widget _buildWidget(List<charts.Series<LinearSales, dynamic>> sampleData) {
     Size size = MediaQuery.of(context).size;
-    bool _valueSport = false;
-    bool _valueFood = false;
-    bool _valueMood = false;
-    bool _valueSleep = false;
 
     return Scaffold(
       backgroundColor: Colors.black45,
@@ -126,7 +126,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
               height: 200,
 
               ///Chart added to visible statistics screen with data
-              child: NumericComboLinePointChart(NumericComboLinePointChart._createSampleData(_valueSport, _valueMood)),
+              child: NumericComboLinePointChart(sampleData),
 
               //print(getDiaryById(1).toString());
 
@@ -212,16 +212,19 @@ class NumericComboLinePointChart extends StatelessWidget {
   }
 
   ///creates a List of data and returns new charts.Series<LinearSales with specific color, axis and data
-  static List<charts.Series<LinearSales, dynamic>> _createSampleData(_valueSport, _valueMood) {
+  static Future<List<charts.Series<LinearSales, dynamic>>> _createSampleData(_valueSport, _valueMood) async {
 
     var week = formatWeek();
     //print(week);
 
+    print(0);
     var weeklySports = await intensityOfSport(week);
+    print(1);
     //var weeklyMood = intensityOfMood(week);
     //var weeklySleep = intensityOfSleep(week);
     //var weeklyFood = intensityOfFood(week);
 
+    print(1.5);
     ///Graph for weekly sports
     final sportsSalesData = [
       new LinearSales(week[0], weeklySports[0]),
@@ -232,6 +235,7 @@ class NumericComboLinePointChart extends StatelessWidget {
       new LinearSales(week[5], weeklySports[5]),
       new LinearSales(week[6], weeklySports[6]),
     ];
+    print(2);
 
     //red line data - for building of weekly Mood
     final moodSalesData = [
