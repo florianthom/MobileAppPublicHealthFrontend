@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:mobile_health/components/HomeCategoryHeader.dart';
 import 'package:mobile_health/components/HomeCategoryItem.dart';
 import 'package:mobile_health/models/DiaryEntry.dart';
@@ -18,14 +19,19 @@ class HomeCategoryList extends StatefulWidget {
 ///*
 class _HomeCategoryListState extends State<HomeCategoryList> {
 
-  _HomeCategoryListState(this.diaryEntries);
   final List<DiaryEntry> diaryEntries;
+
+  _HomeCategoryListState(this.diaryEntries);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Column(
-        children: diaryEntries.map((a) => HomeCategoryItem(diaryEntry: a)).toList(),
+        children: diaryEntries
+            .asMap()
+            .map((key, value) => MapEntry(key, Container(child: HomeCategoryItem(diaryEntryIndex: key + 1, diaryEntry: value))))
+            .values
+            .toList(),
       ),
     );
   }

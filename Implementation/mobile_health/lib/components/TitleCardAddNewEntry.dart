@@ -2,16 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 ///*
-class TitleCardHome extends StatelessWidget {
-
-  const TitleCardHome();
-
+class TitleCardAddNewEntry extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-        Card(
+    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      Card(
         color: Color.fromARGB(255, 250, 250, 250),
         margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
         child: Padding(
@@ -19,7 +14,8 @@ class TitleCardHome extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                AppLocalizations.of(context).events_today,
+                AppLocalizations.of(context).titleCardAddNewEvent_titel,
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 36.0,
                   fontWeight: FontWeight.w300,
@@ -28,14 +24,16 @@ class TitleCardHome extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 6.0,
+                height: 10.0,
               ),
-              Image.asset("assets/images/homeTitle.png")
+              Image.asset(
+                  "assets/images/kind-of-event.png",
+                width: 100,
+              ),
             ],
           ),
         ),
       ),
-      ]
-    );
+    ]);
   }
 }

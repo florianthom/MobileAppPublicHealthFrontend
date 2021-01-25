@@ -44,22 +44,21 @@ class _AddNewEntryCategoryScreenState extends State<AddNewEntryCategoryScreen> {
       ///Adding of TopAppBar
       appBar: TopAppBar(),
 
-      body: Container(
-        color: Colors.white,
-        child: Column(
-          children: [
-            ///*
-            TitleCardAddNewEntryCategory(),
-            Padding(
-                padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-              child: Column(
-                children: data.map((e) => AddNewCategoryOption(entryType: e)).take(3).toList(),
-                // [
-                //   AddNewCategoryOption(title: "hi"),
-                // ],
+      body: SingleChildScrollView(
+        child: Container(
+          color: Colors.white,
+          child: Column(
+            children: [
+              ///*
+              TitleCardAddNewEntryCategory(),
+              Padding(
+                  padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                child: Column(
+                  children: data.map<Widget>((e) => AddNewCategoryOption(entryType: e)).toList(),
+                ),
               ),
-            )
-          ],
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: CustomBottomNavigationBar(),

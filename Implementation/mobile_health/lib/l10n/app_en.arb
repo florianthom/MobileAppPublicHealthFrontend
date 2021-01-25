@@ -14,7 +14,7 @@
     "helloWorld": "asdfasdf",
     "@helloWorld": {},
 
-    "events_today": "Events today",
+    "events_today": "Events",
     "@events_today": {},
 
     "calender": "Calender",
@@ -33,5 +33,17 @@
     "@legalInformation": {},
 
     "titleCardAddNewSubTitle_titel": "What is the sub-category\nof Event to add?",
-    "@titleCardAddNewSubTitle_titel": {}
+    "@titleCardAddNewSubTitle_titel": {},
+
+    "homeHeaderNumber": "Nr.",
+    "@homeHeaderNumber": {},
+
+    "homeHeaderSnipped": "Commentar Snippet",
+    "@homeHeaderSnipped": {},
+
+    "showDiaryEntry": "Details of the diary entry",
+    "@showDiaryEntry": {},
+
+    "titleCardAddNewEvent_titel": "Add Event",
+    "@titleCardAddNewEvent_titel": {}
 }
