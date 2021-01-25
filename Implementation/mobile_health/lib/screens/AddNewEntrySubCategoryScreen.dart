@@ -65,12 +65,9 @@ class _AddNewEntrySubCategoryScreenState extends State<AddNewEntrySubCategoryScr
                   padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
                 child: Column(
                   children: data.map((e) => AddNewSubCategoryOption(parentEntryType: this.entryTypeFromRoute, subEntryType: e)).take(3).toList(),
-
-                  // [
-                  //   AddNewSubCategoryOption(title: this.entryTypeFromRoute.name),
-                  // ],
                 ),
-              )
+              ),
+              SizedBox(height: 500,),
             ],
           ),
         ),

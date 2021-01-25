@@ -33,6 +33,9 @@ class _AddNewEntryScreenState extends State<AddNewEntryScreen> {
 
   _AddNewEntryScreenState(this.parentEntryType, this.subEntryType);
 
+  final myController = TextEditingController();
+
+
   ///*
   @override
   Widget build(BuildContext context) {
@@ -59,10 +62,20 @@ class _AddNewEntryScreenState extends State<AddNewEntryScreen> {
                     ),
                   ),
                   SizedBox(height: 10),
+
+                  // add Diary Comment
+                  Container(),
+
+                  // add amount
+
+                  // add unit
+
+
+
                   RaisedButton(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18.0),
-                        side: BorderSide(color: Colors.red)),
+                        side: BorderSide(color: Color.fromARGB(255, 101, 220, 213))),
                     onPressed: () async {
                       var dateToday = DateTime.now();
                       var formatter = new DateFormat('yyyy-MM-dd');
@@ -92,9 +105,10 @@ class _AddNewEntryScreenState extends State<AddNewEntryScreen> {
                       print(storedEntryEvent);
 
                     },
-                    color: Colors.red,
-                    textColor: Colors.white,
-                    child: Text("Buy now".toUpperCase(),
+                    color: Colors.white,
+                    textColor: Colors.black,
+                    child: Text(
+                        "Save and finish",
                         style: TextStyle(fontSize: 14)),
                   ),
                 ],
