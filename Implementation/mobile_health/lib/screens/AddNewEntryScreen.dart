@@ -33,7 +33,7 @@ class _AddNewEntryScreenState extends State<AddNewEntryScreen> {
 
   _AddNewEntryScreenState(this.parentEntryType, this.subEntryType);
 
-  final myController = TextEditingController();
+  final commentController = TextEditingController();
 
 
   ///*
@@ -47,76 +47,94 @@ class _AddNewEntryScreenState extends State<AddNewEntryScreen> {
 
       appBar: TopAppBar(),
 
-      body: Container(
-        color: Colors.white,
-        child: Column(
-          children: [
-            TitleCardAddNewEntrySubCategory(),
-            Padding(
-              padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-              child: Column(
-                children: [
-                  Container(
-                    child: Text(
-                      this.parentEntryType.name + " " + this.subEntryType.name,
+      body: SingleChildScrollView(
+        child: Container(
+          color: Colors.white,
+          child: Column(
+            children: [
+              TitleCardAddNewEntrySubCategory(),
+              Padding(
+                padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                child: Column(
+                  children: [
+                    Container(
+                      child: Text(
+                        this.parentEntryType.name + " " + this.subEntryType.name,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 10),
+                    SizedBox(height: 50),
 
-                  // add Diary Comment
-                  Container(),
+                    // add Diary Comment
+                    Container(
+                      child: Column(
+                        children: [
+                          Align(
+                            alignment: Alignment.centerLeft,
+                              child: Text("Write a diary comment")),
+                          TextField(
+                            controller: commentController,
+                        ),
+                        ]
+                      ),
+                    ),
 
-                  // add amount
+                    // add amount
+                    Container(),
 
-                  // add unit
+                    // add unit
 
 
 
-                  RaisedButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                        side: BorderSide(color: Color.fromARGB(255, 101, 220, 213))),
-                    onPressed: () async {
-                      var dateToday = DateTime.now();
-                      var formatter = new DateFormat('yyyy-MM-dd');
-                      var dateTodayFormatted = formatter.format(dateToday);
-                      print(dateTodayFormatted);
-                      var newDiaryEntry = new DiaryEntry(
-                        comment: "test123",
-                        dateString: dateTodayFormatted,
-                        diaryId: 1
-                      );
+                    RaisedButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          side: BorderSide(color: Color.fromARGB(255, 101, 220, 213))),
+                      onPressed: () async {
+                        var dateToday = DateTime.now();
+                        var formatter = new DateFormat('yyyy-MM-dd');
+                        var dateTodayFormatted = formatter.format(dateToday);
+                        print(dateTodayFormatted);
+                        var newDiaryEntry = new DiaryEntry(
+                          comment: "test123",
+                          dateString: dateTodayFormatted,
+                          diaryId: 1
+                        );
 
-                      var storedDiaryEntry = await DatabaseProvider.db.insertDiaryEntry(newDiaryEntry);
+                        var storedDiaryEntry = await DatabaseProvider.db.insertDiaryEntry(newDiaryEntry);
 
-                      print("0");
+                        print("0");
 
-                      var storedUnits = await DatabaseProvider.db.getUnitById(1);
+                        var storedUnits = await DatabaseProvider.db.getUnitById(1);
 
-                      var entryEvent = new EntryEvent(
-                        diaryEntryId: storedDiaryEntry.id,
-                          entryType: this.subEntryType,
-                        quantity: 5000,
-                        unit: storedUnits
-                      );
+                        var entryEvent = new EntryEvent(
+                          diaryEntryId: storedDiaryEntry.id,
+                            entryType: this.subEntryType,
+                          quantity: 5000,
+                          unit: storedUnits
+                        );
 
-                      var storedEntryEvent = await DatabaseProvider.db.insertEntryEvent(entryEvent);
-                      print("1");
-                      print(storedEntryEvent);
+                        var storedEntryEvent = await DatabaseProvider.db.insertEntryEvent(entryEvent);
+                        print("1");
+                        print(storedEntryEvent);
 
-                    },
-                    color: Colors.white,
-                    textColor: Colors.black,
-                    child: Text(
-                        "Save and finish",
-                        style: TextStyle(fontSize: 14)),
-                  ),
-                ],
+                      },
+                      color: Colors.white,
+                      textColor: Colors.black,
+                      child: Text(
+                          "Save and finish",
+                          style: TextStyle(fontSize: 14)),
+                    ),
+                  ],
+                ),
               ),
-            )
-          ],
+              SizedBox(
+                height: 500,
+              )
+            ],
+          ),
         ),
       ),
+      resizeToAvoidBottomInset: false,
       bottomNavigationBar: CustomBottomNavigationBar(),
       floatingActionButton: CostumBottomFloatingButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
