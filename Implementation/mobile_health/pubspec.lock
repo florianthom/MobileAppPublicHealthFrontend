@@ -156,6 +156,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.3.2+3"
+  scidart:
+    dependency: "direct main"
+    description:
+      name: scidart
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.1-dev.9"
   simple_gesture_detector:
     dependency: transitive
     description:
