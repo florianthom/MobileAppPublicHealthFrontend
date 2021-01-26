@@ -4,8 +4,10 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mobile_health/bloc/navbar/navbar_bloc.dart';
 import 'package:mobile_health/bloc/table_calender/table_calender_bloc.dart';
+import 'package:mobile_health/components/HomeCategoryHeader.dart';
 import 'package:mobile_health/components/MoreOptionBox.dart';
 import 'package:mobile_health/main.dart';
+import 'package:mobile_health/screens/HomePageScreen.dart';
 import 'package:mobile_health/screens/MoreScreen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Add this line
 
@@ -24,8 +26,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Add this line
 ///   needed.
 ///
 /// Widget Tests:
-///   Widget rendering is dependend on state supplied by BLOC
-///   and can not be fully tested because of that.
+///   Widget rendering is dependend on state supplied by BLOC and on internationalization
+///   tests: see down below
+///
 ///
 ///
 ///
@@ -75,6 +78,53 @@ void main() {
     testWidgets("MoreScreen renders option about", (WidgetTester tester) async {
       await _setUpMoreScreen(tester);
       await _screenRendersOptionAbout(tester);
+    });
+  });
+
+  group("HomeScreenWidget", () {
+    Future<Null> _setUpMoreScreen(WidgetTester tester) async {
+      await tester.pumpWidget(MultiBlocProvider(
+        providers: [
+          BlocProvider<NavbarBloc>(
+            create: (context) => NavbarBloc(),
+          ),
+          BlocProvider<TableCalenderBloc>(
+            create: (context) => TableCalenderBloc(),
+          ),
+        ],
+        child: MaterialApp(
+          supportedLocales: [
+            Locale('en', 'US'),
+            Locale('de', 'DE'),
+          ],
+          localizationsDelegates: [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          localeResolutionCallback: (locale, supportedLocales) {
+            for (var supportedLocale in supportedLocales) {
+              if (supportedLocale.languageCode == locale.languageCode &&
+                  supportedLocale.countryCode == locale.countryCode) {
+                return supportedLocale;
+              }
+            }
+            return supportedLocales.first;
+          },
+          home: HomePageScreen(),
+        ),
+      ));
+    }
+
+    Future<Null> _screenRendersProgressIndicatorWhileLoading(WidgetTester tester) async {
+      final optionFinder = find.byType(CircularProgressIndicator);
+      expect(optionFinder, findsOneWidget);
+    }
+
+    testWidgets("HomePageScreen renders progress indicator while loading", (WidgetTester tester) async {
+      await _setUpMoreScreen(tester);
+      await _screenRendersProgressIndicatorWhileLoading(tester);
     });
   });
 }
