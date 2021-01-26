@@ -156,13 +156,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.3.2+3"
-  scidart:
-    dependency: "direct main"
+  quiver:
+    dependency: transitive
     description:
-      name: scidart
+      name: quiver
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.1-dev.9"
+    version: "2.1.5"
   simple_gesture_detector:
     dependency: transitive
     description:
@@ -175,6 +175,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  sortedmap:
+    dependency: "direct main"
+    description:
+      name: sortedmap
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.2+1"
   source_span:
     dependency: transitive
     description:

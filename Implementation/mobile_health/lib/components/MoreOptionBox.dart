@@ -3,6 +3,9 @@ import 'package:mobile_health/components/HomeCategoryHeader.dart';
 import 'package:mobile_health/components/HomeCategoryItem.dart';
 import 'package:mobile_health/models/EntryType.dart';
 
+///
+/// Represents a button at the more-screen
+///
 class MoreOptionBox extends StatefulWidget {
   final String title;
   final String routeString;
@@ -14,12 +17,16 @@ class MoreOptionBox extends StatefulWidget {
         this.iconColor = iconColor;
 
   @override
-  _MoreOptionBoxState createState() => _MoreOptionBoxState(title, routeString, iconColor);
+  _MoreOptionBoxState createState() =>
+      _MoreOptionBoxState(title, routeString, iconColor);
 }
 
-///*
+///
+/// internal state-class for main class (MoreOptionBox) (flutter specific)
+///
 class _MoreOptionBoxState extends State<MoreOptionBox> {
   _MoreOptionBoxState(this.title, this.routeString, this.iconColor);
+
   final String title;
   final String routeString;
   final Color iconColor;
@@ -29,9 +36,7 @@ class _MoreOptionBoxState extends State<MoreOptionBox> {
     return Padding(
       padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
       child: Container(
-
         child: Column(
-
           children: [
             Container(
               decoration: BoxDecoration(
@@ -46,8 +51,8 @@ class _MoreOptionBoxState extends State<MoreOptionBox> {
                   ),
                   IconButton(
                     icon: Icon(
-                        Icons.info,
-                        color: this.iconColor,
+                      Icons.info,
+                      color: this.iconColor,
                       size: 35,
                     ),
                     onPressed: () {},
@@ -67,7 +72,7 @@ class _MoreOptionBoxState extends State<MoreOptionBox> {
                     ),
                   ),
                   Icon(
-                      Icons.keyboard_arrow_right_outlined,
+                    Icons.keyboard_arrow_right_outlined,
                     size: 25,
                   ),
                   SizedBox(

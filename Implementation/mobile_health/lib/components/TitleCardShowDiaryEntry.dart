@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Add this line
 
 ///
-/// Custom title-card in the context of the more-screen
+/// Custom title-card in the context of the showDiaryEntry-screen
 ///
-class TitleCardMore extends StatelessWidget {
+class TitleCardShowDiaryEntry extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
@@ -17,7 +17,8 @@ class TitleCardMore extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  AppLocalizations.of(context).moreScreen_title,
+                  AppLocalizations.of(context).showDiaryEntry,
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 36.0,
                     fontWeight: FontWeight.w300,
@@ -29,11 +30,6 @@ class TitleCardMore extends StatelessWidget {
                   height: 20.0,
                 ),
                 Column(children: [
-                  Image.asset(
-                    "assets/images/frontLogo.png",
-                    fit: BoxFit.contain,
-                    width: 100,
-                  ),
                   Image.asset(
                     "assets/images/ground.png",
                     fit: BoxFit.contain,

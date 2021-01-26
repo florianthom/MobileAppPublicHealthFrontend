@@ -3,19 +3,25 @@ import 'package:mobile_health/components/HomeCategoryHeader.dart';
 import 'package:mobile_health/components/HomeCategoryItem.dart';
 import 'package:mobile_health/models/EntryType.dart';
 
+///
+/// Button in the context of adding a category to an event
+///
 class AddNewCategoryOption extends StatefulWidget {
-
   final EntryType entryType;
 
   AddNewCategoryOption({EntryType entryType}) : this.entryType = entryType;
 
   @override
-  _AddNewCategoryOptionState createState() => _AddNewCategoryOptionState(entryType);
+  _AddNewCategoryOptionState createState() =>
+      _AddNewCategoryOptionState(entryType);
 }
 
-///*
+///
+/// Internal state-class for AddNewCategoryOption (flutter-specific)
+///
 class _AddNewCategoryOptionState extends State<AddNewCategoryOption> {
   _AddNewCategoryOptionState(this.entryType);
+
   final EntryType entryType;
 
   @override
@@ -23,15 +29,15 @@ class _AddNewCategoryOptionState extends State<AddNewCategoryOption> {
     return Padding(
       padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
       child: InkWell(
-        onTap: (){
+        onTap: () {
           var routerMap = Map<String, dynamic>();
           routerMap["entryTypeFromRoute"] = this.entryType;
-          Navigator.pushNamed(context, "/addNewEventCategory/addNewEventSubCategory", arguments: routerMap);
+          Navigator.pushNamed(
+              context, "/addNewEventCategory/addNewEventSubCategory",
+              arguments: routerMap);
         },
         child: Container(
-
           child: Column(
-
             children: [
               Container(
                 decoration: BoxDecoration(
@@ -55,7 +61,7 @@ class _AddNewCategoryOptionState extends State<AddNewCategoryOption> {
                       ),
                     ),
                     Icon(
-                        Icons.keyboard_arrow_right_outlined,
+                      Icons.keyboard_arrow_right_outlined,
                       size: 25,
                     ),
                     SizedBox(

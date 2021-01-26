@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 ///
-/// Custom title-card in the context of the addNewEntryCategory-screen
+/// Custom title-card in the context of the addNewEvent-screen
 ///
-class TitleCardAddNewEntryCategory extends StatelessWidget {
+class TitleCardAddNewEntry extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
@@ -16,7 +16,7 @@ class TitleCardAddNewEntryCategory extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                AppLocalizations.of(context).titleCardAddNewTitle_titel,
+                AppLocalizations.of(context).titleCardAddNewEvent_titel,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 36.0,

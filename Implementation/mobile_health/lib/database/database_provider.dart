@@ -54,7 +54,7 @@ class DatabaseProvider {
     String dbPath = await getDatabasesPath();
 
     return await openDatabase(
-      join(dbPath, 'ThyroHelph2.db'),
+      join(dbPath, 'ThyroHelph7.db'),
       version: 1, //change this number on changes to DB model
       onCreate: (Database database, int version) async {
         print("creating Diary table");
@@ -124,7 +124,7 @@ class DatabaseProvider {
 
         await database.transaction((txn) async {
           await txn.rawInsert(
-              'INSERT INTO $TABLE_ENTRYTYPE ($COLUMN_NAME, $COLUMN_DESCRIPTION, $COLUMN_PARENTTYPEID) VALUES ("Joggen", "Joggen mit kurzem Sprint", "1")');
+              'INSERT INTO $TABLE_ENTRYTYPE ($COLUMN_NAME, $COLUMN_DESCRIPTION, $COLUMN_PARENTTYPEID) VALUES ("Jogging", "Joggen mit kurzem Sprint", "1"), ("Sprint", "Sprinten", "1"), ("Mentale Stimmung", "Aktuelle Stimmung", "3"), ("Pasta", "Nudeln", "2"), ("Brot", "Brot", "2"), ("Wasser", "Wasser", "2")');
         });
 
         await database.transaction((txn) async {
@@ -139,7 +139,7 @@ class DatabaseProvider {
 
         await database.transaction((txn) async {
           await txn.rawInsert(
-              'INSERT INTO $TABLE_ENTRY_EVENT ($COLUMN_QUANTITY, $COLUMN_UNIT, $COLUMN_DIARY_ENTRY_ID, $COLUMN_ENTRYTYPE) VALUES (50, 1, 1, 1), (40, 1, 1, 1), (70, 1, 2, 1), (7, 8, 2, 3)');
+              'INSERT INTO $TABLE_ENTRY_EVENT ($COLUMN_QUANTITY, $COLUMN_UNIT, $COLUMN_DIARY_ENTRY_ID, $COLUMN_ENTRYTYPE) VALUES (50, 1, 1, 1), (40, 1, 1, 1), (70, 1, 2, 1), (7, 8, 3, 3), (8, 8, 2, 3), (10, 8, 4, 3)');
         });
       },
     );

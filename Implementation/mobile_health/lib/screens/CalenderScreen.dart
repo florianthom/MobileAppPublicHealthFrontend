@@ -10,44 +10,77 @@ import 'package:mobile_health/components/TitleCardMore.dart';
 import 'package:mobile_health/components/TitleCardStatistics.dart';
 import 'package:mobile_health/components/TopAppBar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:mobile_health/database/database_provider.dart';
+import 'package:mobile_health/models/DiaryEntry.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+
+///
+/// Represents the calender-screen
+///
 class CalenderScreen extends StatefulWidget {
   @override
   _CalenderScreenState createState() => _CalenderScreenState();
 }
 
-///*
+///
+/// Internal state-class for CalenderScreen (flutter-specific)
+///
 class _CalenderScreenState extends State<CalenderScreen> {
   CalendarController _calendarController;
 
-  ///*
+  ///
+  /// initState-method renders with initial rendering of the widget
+  /// used to initialize the calenderController (needed by table_calender (external library to create a basic calender))
+  ///
   @override
   void initState() {
     super.initState();
     this._calendarController = CalendarController();
-    print("here: " + DateTime.now().toString());
-    // this._calendarController.setSelectedDay(new DateTime(2021, 1, 20), runCallback: true);
-    print(this._calendarController.selectedDay);
-    // this._calendarController.setSelectedDay(DateTime.now());
   }
 
-  ///*
+
   @override
   void dispose() {
     _calendarController.dispose();
     super.dispose();
   }
 
-  ///*
+
   void _onVisibleDaysChanged(
       DateTime first, DateTime last, CalendarFormat format) {
     print('CALLBACK: _onVisibleDaysChanged');
   }
 
+  ///
+  /// Get all diary-entries of the database to mark in the calender at which day events got created
+  ///
+  Future<List<DiaryEntry>> getDataAsync() async {
+    var returnValue = DatabaseProvider.db.getDiaryEntries();
+    return returnValue;
+  }
+
+  ///
+  /// Future-resolver and build of the widget-tree
+  ///
   @override
   Widget build(BuildContext context) {
+    return FutureBuilder(
+        future: getDataAsync(),
+        builder: (context, snapshot) => snapshot.hasData
+            ? _buildWidget(snapshot.data)
+            : Container(
+                color: Colors.white,
+                child: Container(
+                    height: 100,
+                    width: 100,
+                    child: Center(child: CircularProgressIndicator())),
+              ));
+  }
+
+  ///*
+  Widget _buildWidget(List<DiaryEntry> data) {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -60,9 +93,7 @@ class _CalenderScreenState extends State<CalenderScreen> {
         // color: Colors.black,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildTableCalendar(),
-          ],
+          children: [_buildTableCalendar(data), const SizedBox(height: 8.0)],
         ),
       ),
       bottomNavigationBar: CustomBottomNavigationBar(),
@@ -72,13 +103,15 @@ class _CalenderScreenState extends State<CalenderScreen> {
   }
 
   ///*
-  Widget _buildTableCalendar() {
+  Widget _buildTableCalendar(List<DiaryEntry> data) {
+    data = data;
     return BlocBuilder<TableCalenderBloc, TableCalenderState>(
       builder: (context, state) {
         return TableCalendar(
           calendarController: _calendarController,
-          events: null,
-          holidays: null,
+          events: Map.fromEntries(
+              data.map((e) => MapEntry(e.toDataTimeConvert(), e.entryEvents))),
+          holidays: {},
           startingDayOfWeek: StartingDayOfWeek.monday,
           calendarStyle: CalendarStyle(
             selectedColor: Colors.deepOrange[400],
@@ -95,9 +128,7 @@ class _CalenderScreenState extends State<CalenderScreen> {
             ),
           ),
           onDaySelected: (DateTime day, List events, List holidays) {
-            context
-                .read<TableCalenderBloc>()
-                .add(SetSelectedDayEvent(day));
+            context.read<TableCalenderBloc>().add(SetSelectedDayEvent(day));
           },
           onVisibleDaysChanged: _onVisibleDaysChanged,
           onCalendarCreated:

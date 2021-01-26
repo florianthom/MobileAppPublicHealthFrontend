@@ -3,20 +3,29 @@ import 'package:mobile_health/components/HomeCategoryHeader.dart';
 import 'package:mobile_health/components/HomeCategoryItem.dart';
 import 'package:mobile_health/models/EntryType.dart';
 
-class AddNewSubCategoryOption extends StatefulWidget {
 
+///
+/// Button in the context of adding a subcategory to an event
+///
+class AddNewSubCategoryOption extends StatefulWidget {
   final EntryType parentEntryType;
   final EntryType subEntryType;
 
-  AddNewSubCategoryOption({EntryType parentEntryType, EntryType subEntryType}) : this.parentEntryType= parentEntryType, this.subEntryType = subEntryType;
+  AddNewSubCategoryOption({EntryType parentEntryType, EntryType subEntryType})
+      : this.parentEntryType = parentEntryType,
+        this.subEntryType = subEntryType;
 
   @override
-  _AddNewSubCategoryOptionState createState() => _AddNewSubCategoryOptionState(parentEntryType, subEntryType);
+  _AddNewSubCategoryOptionState createState() =>
+      _AddNewSubCategoryOptionState(parentEntryType, subEntryType);
 }
 
-///*
+///
+/// internal state-class for main class (AddNewSubCategoryOption) (flutter specific)
+///
 class _AddNewSubCategoryOptionState extends State<AddNewSubCategoryOption> {
   _AddNewSubCategoryOptionState(this.parentEntryType, this.subEntryType);
+
   final EntryType parentEntryType;
 
   final EntryType subEntryType;
@@ -26,16 +35,16 @@ class _AddNewSubCategoryOptionState extends State<AddNewSubCategoryOption> {
     return Padding(
       padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
       child: InkWell(
-        onTap: (){
+        onTap: () {
           var routerMap = Map<String, dynamic>();
           routerMap["parentEntryType"] = this.parentEntryType;
           routerMap["subEntryType"] = this.subEntryType;
-          Navigator.pushNamed(context, "/addNewEventCategory/addNewEventSubCategory/addNewEntry", arguments: routerMap);
+          Navigator.pushNamed(context,
+              "/addNewEventCategory/addNewEventSubCategory/addNewEntry",
+              arguments: routerMap);
         },
         child: Container(
-
           child: Column(
-
             children: [
               Container(
                 decoration: BoxDecoration(
@@ -59,7 +68,7 @@ class _AddNewSubCategoryOptionState extends State<AddNewSubCategoryOption> {
                       ),
                     ),
                     Icon(
-                        Icons.keyboard_arrow_right_outlined,
+                      Icons.keyboard_arrow_right_outlined,
                       size: 25,
                     ),
                     SizedBox(

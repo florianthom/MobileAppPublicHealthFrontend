@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-///*
+
+///
+/// Custom title-card in the context of the home-screen
+///
 class TitleCardHome extends StatelessWidget {
+  const TitleCardHome();
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-        Card(
+    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      Card(
         color: Color.fromARGB(255, 250, 250, 250),
         margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
         child: Padding(
@@ -32,7 +35,6 @@ class TitleCardHome extends StatelessWidget {
           ),
         ),
       ),
-      ]
-    );
+    ]);
   }
 }
