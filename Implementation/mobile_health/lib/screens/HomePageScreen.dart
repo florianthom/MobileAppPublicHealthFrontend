@@ -51,7 +51,10 @@ class _HomePageScreenState extends State<HomePageScreen> {
               ));
   }
 
-  ///*
+  ///
+  /// called by proper build-functional internally
+  /// used to separat the future-resolver from the build up of the widget treee
+  ///
   Widget _buildWidget(List<DiaryEntry> data) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
