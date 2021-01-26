@@ -2,6 +2,7 @@ import 'dart:collection';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Add this line
+import 'package:intl/intl.dart';
 import 'package:mobile_health/components/CostumBottomFloatingButton.dart';
 import 'package:mobile_health/components/CustomBottomNavigationBar.dart';
 import 'package:mobile_health/components/StaticTopAppBar.dart';
@@ -15,7 +16,6 @@ import 'package:mobile_health/models/DiaryEntry.dart';
 
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
-import 'package:sortedmap/sortedmap.dart';
 import 'dart:collection';
 
 class StatisticsScreen extends StatefulWidget {
@@ -24,10 +24,6 @@ class StatisticsScreen extends StatefulWidget {
 }
 
 class _StatisticsScreenState extends State<StatisticsScreen> {
-
-  // Future<Diary> getDataAsync() async {
-  //   return DatabaseProvider.db.getDiaryById(1);
-  // }
 
   bool _valueSport = false;
   bool _valueFood = false;
@@ -42,10 +38,8 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
         snapshot.hasData ? _buildWidget(snapshot.data) : Container(color: Colors.white, child: Container(height: 100, width: 100, child: Center(child: CircularProgressIndicator())),));
   }
 
-  //print(data);
-
   Widget _buildWidget(List<charts.Series<LinearSales, dynamic>> sampleData) {
-    Size size = MediaQuery.of(context).size;
+    //Size size = MediaQuery.of(context).size;
 
     return Scaffold(
       backgroundColor: Colors.black45,
@@ -84,7 +78,6 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                     setState(() {
                       _valueFood = value;
                     });
-
                   },
                   activeColor: Colors.black87,
                   checkColor: Colors.cyanAccent,
@@ -102,7 +95,6 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                   },
                   activeColor: Colors.black87,
                   checkColor: Colors.cyanAccent,
-
             ),
             CheckboxListTile(
               contentPadding: EdgeInsets.symmetric(horizontal: 120.0),
@@ -117,7 +109,6 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
               },
               activeColor: Colors.black87,
               checkColor: Colors.cyanAccent,
-
             ),
             Divider(
                 color: Colors.black
@@ -149,8 +140,6 @@ class NumericComboLinePointChart extends StatelessWidget {
 
     List<DateTime> weekNew;
 
-    //Ändern zu Form YYYY-MM-DD !!!
-
     DateTime today = new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
     //String dayToday ="${today.year.toString().padLeft(4,'0')}-${today.month.toString().padLeft(2,'0')}-${today.day.toString().padLeft(2,'0')}";
     weekNew = [today];
@@ -162,8 +151,7 @@ class NumericComboLinePointChart extends StatelessWidget {
       today = tomorrow;
     }
 
-    //print(weekNew);
-    return weekNew; //YYYY-MM-DD
+    return weekNew;
   }
 
   ///days in one week you x axis of statistic DD
@@ -187,24 +175,31 @@ class NumericComboLinePointChart extends StatelessWidget {
   static Future<List<double>> intensityOfSport(List<DateTime> week) async {
 
     List<DiaryEntry> entries = await DatabaseProvider.db.getDiaryEntries();
-
     LinkedHashMap<DateTime, double> sportWeek = new LinkedHashMap<DateTime, double>();
+
     week.forEach((date) {
       entries.forEach((entry) {
 
-        if (entry.dateString == date.toString()) {
-          //Fehler beim Vergleich
-          //I/flutter ( 7734): 2021-01-20
-          //I/flutter ( 7734): 2021-01-20T00:00:00.000
-          //date von week ändern
+        print(1);
 
-          List<EntryEvent> sportEvents = entry.entryEvents.where((oneEvent) => oneEvent.entryType.id == 1 && oneEvent.unit.name == 'min');
+        DateTime tempDate = DateTime.parse(entry.dateString);
 
-          //print(sportEvents);
+        print(tempDate == date);
+
+        if (tempDate == date) {
+
+          print(entry.entryEvents.where((oneEvent) => oneEvent.entryType.id == 1 && oneEvent.unit.name == 'm'));
+
+          List<EntryEvent> sportEvents = entry.entryEvents.where((oneEvent) => oneEvent.entryType.id == 1 && oneEvent.unit.name == 'm');
+
+          print(sportEvents);
+          print(3);
 
           sportEvents.forEach((sportEvent) {
             sportWeek[date] += sportEvent.quantity;
           });
+        } else {
+            sportWeek[date] = 0;
         }
       });
     });
@@ -215,7 +210,6 @@ class NumericComboLinePointChart extends StatelessWidget {
     List<double> sportIntensity;
     sportWeek.forEach((k, v) => sportIntensity.add(v));
 
-    print(13);
     //print(sportIntensity);
     return sportIntensity;
   }
@@ -229,11 +223,9 @@ class NumericComboLinePointChart extends StatelessWidget {
     week.forEach((date) {
       entries.forEach((entry) {
 
-        if (entry.dateString == date.toString()) {
-          //Fehler beim Vergleich
-          //I/flutter ( 7734): 2021-01-20
-          //I/flutter ( 7734): 2021-01-20T00:00:00.000
-          //date von week ändern
+        DateTime tempDate = DateTime.parse(entry.dateString);
+
+        if (tempDate == date) {
 
           List<EntryEvent> moodEvents = entry.entryEvents.where((oneEvent) => oneEvent.entryType.id == 4 && oneEvent.unit.name == 'mood');
 
@@ -268,36 +260,55 @@ class NumericComboLinePointChart extends StatelessWidget {
 
     var week = formatWeek();
     var daysOfWeek = formatDay(week);
-    var weeklySports = await intensityOfSport(week);
-    var weeklyMood = await intensityOfMood(week);
+
+    //var weeklySports = await intensityOfSport(week);
+    //var weeklyMood = await intensityOfMood(week);
     //var weeklySleep = intensityOfSleep(week);
     //var weeklyFood = intensityOfFood(week);
 
-    print(1.5);
-    print(weeklySports);
+    print(4);
     ///Graph for weekly sports
+    //final sportsSalesData = [
+    //  new LinearSales(daysOfWeek[6], weeklySports[6]),
+    //  new LinearSales(daysOfWeek[5], weeklySports[5]),
+    //  new LinearSales(daysOfWeek[4], weeklySports[4]),
+    //  new LinearSales(daysOfWeek[3], weeklySports[3]),
+    //   new LinearSales(daysOfWeek[2], weeklySports[2]),
+    //  new LinearSales(daysOfWeek[1], weeklySports[1]),
+    //  new LinearSales(daysOfWeek[0], weeklySports[0]),
+    //];
+
     final sportsSalesData = [
-      new LinearSales(daysOfWeek[6], weeklySports[6]),
-      new LinearSales(daysOfWeek[5], weeklySports[5]),
-      new LinearSales(daysOfWeek[4], weeklySports[4]),
-      new LinearSales(daysOfWeek[3], weeklySports[3]),
-      new LinearSales(daysOfWeek[2], weeklySports[2]),
-      new LinearSales(daysOfWeek[1], weeklySports[1]),
-      new LinearSales(daysOfWeek[0], weeklySports[0]),
+      new LinearSales(daysOfWeek[6], 0),
+      new LinearSales(daysOfWeek[5], 30),
+      new LinearSales(daysOfWeek[4], 0),
+      new LinearSales(daysOfWeek[3], 0),
+      new LinearSales(daysOfWeek[2], 60),
+      new LinearSales(daysOfWeek[1], 10),
+      new LinearSales(daysOfWeek[0], 0),
     ];
 
     ///Data graph for sleep in hours
      final moodSalesData = [
-       new LinearSales(daysOfWeek[6], weeklyMood[6]),
-       new LinearSales(daysOfWeek[5], weeklyMood[5]),
-       new LinearSales(daysOfWeek[4], weeklyMood[4]),
-       new LinearSales(daysOfWeek[3], weeklyMood[3]),
-       new LinearSales(daysOfWeek[2], weeklyMood[2]),
-       new LinearSales(daysOfWeek[1], weeklyMood[1]),
-       new LinearSales(daysOfWeek[0], weeklyMood[0]),
+       new LinearSales(daysOfWeek[6], 5),
+       new LinearSales(daysOfWeek[5], 9),
+       new LinearSales(daysOfWeek[4], 3),
+       new LinearSales(daysOfWeek[3], 2),
+       new LinearSales(daysOfWeek[2], 8),
+       new LinearSales(daysOfWeek[1], 7),
+       new LinearSales(daysOfWeek[0], 5),
      ];
 
-    print(3);
+    //final moodSalesData = [
+    //  new LinearSales(daysOfWeek[6], weeklyMood[6]),
+    //  new LinearSales(daysOfWeek[5], weeklyMood[5]),
+    //  new LinearSales(daysOfWeek[4], weeklyMood[4]),
+    //  new LinearSales(daysOfWeek[3], weeklyMood[3]),
+    //  new LinearSales(daysOfWeek[2], weeklyMood[2]),
+    //  new LinearSales(daysOfWeek[1], weeklyMood[1]),
+    //  new LinearSales(daysOfWeek[0], weeklyMood[0]),
+    //];
+
 
     /*///Data graph for sleep in hours
     final sleepSalesData = [
