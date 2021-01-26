@@ -74,8 +74,9 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                                   Navigator.pushAndRemoveUntil(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => StatisticsScreen()),
-                                        (Route<dynamic> route) => false,
+                                        builder: (context) =>
+                                            StatisticsScreen()),
+                                    (Route<dynamic> route) => false,
                                   );
                                 },
                                 splashColor: Colors.white,
@@ -96,7 +97,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => CalenderScreen()),
-                                        (Route<dynamic> route) => false,
+                                    (Route<dynamic> route) => false,
                                   );
                                 },
                                 splashColor: Colors.white,
@@ -114,7 +115,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => MoreScreen()),
-                                        (Route<dynamic> route) => false,
+                                    (Route<dynamic> route) => false,
                                   );
                                 },
                                 splashColor: Colors.white,

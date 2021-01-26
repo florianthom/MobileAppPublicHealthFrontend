@@ -38,7 +38,7 @@ class _MyAppState extends State<MyApp> {
     return MultiBlocProvider(
       providers: [
         BlocProvider<NavbarBloc>(
-        create: (context) => NavbarBloc(), //NavbarCubit(),
+          create: (context) => NavbarBloc(), //NavbarCubit(),
         ),
         BlocProvider<TableCalenderBloc>(
           create: (context) => TableCalenderBloc(),

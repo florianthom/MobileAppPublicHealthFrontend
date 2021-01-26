@@ -14,9 +14,8 @@ class _HomeCategoryHeaderState extends State<HomeCategoryHeader> {
     return Padding(
       padding: EdgeInsets.fromLTRB(40, 10, 40, 0),
       child: Container(
-        child: Column(
-          children: [
-            Row(
+        child: Column(children: [
+          Row(
             children: [
               Text(
                 AppLocalizations.of(context).homeHeaderNumber,
@@ -39,11 +38,10 @@ class _HomeCategoryHeaderState extends State<HomeCategoryHeader> {
               )
             ],
           ),
-            Divider(
-              color: Colors.black,
-            )
-          ]
-        ),
+          Divider(
+            color: Colors.black,
+          )
+        ]),
       ),
     );
   }

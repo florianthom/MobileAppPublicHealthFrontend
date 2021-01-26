@@ -6,7 +6,7 @@ class TitleCardMore extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-    SizedBox(
+      SizedBox(
         child: Card(
           color: Color.fromARGB(255, 250, 250, 250),
           margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
@@ -28,12 +28,12 @@ class TitleCardMore extends StatelessWidget {
                 ),
                 Column(children: [
                   Image.asset(
-                      "assets/images/frontLogo.png",
+                    "assets/images/frontLogo.png",
                     fit: BoxFit.contain,
-                      width: 100,
+                    width: 100,
                   ),
                   Image.asset(
-                      "assets/images/ground.png",
+                    "assets/images/ground.png",
                     fit: BoxFit.contain,
                     width: 100,
                   )

@@ -13,19 +13,14 @@ import 'package:mobile_health/models/DiaryEntry.dart';
 import 'package:mobile_health/models/EntryType.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 class HomePageScreen extends StatefulWidget {
   @override
   _HomePageScreenState createState() => _HomePageScreenState();
 }
 
-
-
-
 class _HomePageScreenState extends State<HomePageScreen> {
   ///*
   Future<List<DiaryEntry>> getDataAsync() async {
-
     var returnValue = DatabaseProvider.db.getDiaryEntries();
     return returnValue;
   }
@@ -35,13 +30,19 @@ class _HomePageScreenState extends State<HomePageScreen> {
   Widget build(BuildContext context) {
     return FutureBuilder(
         future: getDataAsync(),
-        builder: (context, snapshot) =>
-            snapshot.hasData ? _buildWidget(snapshot.data) : Container(color: Colors.white, child: Container(height: 100, width: 100, child: Center(child: CircularProgressIndicator())),));
+        builder: (context, snapshot) => snapshot.hasData
+            ? _buildWidget(snapshot.data)
+            : Container(
+                color: Colors.white,
+                child: Container(
+                    height: 100,
+                    width: 100,
+                    child: Center(child: CircularProgressIndicator())),
+              ));
   }
 
   ///*
   Widget _buildWidget(List<DiaryEntry> data) {
-
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
@@ -58,13 +59,21 @@ class _HomePageScreenState extends State<HomePageScreen> {
                 padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
                 child: Column(
                   children: [
-                  BlocBuilder<TableCalenderBloc, TableCalenderState>(
-                    builder: (context, state) {
-                      var diaryEntries = data.where((element) => DateTime.parse(element.dateString) == (DateTime(state.daySelected.year, state.daySelected.month, state.daySelected.day))).toList();
-                      print(diaryEntries);
-                      return HomeCategoryList( key: UniqueKey(),diaryEntries: diaryEntries);
-                    },
-                  ),
+                    BlocBuilder<TableCalenderBloc, TableCalenderState>(
+                      builder: (context, state) {
+                        var diaryEntries = data
+                            .where((element) =>
+                                DateTime.parse(element.dateString) ==
+                                (DateTime(
+                                    state.daySelected.year,
+                                    state.daySelected.month,
+                                    state.daySelected.day)))
+                            .toList();
+                        print(diaryEntries);
+                        return HomeCategoryList(
+                            key: UniqueKey(), diaryEntries: diaryEntries);
+                      },
+                    ),
                     SizedBox(
                       height: 500,
                     )
@@ -76,8 +85,8 @@ class _HomePageScreenState extends State<HomePageScreen> {
         ),
       ),
       bottomNavigationBar: CustomBottomNavigationBar(),
-      floatingActionButton:
-          CostumBottomFloatingButton(), //CostumBottomFloatingButton(),
+      floatingActionButton: CostumBottomFloatingButton(),
+      //CostumBottomFloatingButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }

@@ -82,8 +82,8 @@ class _ShowDiaryEntryState extends State<ShowDiaryEntry> {
                           children: [
                             Expanded(
                                 child: Text(
-                                  AppLocalizations.of(context).diaryEntryDate,
-                                  style: TextStyle(
+                              AppLocalizations.of(context).diaryEntryDate,
+                              style: TextStyle(
                                   color: Color.fromARGB(255, 86, 86, 86),
                                   fontSize: 20),
                             )),
@@ -103,12 +103,7 @@ class _ShowDiaryEntryState extends State<ShowDiaryEntry> {
                           children: [
                             Expanded(
                               child: Text(
-                            AppLocalizations.of(context).diaryEntryEvents,
-
-
-
-
-
+                                AppLocalizations.of(context).diaryEntryEvents,
                                 style: TextStyle(
                                     color: Color.fromARGB(255, 86, 86, 86),
                                     fontSize: 20),
@@ -156,7 +151,7 @@ class _ShowDiaryEntryState extends State<ShowDiaryEntry> {
                           children: [
                             Expanded(
                                 child: Text(
-                            AppLocalizations.of(context).diaryEntryComment,
+                              AppLocalizations.of(context).diaryEntryComment,
                               style: TextStyle(
                                   color: Color.fromARGB(255, 86, 86, 86),
                                   fontSize: 20),

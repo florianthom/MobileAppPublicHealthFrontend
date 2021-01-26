@@ -31,20 +31,18 @@ class _TopAppBarState extends State<TopAppBar> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               IconButton(
-                  icon: Icon(Icons.keyboard_arrow_left),
+                icon: Icon(Icons.keyboard_arrow_left),
                 onPressed: () {
-                  context
-                      .read<TableCalenderBloc>()
-                      .add(SetSelectedDayEvent(state.daySelected.subtract(Duration(days: 1))));
+                  context.read<TableCalenderBloc>().add(SetSelectedDayEvent(
+                      state.daySelected.subtract(Duration(days: 1))));
                 },
               ),
               InkWell(
                 onTap: () {
                   Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => CalenderScreen()),
-                        (Route<dynamic> route) => false,
+                    MaterialPageRoute(builder: (context) => CalenderScreen()),
+                    (Route<dynamic> route) => false,
                   );
                 },
                 child: Text(state.daySelected.day.toString() +
@@ -54,11 +52,10 @@ class _TopAppBarState extends State<TopAppBar> {
                     state.daySelected.year.toString()),
               ),
               IconButton(
-                  icon: Icon(Icons.keyboard_arrow_right_outlined),
+                icon: Icon(Icons.keyboard_arrow_right_outlined),
                 onPressed: () {
-                  context
-                      .read<TableCalenderBloc>()
-                      .add(SetSelectedDayEvent(state.daySelected.add(Duration(days: 1))));
+                  context.read<TableCalenderBloc>().add(SetSelectedDayEvent(
+                      state.daySelected.add(Duration(days: 1))));
                 },
               ),
             ],

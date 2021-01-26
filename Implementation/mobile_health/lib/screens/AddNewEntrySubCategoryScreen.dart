@@ -18,22 +18,22 @@ class AddNewEntrySubCategoryScreen extends StatefulWidget {
   const AddNewEntrySubCategoryScreen(this.entryTypeFromRoute);
 
   @override
-  _AddNewEntrySubCategoryScreenState createState() => _AddNewEntrySubCategoryScreenState(entryTypeFromRoute);
+  _AddNewEntrySubCategoryScreenState createState() =>
+      _AddNewEntrySubCategoryScreenState(entryTypeFromRoute);
 }
 
-
-
-
 ///*
-class _AddNewEntrySubCategoryScreenState extends State<AddNewEntrySubCategoryScreen> {
-
+class _AddNewEntrySubCategoryScreenState
+    extends State<AddNewEntrySubCategoryScreen> {
   final EntryType entryTypeFromRoute;
 
   _AddNewEntrySubCategoryScreenState(this.entryTypeFromRoute);
 
   ///*
   Future<List<EntryType>> getDataAsync() async {
-    return DatabaseProvider.db.getEntryTypes().then((value) => value.where((element) => element.parentTypeId == entryTypeFromRoute.id).toList());
+    return DatabaseProvider.db.getEntryTypes().then((value) => value
+        .where((element) => element.parentTypeId == entryTypeFromRoute.id)
+        .toList());
   }
 
   ///*
@@ -42,7 +42,7 @@ class _AddNewEntrySubCategoryScreenState extends State<AddNewEntrySubCategoryScr
     return FutureBuilder(
         future: getDataAsync(),
         builder: (context, snapshot) =>
-        snapshot.hasData ? _buildWidget(snapshot.data) : const SizedBox());
+            snapshot.hasData ? _buildWidget(snapshot.data) : const SizedBox());
   }
 
   ///*
@@ -52,9 +52,7 @@ class _AddNewEntrySubCategoryScreenState extends State<AddNewEntrySubCategoryScr
     return Scaffold(
       backgroundColor: Colors.black45,
       extendBodyBehindAppBar: false,
-
       appBar: TopAppBar(),
-
       body: SingleChildScrollView(
         child: Container(
           color: Colors.white,
@@ -62,12 +60,19 @@ class _AddNewEntrySubCategoryScreenState extends State<AddNewEntrySubCategoryScr
             children: [
               TitleCardAddNewEntrySubCategory(),
               Padding(
-                  padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
                 child: Column(
-                  children: data.map((e) => AddNewSubCategoryOption(parentEntryType: this.entryTypeFromRoute, subEntryType: e)).take(3).toList(),
+                  children: data
+                      .map((e) => AddNewSubCategoryOption(
+                          parentEntryType: this.entryTypeFromRoute,
+                          subEntryType: e))
+                      .take(3)
+                      .toList(),
                 ),
               ),
-              SizedBox(height: 500,),
+              SizedBox(
+                height: 500,
+              ),
             ],
           ),
         ),

@@ -13,15 +13,16 @@ import 'package:mobile_health/models/EntryType.dart';
 
 class AddNewEntryCategoryScreen extends StatefulWidget {
   @override
-  _AddNewEntryCategoryScreenState createState() => _AddNewEntryCategoryScreenState();
+  _AddNewEntryCategoryScreenState createState() =>
+      _AddNewEntryCategoryScreenState();
 }
 
 ///*
 class _AddNewEntryCategoryScreenState extends State<AddNewEntryCategoryScreen> {
-
   ///*
   Future<List<EntryType>> getDataAsync() async {
-    return DatabaseProvider.db.getEntryTypes().then((value) => value.where((element) => element.parentTypeId == null).toList());
+    return DatabaseProvider.db.getEntryTypes().then((value) =>
+        value.where((element) => element.parentTypeId == null).toList());
   }
 
   ///*
@@ -30,7 +31,7 @@ class _AddNewEntryCategoryScreenState extends State<AddNewEntryCategoryScreen> {
     return FutureBuilder(
         future: getDataAsync(),
         builder: (context, snapshot) =>
-        snapshot.hasData ? _buildWidget(snapshot.data) : const SizedBox());
+            snapshot.hasData ? _buildWidget(snapshot.data) : const SizedBox());
   }
 
   ///*
@@ -52,9 +53,11 @@ class _AddNewEntryCategoryScreenState extends State<AddNewEntryCategoryScreen> {
               ///*
               TitleCardAddNewEntryCategory(),
               Padding(
-                  padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
                 child: Column(
-                  children: data.map<Widget>((e) => AddNewCategoryOption(entryType: e)).toList(),
+                  children: data
+                      .map<Widget>((e) => AddNewCategoryOption(entryType: e))
+                      .toList(),
                 ),
               ),
             ],

@@ -18,8 +18,6 @@ import 'package:mobile_health/models/Unit.dart';
 import 'package:mobile_health/screens/HomePageScreen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
-
 class AddNewEntryScreen extends StatefulWidget {
   final EntryType parentEntryType;
   final EntryType subEntryType;
@@ -27,12 +25,12 @@ class AddNewEntryScreen extends StatefulWidget {
   const AddNewEntryScreen(this.parentEntryType, this.subEntryType);
 
   @override
-  _AddNewEntryScreenState createState() => _AddNewEntryScreenState(parentEntryType, subEntryType);
+  _AddNewEntryScreenState createState() =>
+      _AddNewEntryScreenState(parentEntryType, subEntryType);
 }
 
 ///*
 class _AddNewEntryScreenState extends State<AddNewEntryScreen> {
-
   final EntryType parentEntryType;
   final EntryType subEntryType;
 
@@ -46,10 +44,7 @@ class _AddNewEntryScreenState extends State<AddNewEntryScreen> {
 
   final amountOfUnitController = TextEditingController();
 
-
-
   Future<List<Unit>> getDataAsync() async {
-
     var storedUnits = await DatabaseProvider.db.getUnits();
     return storedUnits;
   }
@@ -59,20 +54,24 @@ class _AddNewEntryScreenState extends State<AddNewEntryScreen> {
   Widget build(BuildContext context) {
     return FutureBuilder(
         future: getDataAsync(),
-        builder: (context, snapshot) =>
-        snapshot.hasData ? _buildWidget(snapshot.data) : Container(color: Colors.white, child: Container(height: 100, width: 100, child: Center(child: CircularProgressIndicator())),));
+        builder: (context, snapshot) => snapshot.hasData
+            ? _buildWidget(snapshot.data)
+            : Container(
+                color: Colors.white,
+                child: Container(
+                    height: 100,
+                    width: 100,
+                    child: Center(child: CircularProgressIndicator())),
+              ));
   }
 
   ///*
   Widget _buildWidget(List<Unit> units) {
-
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.black45,
       extendBodyBehindAppBar: false,
-
       appBar: TopAppBar(),
-
       body: SingleChildScrollView(
         child: Container(
           color: Colors.white,
@@ -83,105 +82,106 @@ class _AddNewEntryScreenState extends State<AddNewEntryScreen> {
                 padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
                 child: Column(
                   children: [
-                    this.displayError ? Column(children: [Container(child: Text(AppLocalizations.of(context).errorOnSaveTry, style: TextStyle(color: Colors.red),),), SizedBox(height: 50,)]) : Container(),
+                    this.displayError
+                        ? Column(children: [
+                            Container(
+                              child: Text(
+                                AppLocalizations.of(context).errorOnSaveTry,
+                                style: TextStyle(color: Colors.red),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 50,
+                            )
+                          ])
+                        : Container(),
                     Container(
                       child: Text(
-                        this.parentEntryType.name + " " + this.subEntryType.name,
+                        this.parentEntryType.name +
+                            " " +
+                            this.subEntryType.name,
                       ),
                     ),
                     SizedBox(height: 50),
 
                     // add Diary Comment
                     Container(
-                      child: Column(
-                        children: [
-                          Align(
+                      child: Column(children: [
+                        Align(
                             alignment: Alignment.centerLeft,
-                              child: Text(
-                                  AppLocalizations.of(context).writeDiaryComment,
-                              )
-                          ),
-                          TextField(
-                            controller: commentController,
+                            child: Text(
+                              AppLocalizations.of(context).writeDiaryComment,
+                            )),
+                        TextField(
+                          controller: commentController,
                         ),
-                        ]
-                      ),
+                      ]),
                     ),
                     SizedBox(height: 50),
-
-
 
                     // add amount
                     Container(
-                      child: Column(
-                          children: [
-                            Align(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                    AppLocalizations.of(context).specifyQuantity,
-                                )
-                            ),
-                            TextField(
-                              controller: amountOfUnitController,
-                              keyboardType: TextInputType.number,
-                            ),
-                          ]
-                      ),
+                      child: Column(children: [
+                        Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              AppLocalizations.of(context).specifyQuantity,
+                            )),
+                        TextField(
+                          controller: amountOfUnitController,
+                          keyboardType: TextInputType.number,
+                        ),
+                      ]),
                     ),
                     SizedBox(height: 50),
 
-
-
-
                     // add unit
                     Container(
-                      child: Column(
-                        children: [
-                          Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(AppLocalizations.of(context).chooseUnit,)
-                          ),
-                          DropdownButton<Unit>(
+                      child: Column(children: [
+                        Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              AppLocalizations.of(context).chooseUnit,
+                            )),
+                        DropdownButton<Unit>(
                           style: TextStyle(color: Colors.blue),
                           hint: _dropDownValue == null
-                              ? Text(AppLocalizations.of(context).chooseFromDropdown)
+                              ? Text(AppLocalizations.of(context)
+                                  .chooseFromDropdown)
                               : Text(
-                            _dropDownValue.name,
-                            style: TextStyle(color: Colors.blue),
-                          ),
-
-
+                                  _dropDownValue.name,
+                                  style: TextStyle(color: Colors.blue),
+                                ),
                           items: units.map((Unit value) {
                             return DropdownMenuItem<Unit>(
                               value: value,
                               child: Text(
-                                  value.name,
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                    color: Colors.black
-                                  ),
-                            ),
+                                value.name,
+                                style: TextStyle(
+                                    fontSize: 14, color: Colors.black),
+                              ),
                             );
                           }).toList(),
                           isExpanded: true,
                           onChanged: (val) {
                             setState(
-                                  () {
+                              () {
                                 _dropDownValue = val;
                               },
                             );
                           },
                         ),
-                        ]
-                      ),
+                      ]),
                     ),
                     RaisedButton(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18.0),
-                          side: BorderSide(color: Color.fromARGB(255, 101, 220, 213))),
+                          side: BorderSide(
+                              color: Color.fromARGB(255, 101, 220, 213))),
                       onPressed: () async {
-
-                        if(this._dropDownValue==null || this.commentController.text == null || this.amountOfUnitController.text == null){
+                        if (this._dropDownValue == null ||
+                            this.commentController.text == null ||
+                            this.amountOfUnitController.text == null) {
                           setState(() {
                             displayError = true;
                           });
@@ -192,40 +192,35 @@ class _AddNewEntryScreenState extends State<AddNewEntryScreen> {
                         var dateTodayFormatted = formatter.format(dateToday);
                         print(dateTodayFormatted);
                         var newDiaryEntry = new DiaryEntry(
-                          comment: commentController.text,
-                          dateString: dateTodayFormatted,
-                          diaryId: 1
-                        );
+                            comment: commentController.text,
+                            dateString: dateTodayFormatted,
+                            diaryId: 1);
 
-                        var storedDiaryEntry = await DatabaseProvider.db.insertDiaryEntry(newDiaryEntry);
+                        var storedDiaryEntry = await DatabaseProvider.db
+                            .insertDiaryEntry(newDiaryEntry);
 
                         var storedUnits = this._dropDownValue;
 
                         var entryEvent = new EntryEvent(
-                          diaryEntryId: storedDiaryEntry.id,
+                            diaryEntryId: storedDiaryEntry.id,
                             entryType: this.subEntryType,
-                          quantity: double.parse(amountOfUnitController.text),
-                          unit: storedUnits
-                        );
+                            quantity: double.parse(amountOfUnitController.text),
+                            unit: storedUnits);
 
-                        var storedEntryEvent = await DatabaseProvider.db.insertEntryEvent(entryEvent);
+                        var storedEntryEvent = await DatabaseProvider.db
+                            .insertEntryEvent(entryEvent);
                         print(storedEntryEvent);
 
                         Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
                               builder: (context) => HomePageScreen()),
-                              (Route<dynamic> route) => false,
+                          (Route<dynamic> route) => false,
                         );
-
-
-
-
                       },
                       color: Colors.white,
                       textColor: Colors.black,
-                      child: Text(
-                          AppLocalizations.of(context).saveAndFinish,
+                      child: Text(AppLocalizations.of(context).saveAndFinish,
                           style: TextStyle(fontSize: 14)),
                     ),
                   ],

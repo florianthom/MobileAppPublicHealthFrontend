@@ -42,7 +42,9 @@ class _TestBottomFloatingButtonState extends State<TestBottomFloatingButton> {
             },
           ),
           elevation: 0.0,
-          onPressed: () => context.read<NavbarCubit>().setNewNavBarItem(NavbarRoute.AddItem.index), //context.read<NavbarCubit>().increment(),
+          onPressed: () => context.read<NavbarCubit>().setNewNavBarItem(
+              NavbarRoute
+                  .AddItem.index), //context.read<NavbarCubit>().increment(),
         ),
       ),
     );

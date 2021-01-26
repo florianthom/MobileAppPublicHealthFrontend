@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class StaticTopAppBar extends StatefulWidget implements PreferredSizeWidget {
-
   @override
   Size preferredSize;
 
@@ -17,8 +16,8 @@ class StaticTopAppBar extends StatefulWidget implements PreferredSizeWidget {
 
 ///*
 class _StaticTopAppBarState extends State<StaticTopAppBar> {
-
   _StaticTopAppBarState(this.title);
+
   final String title;
 
   @override

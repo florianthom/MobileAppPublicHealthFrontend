@@ -6,7 +6,7 @@ class TitleCardShowDiaryEntry extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-    SizedBox(
+      SizedBox(
         child: Card(
           color: Color.fromARGB(255, 250, 250, 250),
           margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
@@ -29,7 +29,7 @@ class TitleCardShowDiaryEntry extends StatelessWidget {
                 ),
                 Column(children: [
                   Image.asset(
-                      "assets/images/ground.png",
+                    "assets/images/ground.png",
                     fit: BoxFit.contain,
                     width: 100,
                   )

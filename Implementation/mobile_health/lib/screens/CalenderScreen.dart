@@ -49,7 +49,6 @@ class _CalenderScreenState extends State<CalenderScreen> {
   }
 
   Future<List<DiaryEntry>> getDataAsync() async {
-
     var returnValue = DatabaseProvider.db.getDiaryEntries();
     return returnValue;
   }
@@ -59,8 +58,15 @@ class _CalenderScreenState extends State<CalenderScreen> {
   Widget build(BuildContext context) {
     return FutureBuilder(
         future: getDataAsync(),
-        builder: (context, snapshot) =>
-        snapshot.hasData ? _buildWidget(snapshot.data) : Container(color: Colors.white, child: Container(height: 100, width: 100, child: Center(child: CircularProgressIndicator())),));
+        builder: (context, snapshot) => snapshot.hasData
+            ? _buildWidget(snapshot.data)
+            : Container(
+                color: Colors.white,
+                child: Container(
+                    height: 100,
+                    width: 100,
+                    child: Center(child: CircularProgressIndicator())),
+              ));
   }
 
   ///*
@@ -77,10 +83,7 @@ class _CalenderScreenState extends State<CalenderScreen> {
         // color: Colors.black,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildTableCalendar(data),
-            const SizedBox(height: 8.0)
-          ],
+          children: [_buildTableCalendar(data), const SizedBox(height: 8.0)],
         ),
       ),
       bottomNavigationBar: CustomBottomNavigationBar(),
@@ -96,7 +99,8 @@ class _CalenderScreenState extends State<CalenderScreen> {
       builder: (context, state) {
         return TableCalendar(
           calendarController: _calendarController,
-          events: Map.fromEntries(data.map((e) => MapEntry(e.toDataTimeConvert(), e.entryEvents))),
+          events: Map.fromEntries(
+              data.map((e) => MapEntry(e.toDataTimeConvert(), e.entryEvents))),
           holidays: {},
           startingDayOfWeek: StartingDayOfWeek.monday,
           calendarStyle: CalendarStyle(
@@ -114,15 +118,13 @@ class _CalenderScreenState extends State<CalenderScreen> {
             ),
           ),
           onDaySelected: (DateTime day, List events, List holidays) {
-            context
-                .read<TableCalenderBloc>()
-                .add(SetSelectedDayEvent(day));
+            context.read<TableCalenderBloc>().add(SetSelectedDayEvent(day));
           },
           onVisibleDaysChanged: _onVisibleDaysChanged,
           onCalendarCreated:
               (DateTime first, DateTime last, CalendarFormat format) {
-                this._calendarController.setSelectedDay(state.daySelected);
-            },
+            this._calendarController.setSelectedDay(state.daySelected);
+          },
         );
       },
     );
