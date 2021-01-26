@@ -5,6 +5,11 @@ class TableCalenderState {
   DateTime daySelected;
   TableCalenderState(this.daySelected);
 
+  ///
+  /// Overrride since bloc-pattern needs it to diffirentiate different states
+  ///   -> needed since everytime the state changes, we create a whole new state
+  ///   but bloc does not reassign we new state when the state is the same object
+  ///
   @override
   bool operator ==(Object other) {
     if(identical(this, other)) return true;
@@ -14,3 +19,7 @@ class TableCalenderState {
   @override
   int get hashCode => daySelected.hashCode;
 }
+
+
+
+

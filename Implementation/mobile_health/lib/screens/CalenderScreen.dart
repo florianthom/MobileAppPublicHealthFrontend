@@ -15,7 +15,6 @@ import 'package:mobile_health/models/DiaryEntry.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 ///
 /// Represents the calender-screen
 ///
@@ -40,13 +39,11 @@ class _CalenderScreenState extends State<CalenderScreen> {
     this._calendarController = CalendarController();
   }
 
-
   @override
   void dispose() {
     _calendarController.dispose();
     super.dispose();
   }
-
 
   void _onVisibleDaysChanged(
       DateTime first, DateTime last, CalendarFormat format) {
