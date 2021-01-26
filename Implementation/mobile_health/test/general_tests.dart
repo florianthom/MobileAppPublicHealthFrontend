@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:mobile_health/main.dart';
+import 'package:mobile_health/screens/MoreScreen.dart';
 
 ///
 ///
@@ -24,8 +25,15 @@ import 'package:mobile_health/main.dart';
 ///
 ///
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    await tester.pumpWidget(MyApp());
-    expect(find.text('0'), findsOneWidget);
+  group("MoreScreenWidget-testing", () {
+    Future<Null> _moreScreenRendersOptionAbout(WidgetTester tester) async {
+      await tester.pumpWidget(MoreScreen());
+      final optionFinder = find.text("About");
+      expect(optionFinder, findsOneWidget);
+    }
+
+    testWidgets("MoreScreen renders option about", (WidgetTester tester) async {
+      await _moreScreenRendersOptionAbout(tester);
+    });
   });
 }
