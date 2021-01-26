@@ -27,6 +27,7 @@ Technologies:
 Flutter
 Dart
 Android Studio
+sqflite
 
 ## Acknowledgements
 --
@@ -136,9 +137,22 @@ State Management f.e. for data. This is overarching available in Screens and Com
 
 
 --------------------------------------------------
-## Tests
+## Tests & Stategy
 
 - Tests beschreiben
 - beschreiben welche noch fehlen
-- Teststrategie
+
+#### Integration Test:
+
+
+#### Unit Tests:
+
+
+#### Widget Tests:
+
+
+#### Usability Tests:
+
+Usability Test is already done with 5 people. It was noticeable that (for the future) we would need a UI/UX Designer to revice the Design. 
+The users liked the structure very much. The structure was considered understandable and logical. 
 
