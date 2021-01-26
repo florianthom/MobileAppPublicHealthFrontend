@@ -5,7 +5,7 @@ This app is part of a course work project at the University of Applied Sciences 
 
 ## Docs
 - View docs
-- -view docs in the doc/api folder. Open the index.html in your browser.
+   - view docs in the doc/api folder. Open the index.html in your browser.
 - generate docs (https://github.com/dart-lang/dartdoc)
 ```
    $ pub global activate dartdoc

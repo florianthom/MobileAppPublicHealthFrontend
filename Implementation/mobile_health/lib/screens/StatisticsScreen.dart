@@ -2,6 +2,7 @@ import 'dart:collection';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Add this line
+import 'package:intl/intl.dart';
 import 'package:mobile_health/components/CostumBottomFloatingButton.dart';
 import 'package:mobile_health/components/CustomBottomNavigationBar.dart';
 import 'package:mobile_health/components/StaticTopAppBar.dart';
@@ -15,8 +16,6 @@ import 'package:mobile_health/models/DiaryEntry.dart';
 
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
-import 'package:sortedmap/sortedmap.dart';
-import 'dart:collection';
 
 class StatisticsScreen extends StatefulWidget {
   @override
@@ -25,14 +24,10 @@ class StatisticsScreen extends StatefulWidget {
 
 class _StatisticsScreenState extends State<StatisticsScreen> {
 
-  // Future<Diary> getDataAsync() async {
-  //   return DatabaseProvider.db.getDiaryById(1);
-  // }
-
   bool _valueSport = false;
-  bool _valueFood = false;
+  //bool _valueFood = false;
   bool _valueMood = false;
-  bool _valueSleep = false;
+  //bool _valueSleep = false;
 
   @override
   Widget build(BuildContext context) {
@@ -42,10 +37,8 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
         snapshot.hasData ? _buildWidget(snapshot.data) : Container(color: Colors.white, child: Container(height: 100, width: 100, child: Center(child: CircularProgressIndicator())),));
   }
 
-  //print(data);
-
   Widget _buildWidget(List<charts.Series<LinearSales, dynamic>> sampleData) {
-    Size size = MediaQuery.of(context).size;
+    //Size size = MediaQuery.of(context).size;
 
     return Scaffold(
       backgroundColor: Colors.black45,
@@ -61,20 +54,18 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
             ///Checkboxes for choose of statistic user wants to see
             CheckboxListTile(
                   contentPadding: EdgeInsets.symmetric(horizontal: 120.0),
-                  title: Text("Sports", style: TextStyle(letterSpacing: 1.8),),
+                  title: Text("Sports", style: TextStyle(letterSpacing: 1.8, color: Colors.deepOrange)),
                   secondary: const Icon(Icons.sports),
                   controlAffinity: ListTileControlAffinity.platform,
                   value: _valueSport,
                   onChanged: (bool value) {
                     setState(() {
                       _valueSport = value;
-                      //
                     });
                   },
-                  activeColor: Colors.black87,
                   checkColor: Colors.cyanAccent,
             ),
-            CheckboxListTile(
+            /*CheckboxListTile(
                   contentPadding: EdgeInsets.symmetric(horizontal: 120.0),
                   title: Text("Food", style: TextStyle(letterSpacing: 1.8)),
                   secondary: const Icon(Icons.emoji_food_beverage),
@@ -84,14 +75,13 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                     setState(() {
                       _valueFood = value;
                     });
-
                   },
                   activeColor: Colors.black87,
                   checkColor: Colors.cyanAccent,
-            ),
+            ),*/
             CheckboxListTile(
                   contentPadding: EdgeInsets.symmetric(horizontal: 120.0),
-                  title: Text("Mood", style: TextStyle(letterSpacing: 1.8)),
+                  title: Text("Mood", style: TextStyle(letterSpacing: 1.8, color: Colors.cyan)),
                   secondary: const Icon(Icons.mood),
                   controlAffinity: ListTileControlAffinity.platform,
                   value: _valueMood,
@@ -100,11 +90,9 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                       _valueMood = value;
                     });
                   },
-                  activeColor: Colors.black87,
                   checkColor: Colors.cyanAccent,
-
             ),
-            CheckboxListTile(
+            /*CheckboxListTile(
               contentPadding: EdgeInsets.symmetric(horizontal: 120.0),
               title: Text("Sleep", style: TextStyle(letterSpacing: 1.8)),
               secondary: const Icon(Icons.bedtime),
@@ -117,8 +105,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
               },
               activeColor: Colors.black87,
               checkColor: Colors.cyanAccent,
-
-            ),
+            ),*/
             Divider(
                 color: Colors.black
             ),
@@ -126,7 +113,9 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
               height: 200,
 
               ///Chart added to visible statistics screen with data
-              child: NumericComboLinePointChart(sampleData),
+              child: Padding(
+                  padding: EdgeInsets.fromLTRB(50, 0, 50, 0),
+                  child: NumericComboLinePointChart(sampleData)),
             ),
           ],
         ),
@@ -149,8 +138,6 @@ class NumericComboLinePointChart extends StatelessWidget {
 
     List<DateTime> weekNew;
 
-    //Ändern zu Form YYYY-MM-DD !!!
-
     DateTime today = new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
     //String dayToday ="${today.year.toString().padLeft(4,'0')}-${today.month.toString().padLeft(2,'0')}-${today.day.toString().padLeft(2,'0')}";
     weekNew = [today];
@@ -162,8 +149,7 @@ class NumericComboLinePointChart extends StatelessWidget {
       today = tomorrow;
     }
 
-    //print(weekNew);
-    return weekNew; //YYYY-MM-DD
+    return weekNew;
   }
 
   ///days in one week you x axis of statistic DD
@@ -187,24 +173,31 @@ class NumericComboLinePointChart extends StatelessWidget {
   static Future<List<double>> intensityOfSport(List<DateTime> week) async {
 
     List<DiaryEntry> entries = await DatabaseProvider.db.getDiaryEntries();
-
     LinkedHashMap<DateTime, double> sportWeek = new LinkedHashMap<DateTime, double>();
+
     week.forEach((date) {
       entries.forEach((entry) {
 
-        if (entry.dateString == date.toString()) {
-          //Fehler beim Vergleich
-          //I/flutter ( 7734): 2021-01-20
-          //I/flutter ( 7734): 2021-01-20T00:00:00.000
-          //date von week ändern
+        print(1);
 
-          List<EntryEvent> sportEvents = entry.entryEvents.where((oneEvent) => oneEvent.entryType.id == 1 && oneEvent.unit.name == 'min');
+        DateTime tempDate = DateTime.parse(entry.dateString);
 
-          //print(sportEvents);
+        print(tempDate == date);
+
+        if (tempDate == date) {
+
+          print(entry.entryEvents.where((oneEvent) => oneEvent.entryType.id == 1 && oneEvent.unit.name == 'm'));
+
+          List<EntryEvent> sportEvents = entry.entryEvents.where((oneEvent) => oneEvent.entryType.id == 1 && oneEvent.unit.name == 'm');
+
+          print(sportEvents);
+          print(3);
 
           sportEvents.forEach((sportEvent) {
             sportWeek[date] += sportEvent.quantity;
           });
+        } else {
+          sportWeek[date] = 0;
         }
       });
     });
@@ -215,7 +208,6 @@ class NumericComboLinePointChart extends StatelessWidget {
     List<double> sportIntensity;
     sportWeek.forEach((k, v) => sportIntensity.add(v));
 
-    print(13);
     //print(sportIntensity);
     return sportIntensity;
   }
@@ -229,17 +221,17 @@ class NumericComboLinePointChart extends StatelessWidget {
     week.forEach((date) {
       entries.forEach((entry) {
 
-        if (entry.dateString == date.toString()) {
-          //Fehler beim Vergleich
-          //I/flutter ( 7734): 2021-01-20
-          //I/flutter ( 7734): 2021-01-20T00:00:00.000
-          //date von week ändern
+        DateTime tempDate = DateTime.parse(entry.dateString);
+
+        if (tempDate == date) {
 
           List<EntryEvent> moodEvents = entry.entryEvents.where((oneEvent) => oneEvent.entryType.id == 4 && oneEvent.unit.name == 'mood');
 
           moodEvents.forEach((moodEvent) {
             moodWeek[date] = moodEvent.quantity;
           });
+        } else {
+          moodWeek[date] = 0;
         }
       });
     });
@@ -268,75 +260,93 @@ class NumericComboLinePointChart extends StatelessWidget {
 
     var week = formatWeek();
     var daysOfWeek = formatDay(week);
-    var weeklySports = await intensityOfSport(week);
-    var weeklyMood = await intensityOfMood(week);
+
+    /*if (_valueSport == true) {
+      var weeklySports = await intensityOfSport(week);
+    }
+
+    if (_valueMood == true) {
+      var weeklyMood = await intensityOfMood(week);
+    }*/
+
     //var weeklySleep = intensityOfSleep(week);
     //var weeklyFood = intensityOfFood(week);
 
-    print(1.5);
-    print(weeklySports);
     ///Graph for weekly sports
     final sportsSalesData = [
-      new LinearSales(daysOfWeek[6], weeklySports[6]),
-      new LinearSales(daysOfWeek[5], weeklySports[5]),
-      new LinearSales(daysOfWeek[4], weeklySports[4]),
-      new LinearSales(daysOfWeek[3], weeklySports[3]),
-      new LinearSales(daysOfWeek[2], weeklySports[2]),
-      new LinearSales(daysOfWeek[1], weeklySports[1]),
-      new LinearSales(daysOfWeek[0], weeklySports[0]),
+      new LinearSales(daysOfWeek[6], 0),
+      new LinearSales(daysOfWeek[5], 30),
+      new LinearSales(daysOfWeek[4], 0),
+      new LinearSales(daysOfWeek[3], 0),
+      new LinearSales(daysOfWeek[2], 60),
+      new LinearSales(daysOfWeek[1], 10),
+      new LinearSales(daysOfWeek[0], 0),
     ];
 
     ///Data graph for sleep in hours
      final moodSalesData = [
-       new LinearSales(daysOfWeek[6], weeklyMood[6]),
-       new LinearSales(daysOfWeek[5], weeklyMood[5]),
-       new LinearSales(daysOfWeek[4], weeklyMood[4]),
-       new LinearSales(daysOfWeek[3], weeklyMood[3]),
-       new LinearSales(daysOfWeek[2], weeklyMood[2]),
-       new LinearSales(daysOfWeek[1], weeklyMood[1]),
-       new LinearSales(daysOfWeek[0], weeklyMood[0]),
+       new LinearSales(daysOfWeek[6], 5),
+       new LinearSales(daysOfWeek[5], 9),
+       new LinearSales(daysOfWeek[4], 3),
+       new LinearSales(daysOfWeek[3], 2),
+       new LinearSales(daysOfWeek[2], 8),
+       new LinearSales(daysOfWeek[1], 7),
+       new LinearSales(daysOfWeek[0], 5),
      ];
 
-    print(3);
+    //final sportsSalesData = [
+    //  new LinearSales(daysOfWeek[6], weeklySports[6]),
+    //  new LinearSales(daysOfWeek[5], weeklySports[5]),
+    //  new LinearSales(daysOfWeek[4], weeklySports[4]),
+    //  new LinearSales(daysOfWeek[3], weeklySports[3]),
+    //  new LinearSales(daysOfWeek[2], weeklySports[2]),
+    //  new LinearSales(daysOfWeek[1], weeklySports[1]),
+    //  new LinearSales(daysOfWeek[0], weeklySports[0]),
+    //];
+
+    //final moodSalesData = [
+    //  new LinearSales(daysOfWeek[6], weeklyMood[6]),
+    //  new LinearSales(daysOfWeek[5], weeklyMood[5]),
+    //  new LinearSales(daysOfWeek[4], weeklyMood[4]),
+    //  new LinearSales(daysOfWeek[3], weeklyMood[3]),
+    //  new LinearSales(daysOfWeek[2], weeklyMood[2]),
+    //  new LinearSales(daysOfWeek[1], weeklyMood[1]),
+    //  new LinearSales(daysOfWeek[0], weeklyMood[0]),
+    //];
 
     /*///Data graph for sleep in hours
     final sleepSalesData = [
-      new LinearSales(week[0], 5),
-      new LinearSales(week[1], 25),
-      new LinearSales(week[2], 10),
-      new LinearSales(week[3], 75),
-      new LinearSales(week[4], 5),
-      new LinearSales(week[5], 80),
-      new LinearSales(week[6], 75),
+      new LinearSales(daysOfWeek[6], 7),
+      new LinearSales(daysOfWeek[5], 8),
+      new LinearSales(daysOfWeek[4], 9),
+      new LinearSales(daysOfWeek[3], 10),
+      new LinearSales(daysOfWeek[2], 6),
+      new LinearSales(daysOfWeek[1], 8),
+      new LinearSales(daysOfWeek[0], 8),
     ];
 
     final foodSalesData = [
-      new LinearSales(week[0], 5),
-      new LinearSales(week[1], 25),
-      new LinearSales(week[2], 10),
-      new LinearSales(week[3], 75),
-      new LinearSales(week[4], 5),
-      new LinearSales(week[5], 80),
-      new LinearSales(week[6], 75),
+      new LinearSales(daysOfWeek[6], 5),
+      new LinearSales(daysOfWeek[5], 25),
+      new LinearSales(daysOfWeek[4], 10),
+      new LinearSales(daysOfWeek[3], 75),
+      new LinearSales(daysOfWeek[2], 5),
+      new LinearSales(daysOfWeek[1], 80),
+      new LinearSales(daysOfWeek[0], 75),
     ];*/
 
     return [
       new charts.Series<LinearSales, int>(
         id: 'Desktop',
-        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+        colorFn: (_, __) => charts.MaterialPalette.deepOrange.shadeDefault,
+
         domainFn: (LinearSales sales, _) => sales.day,
         measureFn: (LinearSales sales, _) => sales.intensity,
         data: sportsSalesData,
-
-          /*if(_valueSport == true) {
-              data: sportsSalesData,
-          } else if() {
-
-          } else {*/
       ),
       new charts.Series<LinearSales, int>(
         id: 'Tablet',
-        colorFn: (_, __) => charts.MaterialPalette.red.shadeDefault,
+        colorFn: (_, __) => charts.MaterialPalette.cyan.shadeDefault,
         domainFn: (LinearSales sales, _) => sales.day,
         measureFn: (LinearSales sales, _) => sales.intensity,
         data: moodSalesData,
@@ -345,7 +355,7 @@ class NumericComboLinePointChart extends StatelessWidget {
   }
 }
 
-/// Sample linear data type - axis
+/// linear data type - axis
 class LinearSales {
   final num day; //day
   final double intensity; //intensity of event
