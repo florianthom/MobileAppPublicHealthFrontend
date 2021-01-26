@@ -2,11 +2,18 @@ import 'dart:convert';
 import '../database/database_provider.dart';
 import 'DBO.dart';
 
-///*
+///class representing the type or type category of an event in a diary entry
 class EntryType implements DBO {
+  ///database id
   int id;
+
+  /// name of this EntryType
   String name;
+
+  /// description of this EntryType
   String description;
+
+  /// id of the EntryType this instance is connected to
   int parentTypeId;
   EntryType({
     this.id,
@@ -15,7 +22,7 @@ class EntryType implements DBO {
     this.parentTypeId,
   });
 
-  ///*
+  ///returns a copy of this object with the supplied values or the instance values
   EntryType copyWith({
     int id,
     String name,
@@ -30,7 +37,7 @@ class EntryType implements DBO {
     );
   }
 
-  ///*
+  ///returns a map of this object
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{
       DatabaseProvider.COLUMN_NAME: name,
@@ -45,7 +52,7 @@ class EntryType implements DBO {
     return map;
   }
 
-  ///*
+  ///generates an instance of this class from a map
   factory EntryType.fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
 
@@ -57,16 +64,20 @@ class EntryType implements DBO {
     );
   }
 
+  ///returns JSON-format string of this instance
   String toJson() => json.encode(toMap());
 
+  ///generates instance of this class from a JSON-format string
   factory EntryType.fromJson(String source) =>
       EntryType.fromMap(json.decode(source));
 
+  ///returns string representation of this object instance
   @override
   String toString() {
     return 'Type(id: $id, name: $name, description: $description, parentTypeId: $parentTypeId)';
   }
 
+  /// checks for equality between two instances of this class
   @override
   bool operator ==(Object o) {
     if (identical(this, o)) return true;
@@ -78,6 +89,7 @@ class EntryType implements DBO {
         o.parentTypeId == parentTypeId;
   }
 
+  ///generates hashcode of this object instance
   @override
   int get hashCode {
     return id.hashCode ^

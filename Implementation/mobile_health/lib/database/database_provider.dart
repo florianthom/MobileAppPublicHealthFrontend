@@ -8,6 +8,9 @@ import 'package:sqflite/sqlite_api.dart';
 import '../models/EntryType.dart';
 import '../models/DBO.dart';
 
+///
+/// This class is the entry point for all available database functions
+///
 class DatabaseProvider {
   static const String COLUMN_ID = "id";
   static const String COLUMN_NAME = "name";
@@ -33,12 +36,17 @@ class DatabaseProvider {
 
   static const String TABLE_UNIT = "Unit";
 
+  /// private contructor
   DatabaseProvider._();
+
+  /// class is a singleton
   static final DatabaseProvider db = DatabaseProvider._();
 
   Database _database;
 
-  ///*
+  /// getter for the database
+  ///
+  /// will return the database or create a new one before returning it
   Future<Database> get database async {
     if (_database != null) {
       return _database;
@@ -49,13 +57,15 @@ class DatabaseProvider {
     return _database;
   }
 
-  ///*
+  /// function to create the database
   Future<Database> createDatabase() async {
     String dbPath = await getDatabasesPath();
 
     return await openDatabase(
+      /// creates filepath to the database
       join(dbPath, 'ThyroHelph7.db'),
       version: 1, //change this number on changes to DB model
+      /// this callback is called when a new database needs to be generated
       onCreate: (Database database, int version) async {
         print("creating Diary table");
 
@@ -213,13 +223,17 @@ class DatabaseProvider {
     return unit;
   }
 
-  ///example: delete("Unit", unit.id)
+  ///function for deleting a row in the database
+  ///example: delete("Unit", unitObject.id)
   Future<int> delete(String className, int id) async {
     final db = await database;
 
     return await db.delete(className, where: "$COLUMN_ID = ?", whereArgs: [id]);
   }
 
+  ///function to get a single EntryType
+  ///
+  ///returns the EntryType that has the supplied id or null
   Future<EntryType> getEntryTypeById(int id) async {
     final db = await database;
 
@@ -240,7 +254,9 @@ class DatabaseProvider {
     return null;
   }
 
-  ///*
+  ///function to get a single Diary
+  ///
+  ///returns Diary that has the supplied id or null
   Future<Diary> getDiaryById(int id) async {
     final db = await database;
 
@@ -250,7 +266,6 @@ class DatabaseProvider {
 
     if (queryResult.length > 0) {
       //sqflite query results are read only, so we need new maps to change them
-      //a lot of magic follows to allow clean execution of Diary.fromMap()
       //get all diaryEntries belonging to this diary as a map
       var diaryEntriesQuery = await db.query(TABLE_DIARY_ENTRY,
           columns: [COLUMN_ID, COLUMN_DATE, COLUMN_COMMENT, COLUMN_DIARYID],
@@ -307,7 +322,9 @@ class DatabaseProvider {
     return null;
   }
 
-  ///*
+  ///funciton to get a single DiaryEntry
+  ///
+  ///returns DiaryEntry or null
   Future<DiaryEntry> getDiaryEntryById(int id) async {
     final db = await database;
 
@@ -346,7 +363,9 @@ class DatabaseProvider {
     return null;
   }
 
-  ///*
+  ///function to get a single EntryEvent
+  ///
+  ///returns EntryEvent or null
   Future<EntryEvent> getEntryEventById(int id) async {
     final db = await database;
 
@@ -377,7 +396,9 @@ class DatabaseProvider {
     return null;
   }
 
-  ///*
+  ///function to get a Unit
+  ///
+  ///returns Unit or null
   Future<Unit> getUnitById(int id) async {
     final db = await database;
 
@@ -393,7 +414,9 @@ class DatabaseProvider {
     return null;
   }
 
-  ///*
+  ///function to update a DBO
+  ///
+  ///example: update("Unit", unitObject)
   Future<int> update(String tableName, DBO entry) async {
     final db = await database;
 
@@ -401,6 +424,9 @@ class DatabaseProvider {
         where: "$COLUMN_ID = ?", whereArgs: [entry.id]);
   }
 
+  ///funciton to get all EntryEvents
+  ///
+  ///returns list of EntryEvent or null
   Future<List<EntryEvent>> getEntryEvents() async {
     final db = await database;
 
@@ -421,7 +447,9 @@ class DatabaseProvider {
     return null;
   }
 
-  ///*
+  ///function to get all EntryTypes
+  ///
+  ///returns list of EntryType or null
   Future<List<EntryType>> getEntryTypes() async {
     final db = await database;
 
@@ -443,7 +471,9 @@ class DatabaseProvider {
     return typeList;
   }
 
-  ///*
+  ///function to get all Units
+  ///
+  ///returns List of Units or null
   Future<List<Unit>> getUnits() async {
     final db = await database;
 
@@ -460,7 +490,9 @@ class DatabaseProvider {
     return unitList;
   }
 
-  ///*
+  ///function to get all Diaries
+  ///
+  ///returns List of Diary or null
   Future<List<Diary>> getDiaries() async {
     final db = await database;
 
@@ -484,7 +516,9 @@ class DatabaseProvider {
     return null;
   }
 
-  ///*
+  ///function to get all DiaryEntries
+  ///
+  ///returns list of DiaryEntry or null
   Future<List<DiaryEntry>> getDiaryEntries() async {
     final db = await database;
 
@@ -493,6 +527,7 @@ class DatabaseProvider {
       List<DiaryEntry> entryList = List<DiaryEntry>();
 
       var editableResult = _makeModifiableResults(entries);
+
       await Future.forEach(editableResult, (element) async {
         DiaryEntry entry = await getDiaryEntryById(element[COLUMN_ID]);
 
@@ -506,6 +541,9 @@ class DatabaseProvider {
   }
 
   /// Generate a modifiable result set
+  ///
+  /// sqflite query return values are non-mutable
+  /// this function is used to generate a new mutable collection of the query result
   List<Map<String, dynamic>> _makeModifiableResults(
       List<Map<String, dynamic>> results) {
     // Generate modifiable
