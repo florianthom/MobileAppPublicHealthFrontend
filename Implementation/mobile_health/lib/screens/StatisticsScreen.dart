@@ -2,20 +2,14 @@ import 'dart:collection';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Add this line
-import 'package:intl/intl.dart';
 import 'package:mobile_health/components/CostumBottomFloatingButton.dart';
 import 'package:mobile_health/components/CustomBottomNavigationBar.dart';
 import 'package:mobile_health/components/StaticTopAppBar.dart';
-import 'package:mobile_health/components/TitleCardHome.dart';
 import 'package:mobile_health/components/TitleCardStatistics.dart';
-import 'package:mobile_health/components/TopAppBar.dart';
 import 'package:mobile_health/database/database_provider.dart';
-import 'package:mobile_health/models/Diary.dart';
 import 'package:mobile_health/models/EntryEvent.dart';
 import 'package:mobile_health/models/DiaryEntry.dart';
-
 import 'package:charts_flutter/flutter.dart' as charts;
-import 'package:flutter/material.dart';
 
 class StatisticsScreen extends StatefulWidget {
   @override
@@ -114,7 +108,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
 
               ///Chart added to visible statistics screen with data
               child: Padding(
-                  padding: EdgeInsets.fromLTRB(50, 0, 50, 0),
+                  padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
                   child: NumericComboLinePointChart(sampleData)),
             ),
           ],
@@ -127,7 +121,10 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
   }
 }
 
-///Tests with Test Data
+///
+///Creating of NumericComboLinePointChart that extends StatelessWidget
+///argument is a seriesList
+///
 class NumericComboLinePointChart extends StatelessWidget {
   NumericComboLinePointChart(this.seriesList);
 
@@ -202,9 +199,7 @@ class NumericComboLinePointChart extends StatelessWidget {
       });
     });
 
-    //List<EntryEvent> events = await DatabaseProvider.db.getEntryEvents();
-
-    ///List of week events sorted from today til today in 7 days
+    ///List of week events sorted from today til one week ago
     List<double> sportIntensity;
     sportWeek.forEach((k, v) => sportIntensity.add(v));
 
@@ -236,9 +231,7 @@ class NumericComboLinePointChart extends StatelessWidget {
       });
     });
 
-    //List<EntryEvent> events = await DatabaseProvider.db.getEntryEvents();
-
-    ///List of week events sorted from today til today in 7 days
+    ///List of week events sorted from today til one week ago
     List<double> moodIntensity;
     moodWeek.forEach((k, v) => moodIntensity.add(v));
 
@@ -255,7 +248,7 @@ class NumericComboLinePointChart extends StatelessWidget {
     );
   }
 
-  ///creates a List of data and returns new charts.Series<LinearSales with specific color, axis and data
+  ///creates a list of data and returns new charts.Series<LinearSales with specific color, axis and data
   static Future<List<charts.Series<LinearSales, num>>> _createSampleData(_valueSport, _valueMood) async {
 
     var week = formatWeek();
@@ -272,7 +265,7 @@ class NumericComboLinePointChart extends StatelessWidget {
     //var weeklySleep = intensityOfSleep(week);
     //var weeklyFood = intensityOfFood(week);
 
-    ///Graph for weekly sports
+    ///orange data graph for weekly sports
     final sportsSalesData = [
       new LinearSales(daysOfWeek[6], 0),
       new LinearSales(daysOfWeek[5], 30),
@@ -283,7 +276,7 @@ class NumericComboLinePointChart extends StatelessWidget {
       new LinearSales(daysOfWeek[0], 0),
     ];
 
-    ///Data graph for sleep in hours
+    ///green data graph for sleep in hours
      final moodSalesData = [
        new LinearSales(daysOfWeek[6], 5),
        new LinearSales(daysOfWeek[5], 9),
@@ -362,7 +355,4 @@ class LinearSales {
 
   LinearSales(this.day, this.intensity);
 }
-
-//alle diary by id = 1 holen & nach datum filtern   getDiaryById(1)
-//checkboxen - je ENTRYTYPE, neuer Type adde new checkbox
 

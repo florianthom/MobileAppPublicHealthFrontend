@@ -122,7 +122,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
           <url>file://$PROJECT_DIR$/Implementation/mobile_health/test/general_tests.dart</url>
-          <line>15</line>
+          <line>23</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
