@@ -139,17 +139,22 @@ State Management f.e. for data. This is overarching available in Screens and Com
 --------------------------------------------------
 ## Tests & Stategy
 
+test/general_tests.dart
+
 - Tests beschreiben
 - beschreiben welche noch fehlen
 
 #### Integration Test:
-
+For the given timeframe and the current state of the app
+proper integration testing was not possible.
 
 #### Unit Tests:
-
+The sqflite framework does not work with the flutter testing framework
+and could not be tested yet. To test sqflite a local server setup would be
+needed.
 
 #### Widget Tests:
-
+Widget rendering is dependend on state supplied by BLOC and can not be fully tested because of that.
 
 #### Usability Tests:
 
