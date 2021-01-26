@@ -47,7 +47,7 @@ class _LoadingState extends State<Loading> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Thyro\nHelphiii",
+                  "Thyro\nHealthiii",
                   style: TextStyle(
                     fontSize: 64.0,
                     fontWeight: FontWeight.w300,
