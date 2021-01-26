@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
-
+import 'package:mobile_health/bloc/navbar/navbar_bloc.dart';
+import 'package:mobile_health/bloc/table_calender/table_calender_bloc.dart';
+import 'package:mobile_health/components/MoreOptionBox.dart';
 import 'package:mobile_health/main.dart';
 import 'package:mobile_health/screens/MoreScreen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Add this line
 
 ///
 ///
@@ -26,14 +31,50 @@ import 'package:mobile_health/screens/MoreScreen.dart';
 ///
 void main() {
   group("MoreScreenWidget-testing", () {
-    Future<Null> _moreScreenRendersOptionAbout(WidgetTester tester) async {
-      await tester.pumpWidget(MoreScreen());
-      final optionFinder = find.text("About");
-      expect(optionFinder, findsOneWidget);
+    Future<Null> _setUpMoreScreen(WidgetTester tester) async {
+      await tester.pumpWidget(MultiBlocProvider(
+        providers: [
+          BlocProvider<NavbarBloc>(
+            create: (context) => NavbarBloc(),
+          ),
+          BlocProvider<TableCalenderBloc>(
+            create: (context) => TableCalenderBloc(),
+          ),
+        ],
+        child: MaterialApp(
+          supportedLocales: [
+            Locale('en', 'US'),
+            Locale('de', 'DE'),
+          ],
+          localizationsDelegates: [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          localeResolutionCallback: (locale, supportedLocales) {
+            for (var supportedLocale in supportedLocales) {
+              if (supportedLocale.languageCode == locale.languageCode &&
+                  supportedLocale.countryCode == locale.countryCode) {
+                return supportedLocale;
+              }
+            }
+            return supportedLocales.first;
+          },
+          home: MoreScreen(),
+        ),
+      ));
+    }
+
+    Future<Null> _screenRendersOptionAbout(WidgetTester tester) async {
+      // final childWidget2 = Container();
+      final optionFinder = find.byType(MoreOptionBox);
+      expect(optionFinder, findsNWidgets(4));
     }
 
     testWidgets("MoreScreen renders option about", (WidgetTester tester) async {
-      await _moreScreenRendersOptionAbout(tester);
+      await _setUpMoreScreen(tester);
+      await _screenRendersOptionAbout(tester);
     });
   });
 }
