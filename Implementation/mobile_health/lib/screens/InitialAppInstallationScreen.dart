@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:lipsum/lipsum.dart' as lipsum;
 import 'package:flutter/services.dart';
-
 import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Add this line
 
+///
+/// Represents the initialLoading-screen
+/// intended: watchable in the installation-process of the whole-app
+/// currently not included
+///
 class InitialAppInstallationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -48,7 +52,6 @@ class InitialAppInstallationScreen extends StatelessWidget {
               height: 25.0,
             ),
 
-            ///*
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -62,14 +65,11 @@ class InitialAppInstallationScreen extends StatelessWidget {
               height: 50.0,
             ),
 
-            ///*
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "hi",
-                  //AppLocalizations.of(context).initialAppInstallationScreen_adcopy,
-                  style: TextStyle(
+                  "tmp", style: TextStyle(
                     fontSize: 24.0,
                     fontWeight: FontWeight.w300,
                     color: Color.fromARGB(255, 86, 86, 86),

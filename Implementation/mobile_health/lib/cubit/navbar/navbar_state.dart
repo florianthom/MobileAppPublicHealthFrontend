@@ -1,3 +1,7 @@
+///
+/// Represents the state of the connected navbar-cubit
+/// currently not used, since we use the bloc-pattern instead of the cubit-pattern
+///
 class NavbarState {
   int navItemSelected = 0;
   NavbarState(this.navItemSelected);

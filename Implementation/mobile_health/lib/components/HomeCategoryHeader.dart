@@ -2,12 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Add this line
 
+///
+/// Header section (not title) of the "table" at the home-screen
+///
 class HomeCategoryHeader extends StatefulWidget {
   @override
   _HomeCategoryHeaderState createState() => _HomeCategoryHeaderState();
 }
 
-///*
+///
+/// internal state-class for main class (HomeCategoryHeader) (flutter specific)
+///
 class _HomeCategoryHeaderState extends State<HomeCategoryHeader> {
   @override
   Widget build(BuildContext context) {

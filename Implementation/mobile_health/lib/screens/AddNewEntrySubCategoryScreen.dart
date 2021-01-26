@@ -12,6 +12,9 @@ import 'package:mobile_health/components/TopAppBar.dart';
 import 'package:mobile_health/database/database_provider.dart';
 import 'package:mobile_health/models/EntryType.dart';
 
+///
+/// Represents screen to add a possible subCategory to a possible event
+///
 class AddNewEntrySubCategoryScreen extends StatefulWidget {
   final EntryType entryTypeFromRoute;
 
@@ -22,21 +25,27 @@ class AddNewEntrySubCategoryScreen extends StatefulWidget {
       _AddNewEntrySubCategoryScreenState(entryTypeFromRoute);
 }
 
-///*
+///
+/// Internal state-class for AddNewEntrySubCategoryScreen (flutter-specific)
+///
 class _AddNewEntrySubCategoryScreenState
     extends State<AddNewEntrySubCategoryScreen> {
   final EntryType entryTypeFromRoute;
 
   _AddNewEntrySubCategoryScreenState(this.entryTypeFromRoute);
 
-  ///*
+  ///
+  /// Get all entryTypes from database where the parentTypeId maches (get all subcategories to one specific parentCategory)
+  ///
   Future<List<EntryType>> getDataAsync() async {
     return DatabaseProvider.db.getEntryTypes().then((value) => value
         .where((element) => element.parentTypeId == entryTypeFromRoute.id)
         .toList());
   }
 
-  ///*
+  ///
+  /// Future-resolver
+  ///
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -45,7 +54,7 @@ class _AddNewEntrySubCategoryScreenState
             snapshot.hasData ? _buildWidget(snapshot.data) : const SizedBox());
   }
 
-  ///*
+
   Widget _buildWidget(List<EntryType> data) {
     Size size = MediaQuery.of(context).size;
 

@@ -5,6 +5,10 @@ import 'package:mobile_health/components/HomeCategoryItem.dart';
 import 'package:mobile_health/models/DiaryEntry.dart';
 import 'package:mobile_health/models/EntryType.dart';
 
+///
+/// Represents a list (/ "table") of diary-entries at the home-screen
+/// stores / represents a list of diary-entries
+///
 class HomeCategoryList extends StatefulWidget {
   final Key key;
   final List<DiaryEntry> diaryEntries;
@@ -17,7 +21,9 @@ class HomeCategoryList extends StatefulWidget {
       _HomeCategoryListState(diaryEntries, key);
 }
 
-///*
+///
+/// internal state-class for main class (HomeCategoryList) (flutter specific)
+///
 class _HomeCategoryListState extends State<HomeCategoryList> {
   final Key key;
   final List<DiaryEntry> diaryEntries;

@@ -3,6 +3,9 @@ import 'package:mobile_health/components/HomeCategoryHeader.dart';
 import 'package:mobile_health/components/HomeCategoryItem.dart';
 import 'package:mobile_health/models/EntryType.dart';
 
+///
+/// Represents a button at the more-screen
+///
 class MoreOptionBox extends StatefulWidget {
   final String title;
   final String routeString;
@@ -18,7 +21,9 @@ class MoreOptionBox extends StatefulWidget {
       _MoreOptionBoxState(title, routeString, iconColor);
 }
 
-///*
+///
+/// internal state-class for main class (MoreOptionBox) (flutter specific)
+///
 class _MoreOptionBoxState extends State<MoreOptionBox> {
   _MoreOptionBoxState(this.title, this.routeString, this.iconColor);
 

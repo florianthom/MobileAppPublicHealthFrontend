@@ -5,6 +5,9 @@ import 'package:mobile_health/bloc/table_calender/table_calender_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_health/screens/CalenderScreen.dart';
 
+///
+/// Represents default topAppBar to display date and some functionality regarding the date
+///
 class TopAppBar extends StatefulWidget implements PreferredSizeWidget {
   // kToolbarHeight = const in material.dart
   TopAppBar({Key key})
@@ -18,7 +21,9 @@ class TopAppBar extends StatefulWidget implements PreferredSizeWidget {
   final Size preferredSize; // default is 56.0
 }
 
-///*
+///
+/// internal state-class for main class (TopAppBar) (flutter specific)
+///
 class _TopAppBarState extends State<TopAppBar> {
   @override
   Widget build(BuildContext context) {

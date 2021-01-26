@@ -1,4 +1,6 @@
-///*
+///
+/// Represents the state of the navbar-bloc
+///
 class NavbarState {
   int navItemSelected = 0;
   NavbarState(this.navItemSelected);

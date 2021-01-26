@@ -3,6 +3,10 @@ import 'package:mobile_health/components/HomeCategoryHeader.dart';
 import 'package:mobile_health/components/HomeCategoryItem.dart';
 import 'package:mobile_health/models/EntryType.dart';
 
+
+///
+/// Button in the context of adding a subcategory to an event
+///
 class AddNewSubCategoryOption extends StatefulWidget {
   final EntryType parentEntryType;
   final EntryType subEntryType;
@@ -16,7 +20,9 @@ class AddNewSubCategoryOption extends StatefulWidget {
       _AddNewSubCategoryOptionState(parentEntryType, subEntryType);
 }
 
-///*
+///
+/// internal state-class for main class (AddNewSubCategoryOption) (flutter specific)
+///
 class _AddNewSubCategoryOptionState extends State<AddNewSubCategoryOption> {
   _AddNewSubCategoryOptionState(this.parentEntryType, this.subEntryType);
 

@@ -18,6 +18,9 @@ import 'package:mobile_health/models/Unit.dart';
 import 'package:mobile_health/screens/HomePageScreen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+///
+/// Represents screen to add a new event- /diary- entry
+///
 class AddNewEntryScreen extends StatefulWidget {
   final EntryType parentEntryType;
   final EntryType subEntryType;
@@ -29,7 +32,9 @@ class AddNewEntryScreen extends StatefulWidget {
       _AddNewEntryScreenState(parentEntryType, subEntryType);
 }
 
-///*
+///
+/// Internal state-class for AddNewEntryScreen (flutter-specific)
+///
 class _AddNewEntryScreenState extends State<AddNewEntryScreen> {
   final EntryType parentEntryType;
   final EntryType subEntryType;
@@ -49,7 +54,9 @@ class _AddNewEntryScreenState extends State<AddNewEntryScreen> {
     return storedUnits;
   }
 
-  ///*
+  ///
+  /// Future-resolver
+  ///
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -65,7 +72,7 @@ class _AddNewEntryScreenState extends State<AddNewEntryScreen> {
               ));
   }
 
-  ///*
+
   Widget _buildWidget(List<Unit> units) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
@@ -173,6 +180,11 @@ class _AddNewEntryScreenState extends State<AddNewEntryScreen> {
                         ),
                       ]),
                     ),
+
+                    ///
+                    /// "SaveAndFinish-Button"
+                    /// handles normal and error-processing
+                    ///
                     RaisedButton(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18.0),

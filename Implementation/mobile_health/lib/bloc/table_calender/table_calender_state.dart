@@ -1,4 +1,6 @@
-///*
+///
+/// Represents the state of the connected calender-bloc
+///
 class TableCalenderState {
   DateTime daySelected;
   TableCalenderState(this.daySelected);

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-///*
+///
+/// Custom title-card in the context of the addNewEntryCategory-screen
+///
 class TitleCardAddNewEntryCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

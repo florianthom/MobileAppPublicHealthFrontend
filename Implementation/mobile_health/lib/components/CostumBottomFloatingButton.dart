@@ -7,13 +7,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_health/models/navbar/navbarRoute.dart';
 import 'package:mobile_health/screens/AddNewEntryCategoryScreen.dart';
 
+///
+/// "+"-Button at the bottomBar
+/// part of the bottomBar
+///
 class CostumBottomFloatingButton extends StatefulWidget {
   @override
   _CostumBottomFloatingButtonState createState() =>
       _CostumBottomFloatingButtonState();
 }
 
-///*
+
+///
+/// internal state-class for main class (CostumBottomFloatingButton) (flutter specific)
+///
 class _CostumBottomFloatingButtonState
     extends State<CostumBottomFloatingButton> {
   @override

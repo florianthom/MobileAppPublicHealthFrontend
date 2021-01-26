@@ -9,10 +9,13 @@ import 'package:mobile_health/components/TitleCardMore.dart';
 import 'package:mobile_health/components/TitleCardShowDiaryEntry.dart';
 import 'package:mobile_health/components/TitleCardStatistics.dart';
 import 'package:mobile_health/components/TopAppBar.dart';
-
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mobile_health/models/DiaryEntry.dart'; // Add this line
 
+
+///
+/// Respresents the screen to show the details of individual diary-entries
+///
 class ShowDiaryEntry extends StatefulWidget {
   final DiaryEntry diaryEntry;
 
@@ -22,7 +25,9 @@ class ShowDiaryEntry extends StatefulWidget {
   _ShowDiaryEntryState createState() => _ShowDiaryEntryState(diaryEntry);
 }
 
-///*
+///
+/// Internal state-class for CalenderScreen (flutter-specific)
+///
 class _ShowDiaryEntryState extends State<ShowDiaryEntry> {
   final DiaryEntry diaryEntry;
 
@@ -53,7 +58,6 @@ class _ShowDiaryEntryState extends State<ShowDiaryEntry> {
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
                   child: Column(
-                    ///*
                     children: [
                       Padding(
                         padding: EdgeInsets.fromLTRB(5, 5, 5, 5),

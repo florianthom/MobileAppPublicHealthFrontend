@@ -4,7 +4,13 @@ import 'package:mobile_health/screens/AddNewEntryScreen.dart';
 import 'package:mobile_health/screens/AddNewEntrySubCategoryScreen.dart';
 import 'package:mobile_health/screens/ShowDiaryEntry.dart';
 
-///*
+///
+/// In addition to the default router with named-routes (not as a replacement), here we introduce
+///   a additional router to handle route-parameters
+/// used to push route-parameters e.g. from the addCategoryToEvent / addSubCategoryToEvent to the AddNewEntry-screen
+///
+/// route-parameter are handled by a Map
+///
 class CustomRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {

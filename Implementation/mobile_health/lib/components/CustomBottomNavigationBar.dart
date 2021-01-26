@@ -9,13 +9,19 @@ import 'package:mobile_health/screens/HomePageScreen.dart';
 import 'package:mobile_health/screens/MoreScreen.dart';
 import 'package:mobile_health/screens/StatisticsScreen.dart';
 
+///
+/// Class represents a custom bottomNavigationBar with 5 different sections
+/// on section-change: the bloc is notified for section-change
+///
 class CustomBottomNavigationBar extends StatefulWidget {
   @override
   _CustomBottomNavigationBarState createState() =>
       _CustomBottomNavigationBarState();
 }
 
-///*
+///
+/// internal state-class for main class (CustomBottomNavigationBar) (flutter specific)
+///
 class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   int _selectedIndex = 0;
 

@@ -6,6 +6,13 @@
 // import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart';
 //
+// ///
+// /// Represents a different approach to introduce internationalization (e.g. translations)
+// ///
+// /// utilizes a .json config-file to store translations
+// ///
+// /// not used since decided to go the way like it is recommended by flutter with .arb files (see lib/I10n/*.arb)
+// ///
 // class AppLocalizations {
 //   final Locale locale;
 //

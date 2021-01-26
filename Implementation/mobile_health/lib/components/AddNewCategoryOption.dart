@@ -3,6 +3,9 @@ import 'package:mobile_health/components/HomeCategoryHeader.dart';
 import 'package:mobile_health/components/HomeCategoryItem.dart';
 import 'package:mobile_health/models/EntryType.dart';
 
+///
+/// Button in the context of adding a category to an event
+///
 class AddNewCategoryOption extends StatefulWidget {
   final EntryType entryType;
 
@@ -13,7 +16,9 @@ class AddNewCategoryOption extends StatefulWidget {
       _AddNewCategoryOptionState(entryType);
 }
 
-///*
+///
+/// Internal state-class for AddNewCategoryOption (flutter-specific)
+///
 class _AddNewCategoryOptionState extends State<AddNewCategoryOption> {
   _AddNewCategoryOptionState(this.entryType);
 

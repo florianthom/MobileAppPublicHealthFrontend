@@ -7,15 +7,19 @@ import 'package:mobile_health/components/TitleCardHome.dart';
 import 'package:mobile_health/components/TitleCardMore.dart';
 import 'package:mobile_health/components/TitleCardStatistics.dart';
 import 'package:mobile_health/components/TopAppBar.dart';
-
 import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Add this line
 
+///
+/// Represents the more-screen
+///
 class MoreScreen extends StatefulWidget {
   @override
   _MoreScreenState createState() => _MoreScreenState();
 }
 
-///*
+///
+/// Internal state-class for CalenderScreen (flutter-specific)
+///
 class _MoreScreenState extends State<MoreScreen> {
   @override
   Widget build(BuildContext context) {
@@ -34,7 +38,6 @@ class _MoreScreenState extends State<MoreScreen> {
             Padding(
               padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
               child: Column(
-                ///*
                 children: [
                   MoreOptionBox(
                       title: AppLocalizations.of(context).addEventCategory,

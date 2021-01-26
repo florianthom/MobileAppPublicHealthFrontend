@@ -18,12 +18,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_health/routing/router.dart';
 import 'app_localizations.dart';
 
-///*
+///
+/// Entry-function for the whole app
+/// initializes the app
+///
 void main() {
   Bloc.observer = CounterObserver();
   runApp(MyApp());
 }
 
+///
+/// Entry-class for the whole app
+/// handles e.g.
+///   integration of both routers (names and custom)
+///   integration of internationalization
+///   integration of bloc-pattern
+///
 class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();

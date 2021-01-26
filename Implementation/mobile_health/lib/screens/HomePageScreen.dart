@@ -5,7 +5,6 @@ import 'package:mobile_health/components/CostumBottomFloatingButton.dart';
 import 'package:mobile_health/components/CustomBottomNavigationBar.dart';
 import 'package:mobile_health/components/HomeCategoryHeader.dart';
 import 'package:mobile_health/components/HomeCategoryList.dart';
-import 'package:mobile_health/components/TestBottomFloatingButton.dart';
 import 'package:mobile_health/components/TitleCardHome.dart';
 import 'package:mobile_health/components/TopAppBar.dart';
 import 'package:mobile_health/database/database_provider.dart';
@@ -13,19 +12,30 @@ import 'package:mobile_health/models/DiaryEntry.dart';
 import 'package:mobile_health/models/EntryType.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+///
+/// Represents the home-screen
+///
 class HomePageScreen extends StatefulWidget {
   @override
   _HomePageScreenState createState() => _HomePageScreenState();
 }
 
+///
+/// Internal state-class for CalenderScreen (flutter-specific)
+///
 class _HomePageScreenState extends State<HomePageScreen> {
-  ///*
+
+  ///
+  /// Get the diary-entries from the database to render the diary-entries of today
+  ///
   Future<List<DiaryEntry>> getDataAsync() async {
     var returnValue = DatabaseProvider.db.getDiaryEntries();
     return returnValue;
   }
 
-  ///*
+  ///
+  /// Future-resolver and build of the widget-tree
+  ///
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(

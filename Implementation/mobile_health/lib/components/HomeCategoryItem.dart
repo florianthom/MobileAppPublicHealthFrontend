@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:mobile_health/models/DiaryEntry.dart';
 import 'package:mobile_health/models/EntryType.dart';
 
+///
+/// Representation of one Entry in the "table" at the home-screen
+/// stores and represents one diaryEntry
+///
 class HomeCategoryItem extends StatefulWidget {
   final DiaryEntry diaryEntry;
   final int diaryEntryIndex;
@@ -15,7 +19,9 @@ class HomeCategoryItem extends StatefulWidget {
       _HomeCategoryItemState(diaryEntry, diaryEntryIndex);
 }
 
-///*
+///
+/// internal state-class for main class (HomeCategoryItem) (flutter specific)
+///
 class _HomeCategoryItemState extends State<HomeCategoryItem> {
   final DiaryEntry diaryEntry;
   final int diaryEntryIndex;
