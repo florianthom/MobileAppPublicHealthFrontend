@@ -16,6 +16,8 @@ import 'package:mobile_health/models/EntryType.dart';
 import 'package:intl/intl.dart';
 import 'package:mobile_health/models/Unit.dart';
 import 'package:mobile_health/screens/HomePageScreen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 
 class AddNewEntryScreen extends StatefulWidget {
@@ -81,7 +83,7 @@ class _AddNewEntryScreenState extends State<AddNewEntryScreen> {
                 padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
                 child: Column(
                   children: [
-                    this.displayError ? Column(children: [Container(child: Text("There was an error on saving your input!", style: TextStyle(color: Colors.red),),), SizedBox(height: 50,)]) : Container(),
+                    this.displayError ? Column(children: [Container(child: Text(AppLocalizations.of(context).errorOnSaveTry, style: TextStyle(color: Colors.red),),), SizedBox(height: 50,)]) : Container(),
                     Container(
                       child: Text(
                         this.parentEntryType.name + " " + this.subEntryType.name,
@@ -95,7 +97,9 @@ class _AddNewEntryScreenState extends State<AddNewEntryScreen> {
                         children: [
                           Align(
                             alignment: Alignment.centerLeft,
-                              child: Text("Write a diary comment")
+                              child: Text(
+                                  AppLocalizations.of(context).writeDiaryComment,
+                              )
                           ),
                           TextField(
                             controller: commentController,
@@ -113,7 +117,9 @@ class _AddNewEntryScreenState extends State<AddNewEntryScreen> {
                           children: [
                             Align(
                                 alignment: Alignment.centerLeft,
-                                child: Text("Specify the amount you want to add")
+                                child: Text(
+                                    AppLocalizations.of(context).specifyQuantity,
+                                )
                             ),
                             TextField(
                               controller: amountOfUnitController,
@@ -133,12 +139,12 @@ class _AddNewEntryScreenState extends State<AddNewEntryScreen> {
                         children: [
                           Align(
                               alignment: Alignment.centerLeft,
-                              child: Text("Choose unit")
+                              child: Text(AppLocalizations.of(context).chooseUnit,)
                           ),
                           DropdownButton<Unit>(
                           style: TextStyle(color: Colors.blue),
                           hint: _dropDownValue == null
-                              ? Text('Choose from Dropdown')
+                              ? Text(AppLocalizations.of(context).chooseFromDropdown)
                               : Text(
                             _dropDownValue.name,
                             style: TextStyle(color: Colors.blue),
@@ -203,7 +209,6 @@ class _AddNewEntryScreenState extends State<AddNewEntryScreen> {
                         );
 
                         var storedEntryEvent = await DatabaseProvider.db.insertEntryEvent(entryEvent);
-                        print("1");
                         print(storedEntryEvent);
 
                         Navigator.pushAndRemoveUntil(
@@ -220,7 +225,7 @@ class _AddNewEntryScreenState extends State<AddNewEntryScreen> {
                       color: Colors.white,
                       textColor: Colors.black,
                       child: Text(
-                          "Save and finish",
+                          AppLocalizations.of(context).saveAndFinish,
                           style: TextStyle(fontSize: 14)),
                     ),
                   ],

@@ -11,6 +11,8 @@
   "@initialAppInstallationScreen_adcopy": {},
   "events_today": "Events",
   "@events_today": {},
+  "calender": "Kalender",
+  "@calender": {},
   "addEventCategory": "Event-Category hinzufügen",
   "@addEventCategory": {},
   "addMarker": "Marker hinzufügen",
@@ -30,7 +32,27 @@
   "titleCardAddNewEvent_titel": "Event hinzufügen",
   "@titleCardAddNewEvent_titel": {},
   "showEventDetails": "Eventdetails",
-  "@showEventDetails": {}
+  "@showEventDetails": {},
+  "diaryEntryEvents": "DiaryEntry-Events",
+  "@diaryEntryEvents": {},
+  "diaryEntryDate": "DiaryEntry-Datum",
+  "@diaryEntryDate": {},
+  "diaryEntryId": "DiaryEntry-ID-Nummer:",
+  "@diaryEntryId": {},
+  "diaryEntryComment": "Kommentar",
+  "@diaryEntryComment": {},
+  "errorOnSaveTry": "Ein Fehler ist beim Speichern deiner Eingaben aufgetreten!",
+  "@errorOnSaveTry": {},
+  "writeDiaryComment": "Schreib einen Kommentar zum Tagebucheintrag",
+  "@writeDiaryComment": {},
+  "specifyQuantity": "Welche Quantität möchtest du hinzufügen?",
+  "@specifyQuantity": {},
+  "chooseUnit": "Wähle eine Einheit",
+  "@chooseUnit": {},
+  "chooseFromDropdown": "Wähle aus dem Dropdown aus",
+  "@chooseFromDropdown": {},
+  "saveAndFinish": "Speichern und Beenden",
+  "@saveAndFinish": {}
 
 
 }

@@ -48,5 +48,35 @@
     "@titleCardAddNewEvent_titel": {},
 
     "showEventDetails": "Details of event",
-    "@showEventDetails": {}
+    "@showEventDetails": {},
+
+    "diaryEntryEvents": "DiaryEntry-Events",
+    "@diaryEntryEvents": {},
+
+    "diaryEntryDate": "DiaryEntry-Date",
+    "@diaryEntryDate": {},
+
+    "diaryEntryId": "DiaryEntry-ID:",
+    "@diaryEntryId": {},
+
+    "diaryEntryComment": "Comment",
+    "@diaryEntryComment": {},
+
+    "errorOnSaveTry": "There was an error on saving your input!",
+    "@errorOnSaveTry": {},
+
+    "writeDiaryComment": "Write a diary comment",
+    "@writeDiaryComment": {},
+
+    "specifyQuantity": "Specify the quantity you want to add",
+    "@specifyQuantity": {},
+
+    "chooseUnit": "Choose unit",
+    "@chooseUnit": {},
+
+    "chooseFromDropdown": "Choose from Dropdown",
+    "@chooseFromDropdown": {},
+
+    "saveAndFinish": "Save and finish",
+    "@saveAndFinish": {}
 }

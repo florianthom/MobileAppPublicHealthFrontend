@@ -61,7 +61,7 @@ class _ShowDiaryEntryState extends State<ShowDiaryEntry> {
                           children: [
                             Expanded(
                               child: Text(
-                                "DiaryEntry-ID:",
+                                AppLocalizations.of(context).diaryEntryId,
                                 style: TextStyle(
                                     color: Color.fromARGB(255, 86, 86, 86),
                                     fontSize: 20),
@@ -80,13 +80,20 @@ class _ShowDiaryEntryState extends State<ShowDiaryEntry> {
                         padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
                         child: Row(
                           children: [
-                            Expanded(child: Text("DiaryEntry-Date", style: TextStyle(
-                                color: Color.fromARGB(255, 86, 86, 86),
-                                fontSize: 20),)),
-                            Text(new DateFormat('yyyy-MM-dd').format(
-                                DateTime.parse(this.diaryEntry.dateString)), style: TextStyle(
-                                color: Color.fromARGB(255, 86, 86, 86),
-                                fontSize: 20),),
+                            Expanded(
+                                child: Text(
+                                  AppLocalizations.of(context).diaryEntryDate,
+                                  style: TextStyle(
+                                  color: Color.fromARGB(255, 86, 86, 86),
+                                  fontSize: 20),
+                            )),
+                            Text(
+                              new DateFormat('yyyy-MM-dd').format(
+                                  DateTime.parse(this.diaryEntry.dateString)),
+                              style: TextStyle(
+                                  color: Color.fromARGB(255, 86, 86, 86),
+                                  fontSize: 20),
+                            ),
                           ],
                         ),
                       ),
@@ -95,10 +102,17 @@ class _ShowDiaryEntryState extends State<ShowDiaryEntry> {
                         child: Row(
                           children: [
                             Expanded(
-                              child: Text("DiaryEntry-Events",
-                          style: TextStyle(
-                                color: Color.fromARGB(255, 86, 86, 86),
-                                fontSize: 20),),
+                              child: Text(
+                            AppLocalizations.of(context).diaryEntryEvents,
+
+
+
+
+
+                                style: TextStyle(
+                                    color: Color.fromARGB(255, 86, 86, 86),
+                                    fontSize: 20),
+                              ),
                             ),
                             Column(
                               children: this
@@ -107,15 +121,27 @@ class _ShowDiaryEntryState extends State<ShowDiaryEntry> {
                                   .map((e) => Container(
                                         child: Row(
                                           children: [
-                                            Text(e.entryType.name + " ", style: TextStyle(
-                                                color: Color.fromARGB(255, 86, 86, 86),
-                                                fontSize: 20),),
-                                            Text(e.quantity.toString(), style: TextStyle(
-                                                color: Color.fromARGB(255, 86, 86, 86),
-                                                fontSize: 20),),
-                                            Text(e.unit.name, style: TextStyle(
-                                                color: Color.fromARGB(255, 86, 86, 86),
-                                                fontSize: 20),)
+                                            Text(
+                                              e.entryType.name + " ",
+                                              style: TextStyle(
+                                                  color: Color.fromARGB(
+                                                      255, 86, 86, 86),
+                                                  fontSize: 20),
+                                            ),
+                                            Text(
+                                              e.quantity.toString() + " ",
+                                              style: TextStyle(
+                                                  color: Color.fromARGB(
+                                                      255, 86, 86, 86),
+                                                  fontSize: 20),
+                                            ),
+                                            Text(
+                                              e.unit.name,
+                                              style: TextStyle(
+                                                  color: Color.fromARGB(
+                                                      255, 86, 86, 86),
+                                                  fontSize: 20),
+                                            )
                                           ],
                                         ),
                                       ))
@@ -128,12 +154,22 @@ class _ShowDiaryEntryState extends State<ShowDiaryEntry> {
                         padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
                         child: Row(
                           children: [
-                            Expanded(child: Text("DiaryEntry-Comment", style: TextStyle(
-                                color: Color.fromARGB(255, 86, 86, 86),
-                                fontSize: 20),)),
-                            Text(this.diaryEntry.comment, style: TextStyle(
-                                color: Color.fromARGB(255, 86, 86, 86),
-                                fontSize: 20),)
+                            Expanded(
+                                child: Text(
+                            AppLocalizations.of(context).diaryEntryComment,
+                              style: TextStyle(
+                                  color: Color.fromARGB(255, 86, 86, 86),
+                                  fontSize: 20),
+                            )),
+                            Container(
+                              width: 0.4 * size.width,
+                              child: Text(
+                                this.diaryEntry.comment,
+                                style: TextStyle(
+                                    color: Color.fromARGB(255, 86, 86, 86),
+                                    fontSize: 20),
+                              ),
+                            )
                           ],
                         ),
                       )
