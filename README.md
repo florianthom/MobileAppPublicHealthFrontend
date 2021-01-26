@@ -1,24 +1,37 @@
-# Mobile Applications for Public Health
+# Mobile Applications for Public Health ThyroHealthiii
 -------
+## Project
+This app is part of a course work project at the University of Applied Sciences Berlin. The project started in the context of mobile applications for public health. The goal was to make an app for mobile devices, using the flutter framework, that serves as a prototype to help people with a thyroid gland disease. The app offers customizable diary functions and a statistical analysis of the user supplied data. 
 
+## Docs
+- View docs
+- -view docs in the doc/api folder. Open the index.html in your browser.
+- generate docs (https://github.com/dart-lang/dartdoc)
+```
+   $ pub global activate dartdoc
+   $ dartdoc
+```
 ## Getting Started
---
-
-## Important commands
---
-
-## TL;DR
---
+- install packages
+```
+    pub flutter get
+```
+- run application
+```
+ flutter run
+```
+## Additionally Planned Features
+- extended statistical Analysis for partial correlations
+- adding multiple Events to one diary entry without having to reselect the diary entry in the overview
+- improved UX / UI
 
 ## Build with
---
-
-## Acknowledgements
---
-
+- Dart v2.10.4
+- Flutter 1.22.4
+- Bloc/Cubit-Pattern
 ----------------------------------------------
 
-# ThyroHelpiii User Guide
+# ThyroHealthiii User Guide
 This user manual describes the user guidance through the app and suggests possible use. 
 You will get useful information on the individual functionalities of fields and buttons. 
 The purpose of this manual is to answer any questions you may have and to introduce you to the range of functions.
