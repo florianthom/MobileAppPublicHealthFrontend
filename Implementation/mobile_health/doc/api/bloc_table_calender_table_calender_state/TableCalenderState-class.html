@@ -149,7 +149,9 @@
           </span>
                   </dt>
         <dd>
-          The equality operator. <a href="../bloc_table_calender_table_calender_state/TableCalenderState/operator_equals.html">[...]</a>
+          Overrride since bloc-pattern needs it to diffirentiate different states
+-&gt; needed since everytime the state changes, we create a whole new state
+  but bloc does not reassign we new state when the state is the same object 
                   <div class="features">override</div>
 </dd>
       </dl>

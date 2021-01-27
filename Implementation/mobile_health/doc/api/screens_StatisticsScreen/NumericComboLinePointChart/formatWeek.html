@@ -111,8 +111,6 @@
 
   List&lt;DateTime&gt; weekNew;
 
-  &#47;&#47;Ändern zu Form YYYY-MM-DD !!!
-
   DateTime today = new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
   &#47;&#47;String dayToday =&quot;${today.year.toString().padLeft(4,&#39;0&#39;)}-${today.month.toString().padLeft(2,&#39;0&#39;)}-${today.day.toString().padLeft(2,&#39;0&#39;)}&quot;;
   weekNew = [today];
@@ -124,8 +122,7 @@
     today = tomorrow;
   }
 
-  &#47;&#47;print(weekNew);
-  return weekNew; &#47;&#47;YYYY-MM-DD
+  return weekNew;
 }</code></pre>
     </section>
 

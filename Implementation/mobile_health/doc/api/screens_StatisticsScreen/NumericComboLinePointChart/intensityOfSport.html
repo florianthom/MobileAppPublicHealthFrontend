@@ -111,35 +111,39 @@
       <pre class="language-dart"><code class="language-dart">static Future&lt;List&lt;double&gt;&gt; intensityOfSport(List&lt;DateTime&gt; week) async {
 
   List&lt;DiaryEntry&gt; entries = await DatabaseProvider.db.getDiaryEntries();
-
   LinkedHashMap&lt;DateTime, double&gt; sportWeek = new LinkedHashMap&lt;DateTime, double&gt;();
+
   week.forEach((date) {
     entries.forEach((entry) {
 
-      if (entry.dateString == date.toString()) {
-        &#47;&#47;Fehler beim Vergleich
-        &#47;&#47;I&#47;flutter ( 7734): 2021-01-20
-        &#47;&#47;I&#47;flutter ( 7734): 2021-01-20T00:00:00.000
-        &#47;&#47;date von week ändern
+      print(1);
 
-        List&lt;EntryEvent&gt; sportEvents = entry.entryEvents.where((oneEvent) =&gt; oneEvent.entryType.id == 1 &amp;&amp; oneEvent.unit.name == &#39;min&#39;);
+      DateTime tempDate = DateTime.parse(entry.dateString);
 
-        &#47;&#47;print(sportEvents);
+      print(tempDate == date);
+
+      if (tempDate == date) {
+
+        print(entry.entryEvents.where((oneEvent) =&gt; oneEvent.entryType.id == 1 &amp;&amp; oneEvent.unit.name == &#39;m&#39;));
+
+        List&lt;EntryEvent&gt; sportEvents = entry.entryEvents.where((oneEvent) =&gt; oneEvent.entryType.id == 1 &amp;&amp; oneEvent.unit.name == &#39;m&#39;);
+
+        print(sportEvents);
+        print(3);
 
         sportEvents.forEach((sportEvent) {
           sportWeek[date] += sportEvent.quantity;
         });
+      } else {
+        sportWeek[date] = 0;
       }
     });
   });
 
-  &#47;&#47;List&lt;EntryEvent&gt; events = await DatabaseProvider.db.getEntryEvents();
-
-  &#47;&#47;&#47;List of week events sorted from today til today in 7 days
+  &#47;&#47;&#47;List of week events sorted from today til one week ago
   List&lt;double&gt; sportIntensity;
   sportWeek.forEach((k, v) =&gt; sportIntensity.add(v));
 
-  print(13);
   &#47;&#47;print(sportIntensity);
   return sportIntensity;
 }</code></pre>

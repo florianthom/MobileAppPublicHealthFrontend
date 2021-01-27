@@ -126,9 +126,8 @@
       
     </section>
     <section class="desc markdown">
-      <ul>
-<li></li>
-</ul>
+      <p>function to get a single Diary</p>
+<p>returns Diary that has the supplied id or null</p>
     </section>
     
     <section class="summary source-code" id="source">
@@ -142,7 +141,6 @@
 
   if (queryResult.length &gt; 0) {
     &#47;&#47;sqflite query results are read only, so we need new maps to change them
-    &#47;&#47;a lot of magic follows to allow clean execution of Diary.fromMap()
     &#47;&#47;get all diaryEntries belonging to this diary as a map
     var diaryEntriesQuery = await db.query(TABLE_DIARY_ENTRY,
         columns: [COLUMN_ID, COLUMN_DATE, COLUMN_COMMENT, COLUMN_DIARYID],

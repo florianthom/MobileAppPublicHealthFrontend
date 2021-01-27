@@ -125,9 +125,7 @@
       
     </section>
     <section class="desc markdown">
-      <ul>
-<li></li>
-</ul>
+      <p>function to create the database</p>
     </section>
     
     <section class="summary source-code" id="source">
@@ -136,8 +134,10 @@
   String dbPath = await getDatabasesPath();
 
   return await openDatabase(
+    &#47;&#47;&#47; creates filepath to the database
     join(dbPath, &#39;ThyroHelph7.db&#39;),
     version: 1, &#47;&#47;change this number on changes to DB model
+    &#47;&#47;&#47; this callback is called when a new database needs to be generated
     onCreate: (Database database, int version) async {
       print(&quot;creating Diary table&quot;);
 

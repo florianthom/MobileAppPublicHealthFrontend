@@ -116,24 +116,22 @@
   week.forEach((date) {
     entries.forEach((entry) {
 
-      if (entry.dateString == date.toString()) {
-        &#47;&#47;Fehler beim Vergleich
-        &#47;&#47;I&#47;flutter ( 7734): 2021-01-20
-        &#47;&#47;I&#47;flutter ( 7734): 2021-01-20T00:00:00.000
-        &#47;&#47;date von week ändern
+      DateTime tempDate = DateTime.parse(entry.dateString);
+
+      if (tempDate == date) {
 
         List&lt;EntryEvent&gt; moodEvents = entry.entryEvents.where((oneEvent) =&gt; oneEvent.entryType.id == 4 &amp;&amp; oneEvent.unit.name == &#39;mood&#39;);
 
         moodEvents.forEach((moodEvent) {
           moodWeek[date] = moodEvent.quantity;
         });
+      } else {
+        moodWeek[date] = 0;
       }
     });
   });
 
-  &#47;&#47;List&lt;EntryEvent&gt; events = await DatabaseProvider.db.getEntryEvents();
-
-  &#47;&#47;&#47;List of week events sorted from today til today in 7 days
+  &#47;&#47;&#47;List of week events sorted from today til one week ago
   List&lt;double&gt; moodIntensity;
   moodWeek.forEach((k, v) =&gt; moodIntensity.add(v));
 

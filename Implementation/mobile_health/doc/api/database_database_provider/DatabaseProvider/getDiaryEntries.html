@@ -125,9 +125,8 @@
       
     </section>
     <section class="desc markdown">
-      <ul>
-<li></li>
-</ul>
+      <p>function to get all DiaryEntries</p>
+<p>returns list of DiaryEntry or null</p>
     </section>
     
     <section class="summary source-code" id="source">
@@ -140,6 +139,7 @@
     List&lt;DiaryEntry&gt; entryList = List&lt;DiaryEntry&gt;();
 
     var editableResult = _makeModifiableResults(entries);
+
     await Future.forEach(editableResult, (element) async {
       DiaryEntry entry = await getDiaryEntryById(element[COLUMN_ID]);
 

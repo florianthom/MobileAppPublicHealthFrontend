@@ -94,17 +94,12 @@
       <div class="features">override</div>
     </section>
     <section class="desc markdown">
-      <ul>
-<li></li>
-</ul>
+      <p>returns a map of this object</p>
     </section>
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
       <pre class="language-dart"><code class="language-dart">Map&lt;String, dynamic&gt; toMap() {
-  &#47;&#47;erst mal noch mit Vorsicht zu geniessen, könnte sein, dass hier die App abkackt
-  &#47;&#47;weil theoretisch die ganze DB geladen werden kann
-  &#47;&#47;muss vermutlich in eine Liste von DiaryEntry ids geändert werden
   var map = &lt;String, dynamic&gt;{
     DatabaseProvider.COLUMN_DIARY_ENTRIES:
         diaryEntries?.map((x) =&gt; x?.toMap())?.toList(),

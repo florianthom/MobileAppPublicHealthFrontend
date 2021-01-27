@@ -70,6 +70,7 @@
     <section class="desc markdown">
       <p>Basic bloc regarding the calender
 useful to track the state of the calender in the context of the whole application</p>
+<p>in redux: 1 bloc = X reducers = 1 reducer-file</p>
     </section>
     
     <section>
@@ -411,10 +412,7 @@ handlers.
           </span>
                   </dt>
         <dd>
-          Must be implemented when a class extends <a href="https://pub.dev/documentation/bloc/6.1.1/bloc/Bloc-class.html">Bloc</a>.
-<a href="../bloc_table_calender_table_calender_bloc/TableCalenderBloc/mapEventToState.html">mapEventToState</a> is called whenever an <code>event</code> is <a href="https://pub.dev/documentation/bloc/6.1.1/bloc/Bloc/add.html">add</a>ed
-and is responsible for converting that <code>event</code> into a new <a href="https://pub.dev/documentation/bloc/6.1.1/bloc/Cubit/state.html">state</a>.
-<a href="../bloc_table_calender_table_calender_bloc/TableCalenderBloc/mapEventToState.html">mapEventToState</a> can <code>yield</code> zero, one, or multiple states for an event. 
+          Override since bloc-pattern needs it to the given event to the appropriate "reducer" 
                   <div class="features">override</div>
 </dd>
         <dt id="noSuchMethod" class="callable inherited">
